@@ -1,29 +1,14 @@
----
-title: Example Scripts
----
+# Example Scripts
 
-This page list a couple of example jobs to submit to SLURM for running
-Step 3 of HeuDiConv where actual BIDS sorting occurs. In general, the
-time, partition, number of cores, and memory should be sufficient for
-converting any dataset. Paths inside the script should be changed to fit
-the user's dataset and file structure.
+This page list a couple of example jobs to submit to SLURM for running Step 3 of HeuDiConv where actual BIDS sorting occurs. In general, the time, partition, number of cores, and memory should be sufficient for converting any dataset. Paths inside the script should be changed to fit the user's dataset and file structure.
 
-<div class="note">
+!!! note
 
-<div class="title">
+    Replace anything inside `<>` (including those symbols) with the relevant information, whether it is a path, or something else. If they are left in, the scripts will not run.
 
-Note
+## Create Conda Environment
 
-</div>
-
-Replace anything inside `<>` (including those symbols) with the relevant
-information, whether it is a path, or something else. If they are left
-in, the scripts will not run.
-
-</div>
-
-# Create Conda Environment
-
+<!-- markdownlint-disable MD046 -->
 ``` bash
 #!/bin/bash
 #
@@ -46,10 +31,13 @@ pip install heudiconv==0.9.0
 conda install -c conda-forge dcm2niix
 ```
 
-# Single Subject Job
+## Single Subject Job
 
-This job assumes each subject only has a single session of data to
-convert and does not use the session variable.
+This job assumes each subject only has a single session of data to convert and does not use the session variable.
+
+!!! note
+
+    The conversion scripts assume dicoms are stored in the same folder structure as in the [practical HeuDiConv example](practical-heudiconv.md#initial-folder-structure). If your directory structure differs, or there are multiple sessions, you will need to alter the path for the `-d` input to account for these differences
 
 ``` bash
 #!/bin/bash
@@ -81,20 +69,17 @@ find $base_dir/nifti/<BIDS subject name> -exec chmod ug+w {} \;
 find $base_dir/nifti/.heudiconv/<BIDS subject name> -exec chmod ug+w {} \;
 ```
 
-# Array Job
+## Array Job
 
-The array job will replicate the job across multiple subjects' data
-without having to create individual job scripts to submit. For more
-information about array jobs and how to submit them, read the UAB
-Research Computing documentation.
+The array job will replicate the job across multiple subjects' data without having to create individual job scripts to submit. For more information about array jobs and how to submit them, read the UAB Research Computing documentation.
 
-This script assumes the `standard directory structure<Initial Folder
-Structure>`. `base_dir` should be changed to the path to the dataset
-folder, the directory that contains the `dicom` folder and the newly
-created `nifti` folder.
+ `base_dir` should be changed to the path to the dataset folder, the directory that contains the `dicom` folder and the newly created `nifti` folder.
 
-This job assumes each subject only has a single session of data to
-convert and does not use the session variable.
+This job assumes each subject only has a single session of data to convert and does not use the session variable.
+
+!!! note
+
+    The conversion scripts assume dicoms are stored in the same folder structure as in the [practical HeuDiConv example](practical-heudiconv.md#initial-folder-structure). If your directory structure differs, or there are multiple sessions, you will need to alter the path for the `-d` input to account for these differences
 
 ``` bash
 #!/bin/bash

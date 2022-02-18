@@ -1,11 +1,8 @@
----
-title: Example Scripts
----
+# Example fmriprep Scripts
 
-# Example Single-Subject Job Script
+## Example Single-Subject Job Script
 
-This example script was written to process a single subject `P01` from
-BIDS-formatted dataset `D01` stored in `$USER_DATA`.
+This example script was written to process a single subject `P01` from BIDS-formatted dataset `D01` stored in `$USER_DATA`.
 
 ``` bash
 #!/bin/bash
@@ -43,31 +40,20 @@ fmriprep --work-dir $dataset_dir/workdir/ \
          participant
 ```
 
--   The job requests 4 CPUs and 4 GBs of memory per CPU for 50 hours
-    total on the medium partition.
--   The working directory was placed directly underneath the dataset
-    directory
--   The output space of the BOLD images was set to native T1w space as
-    opposed to a normalized template space.
--   The copied FreeSurfer license file was placed in my home directory
-    and referenced in the script.
--   All outputs were requested to be in cifti-space (91k default)
--   The bids_dir, output_dir, and analysis_level were listed in that
-    order after the options.
+- The job requests 4 CPUs and 4 GBs of memory per CPU for 50 hours total on the medium partition.
+- The working directory was placed directly underneath the dataset directory
+- The output space of the BOLD images was set to native T1w space as opposed to a normalized template space.
+- The copied FreeSurfer license file was placed in my home directory and referenced in the script.
+- All outputs were requested to be in cifti-space (91k default)
+- The `bids_dir`, `output_dir`, and `analysis_level` were listed in that order after the options.
 
-This script can be submitted to the scheduler using `sbatch <script.sh>`
-where script.sh is the full path of the script (or just the script name
-if the terminal working directory contains the script).
+This script can be submitted to the scheduler using `sbatch <script.sh>` where script.sh is the full path of the script (or just the script name if the terminal working directory contains the script).
 
-# Example Array Job Script
+## Example Array Job Script
 
-SLURM job arrays are scripts made to easily replicate a job to be
-performed across multiple inputs (i.e. multiple participants) while not
-taxing the job scheduler. Read more about SLURM job arrays at their
-[documentation](https://slurm.schedmd.com/job_array.html).
+SLURM job arrays are scripts made to easily replicate a job to be performed across multiple inputs (i.e. multiple participants) while not taxing the job scheduler. Read more about SLURM job arrays at their [documentation](https://slurm.schedmd.com/job_array.html).
 
-This example script was written to process all subjects from the
-`participants.tsv` file in BIDS-formatted dataset `D01`.
+This example script was written to process all subjects from the `participants.tsv` file in BIDS-formatted dataset `D01`.
 
 ``` bash
 #!/bin/bash
@@ -108,13 +94,6 @@ fmriprep --work-dir $dataset_dir/workdir/ \
          participant
 ```
 
-This script will replicate the fmriprep command for participants in the
-`participants.tsv` file. When submitting this job, include the
-`--array=<min>-<max>` option in the `sbatch` command representing the
-index of the participants you want to run. The index is 0-based. For
-example, if you want to run the first 10 participants in the file, use
-`--array=0-9`, whereas if you want to run the 7th and 10th participant
-only, use `--array=6,9`.
+This script will replicate the fmriprep command for participants in the `participants.tsv` file. When submitting this job, include the `--array=<min>-<max>` option in the `sbatch` command representing the index of the participants you want to run. The index is 0-based. For example, if you want to run the first 10 participants in the file, use `--array=0-9`, whereas if you want to run the 7th and 10th participant only, use `--array=6,9`.
 
-This script can be placed in and run from a `code` folder in the
-BIDS-sorted `nifti` folder to maintain BIDS compliance.
+This script can be placed in and run from a `code` folder placed under the main dataset directory to maintain BIDS compliance.

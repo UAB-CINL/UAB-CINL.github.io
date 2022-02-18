@@ -1,2 +1,48 @@
-site_name: My Docs
-theme: readthedocs
+site_name: Civitan International Neuroimaging Laboratory
+repo_url: https://github.com/mdefende/cinl-docs
+
+theme:
+  name: 'material'
+  include_search_page: true
+  search_index_only: true
+  feature:
+    tabs: true
+  custom_dir: 'theme'
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - lightgallery:
+      show_description_in_lightgallery: true
+      show_description_as_inline_caption: false
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+  - table-reader:
+      data_path: 'docs'
+
+nav:
+  - Home: 'index.md'
+  - Scanner Information:
+    - COVID Updates and Guidelines: scanner/covid.md
+    - Onboarding: scanner/onboarding.md
+    - Training: scanner/training.md
+    - Scheduling: scanner/scheduling.md
+  - MRI Preprocessing and Analysis:
+    - BIDS: 
+      - Introduction: analysis/bids/index.md
+      - analysis/bids/principles.md
+      - analysis/bids/practical-heudiconv.md
+      - analysis/bids/heudiconv-scripts.md
+    - fmriprep:
+      - Introduction: analysis/fmriprep/index.md
+      - analysis/fmriprep/fmriprep-usage.md
+      - analysis/fmriprep/fmriprep-scripts.md
