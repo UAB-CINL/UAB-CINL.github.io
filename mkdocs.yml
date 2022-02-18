@@ -36,6 +36,8 @@ nav:
     - Onboarding: scanner/onboarding.md
     - Training: scanner/training.md
     - Scheduling: scanner/scheduling.md
+    - Billing: scanner/billing.md
+    - Patient Implant Policies: scanner/implants.md
   - MRI Preprocessing and Analysis:
     - BIDS: 
       - Introduction: analysis/bids/index.md
