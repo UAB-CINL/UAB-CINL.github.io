@@ -12,5 +12,5 @@ This page provides links to written documentation, tutorials, and videos for rel
 ### Tutorials
 
 1. BIDS Workshop (UAB Feb 2022)
-   1. [Github Repo](https://github.com/mdefende/BIDS-workshop-2022)
-   2. [Presentation Recording](https://www.youtube.com/watch?v=W1FITjZXJ0Y)
+      1. [Github Repo](https://github.com/mdefende/BIDS-workshop-2022)
+      2. [Presentation Recording](https://www.youtube.com/watch?v=W1FITjZXJ0Y)
