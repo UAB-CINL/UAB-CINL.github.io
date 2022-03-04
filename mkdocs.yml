@@ -48,3 +48,4 @@ nav:
       - Introduction: analysis/fmriprep/index.md
       - analysis/fmriprep/fmriprep-usage.md
       - analysis/fmriprep/fmriprep-scripts.md
+    - Resources: analysis/resources.md
