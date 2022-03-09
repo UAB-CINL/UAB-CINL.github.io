@@ -1,4 +1,4 @@
-# MRI Screening
+# MRI Screening and Implants
 
 ## Participant Screening
 
