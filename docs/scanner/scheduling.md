@@ -1,4 +1,4 @@
-# Scheduling Scans and Space
+# Scheduling and Billing
 
 ## Calendars
 
@@ -9,7 +9,7 @@ Users that would like to view the MRI and interview room schedules or book time 
 - CINL Highlands Interview Room 1
 - CINL Highlands Interview Room 2
 
-You will need to provide Eleanor your email address and it is easiest to use a Gmail address (which will also integrate it into their already existing Google calendar).
+You will need to provide Eleanor your email address. It is easiest to use a Gmail address (which will also integrate it into their already existing Google calendar).
 
 !!! warning
 
@@ -62,3 +62,13 @@ If your research group does not show for the scan without cancelling via both th
 !!! note
 
     Penalization ONLY occurs for no shows when the research group itself also does not show for the scan or appropriately indicate that the scan time is no longer needed (refer to 2 step cancellation process above).  
+
+## Billing
+
+For each study scan, we use the [linked RedCap form](https://survey.eyes.uab.edu/surveys/?s=KPP8TNFLEC) for tracking and billing purposes. Fill this out at the scanner console where we have a tablet dedicated to this form.
+
+!!! note
+
+    As of late 2021, the "Save and Return Later" function is failing to provide return codes. If this issue is resolved, we will let users know. The purpose of this function was so users could pre-fill some of the information, and then make note of the code to go back and continue to fill out the form at the scanner console.
+
+There are paper copies at the scanner console in case the online form is not working. Once at the scanner, please make sure to mark the time that your set-up starts and when the start and end of your scan is.  You can also email yourself a copy of the form once it is completed.
