@@ -33,7 +33,6 @@ nav:
   - Home: 'index.md'
   - Scanner Information:
     - Getting Started: scanner/getting_started.md
-    - COVID Updates and Guidelines: scanner/covid.md
     - Onboarding: scanner/onboarding.md
     - Training: scanner/training.md
     - Scheduling: scanner/scheduling.md
@@ -50,3 +49,4 @@ nav:
       - analysis/fmriprep/fmriprep-usage.md
       - analysis/fmriprep/fmriprep-scripts.md
     - Resources: analysis/resources.md
+    

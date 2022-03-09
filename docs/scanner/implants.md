@@ -1,4 +1,10 @@
-# Implant Reporting and Policies
+# MRI Screening
+
+## Participant Screening
+
+Before beginning a scan, a participant must be taken through the [MRI Patient Screening Form](https://uab365.sharepoint.com/:b:/r/sites/som/circ/cinl/Shared%20Documents/Training/MRI%20Screening%20Form.pdf?csf=1&web=1&e=tfbB4T). This screening form is mandatory each time a participant comes in for a scan regardless of if they have filled out the form previously. Any risk factors discovered during the screening process will need to be reported and approved before scanning. For any questions about risk factors during screening, please contact Elizabeth Ingram (ekingram@uabmc.edu).
+
+## Implant Policies
 
 If a participant has an implant, please reach out to Elizabeth Ingram (ekingram@uabmc.edu) and upload documentation for the implant to Sharefile for her to review. Please read the [Implant Guide](https://uab365.sharepoint.com/:b:/r/sites/som/circ/cinl/Shared%20Documents/Implant%20Review/Sharefile%20Instructions.pdf?csf=1&web=1&e=zo0AzU) and reach out to Elizabeth with any questions.
 

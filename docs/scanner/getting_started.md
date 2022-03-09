@@ -12,7 +12,11 @@ Please read the [onboarding](onboarding.md) documentation for more information/
 
 ## Training
 
-If you and your study personnel have not already done so, you must undergo at least CINL Level 1 Safety Training. Please schedule this with Eleanor Lewis (elewis1@uabmc.edu).
+If you and your study personnel have not already done so, you must undergo at least CINL MRI Safety Training. Please schedule this with Eleanor Lewis (elewis1@uabmc.edu). Please read over the [training protocols](training.md) for more information.
+
+### Implants
+
+Before a scan begins, any participant must be screened to be sure no unsafe risk factors are present for being in an MRI. For more information on risk factor and implant policies and procedures, please read the [implant documentation](implants.md).
 
 ## Key Card Access
 
