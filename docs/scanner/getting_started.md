@@ -8,7 +8,7 @@ A P-number is how your specific project will be identified in the CINL system. A
 
 Send both of these completed forms to cinl@uab.edu.
 
-Please read the [onboarding](onboarding.md) documentation for more information/
+Please read the [onboarding](onboarding.md) documentation for more information.
 
 ## Training
 

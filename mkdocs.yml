@@ -35,8 +35,7 @@ nav:
     - Getting Started: scanner/getting_started.md
     - Onboarding: scanner/onboarding.md
     - Training: scanner/training.md
-    - Scheduling: scanner/scheduling.md
-    - Billing: scanner/billing.md
+    - Scheduling and Billing: scanner/scheduling.md
     - Patient Implant Policies: scanner/implants.md
   - MRI Preprocessing and Analysis:
     - BIDS: 
@@ -49,4 +48,3 @@ nav:
       - analysis/fmriprep/fmriprep-usage.md
       - analysis/fmriprep/fmriprep-scripts.md
     - Resources: analysis/resources.md
-    

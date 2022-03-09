@@ -12,7 +12,7 @@ To be present during an MRI scan, you must read over the following documents reg
 - [Safety Training Policies and Procedures](https://uab365.sharepoint.com/:b:/r/sites/som/circ/cinl/Shared%20Documents/Training/L2%20Safety%20Training.pdf?csf=1&web=1&e=GcfDmX)
 - [Safety Test](https://uab365.sharepoint.com/:b:/r/sites/som/circ/cinl/Shared%20Documents/Training/L2%20Safety%20Test.pdf?csf=1&web=1&e=6vTyPl)
 
-After safety training is complete, a researcher can be operationally certified through scheduling operational training and testing through Eleanor and Elizabeth.
+After safety training is complete, a researcher can be operationally certified by scheduling operational training and testing through Eleanor and Elizabeth.
 
 ## MRI Key Card Access
 
