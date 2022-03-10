@@ -15,4 +15,4 @@ Research MRI Core: [https://www.uab.edu/cores/ircp/rmric](https://www.uab.edu/co
 
 !!! note
 
-    This project is under active development. To request changes or additions to the documentation, please submit an issue to the [main Github Repository](https://github.com/mdefende/cinl-docs)
+    This project is under active development. To request changes or additions to the documentation, please submit an issue to the [main Github Repository](https://github.com/UAB-CINL/UAB-CINL.github.io)
