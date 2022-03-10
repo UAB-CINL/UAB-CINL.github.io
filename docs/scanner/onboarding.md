@@ -1,10 +1,10 @@
 # Onboarding for New Studies
 
-The first step in establishing a new study with CINL is to complete and submit our Inquiry and Quote Request forms. These are located on the [Research MRI CORE](https://www.uab.edu/cores/ircp/research-mri-core) website under “New Users” or you can simply click this link: [New CINL Study Forms](https://redcap.dom.uab.edu/surveys/?s=PJPANNA439).
+The first step in establishing a new study with CINL is to complete and submit our Inquiry and Quote Request forms. Both of these forms can be found either embedded or linked on the [Research MRI Core site](https://www.uab.edu/cores/ircp/rmric/contact/new-studies).
 
-1. “MRI Only (Pre-Clinical/Basic Science) Inquiry Form”: This is a short form for basic information.
+1. MRI Only (Pre-Clinical/Basic Science) Inquiry Form: This is a short form for basic information. This form is embedded at the site linked above.
 
-2. “MRI Only (Pre-Clinical/Basic Science) Review/Quote Request”: This form will take more time to complete and submit. It includes a request for a PDF of the protocol, however an idea of the sequences and total scan length should suffice temporarily until a complete protocol is in place. Initially, a PI can review the form and submit it after the required fields are completed. Please email Eleanor at elewis1@uabmc.edu after you submit the forms. Feel free to reach out to us with questions.
+2. “MRI Only (Pre-Clinical/Basic Science) Review/Quote Request”: This form will take more time to complete and submit. It includes a request for a PDF of the protocol, however an idea of the sequences and total scan length should suffice temporarily until a complete protocol is in place. Initially, a PI can review the form and submit it after the required fields are completed. Please email Eleanor at elewis1@uabmc.edu after you submit the forms. Feel free to reach out to us with questions. After Quote Request submission, a staff member will contact you about training, study logistics, billing, etc.
 
 !!! note
 
