@@ -31,7 +31,7 @@ plugins:
 
 nav:
   - Home: 'index.md'
-  - Scanner Information:
+  - Policies and Procedures:
     - Getting Started: scanner/getting_started.md
     - Onboarding: scanner/onboarding.md
     - Training: scanner/training.md
