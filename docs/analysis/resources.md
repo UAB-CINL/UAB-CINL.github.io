@@ -1,5 +1,7 @@
 # Resources
 
+<!-- markdownlint-disable MD024 -->
+
 This page provides links to written documentation, tutorials, and videos for relevent software in neuroimaging analysis.
 
 ## BIDS
@@ -14,3 +16,13 @@ This page provides links to written documentation, tutorials, and videos for rel
 1. BIDS Workshop (UAB Feb 2022)
       1. [Github Repo](https://github.com/mdefende/BIDS-workshop-2022)
       2. [Presentation Recording](https://www.youtube.com/watch?v=W1FITjZXJ0Y)
+
+## fmriprep
+
+### Documentation
+
+1. [Main fmriprep docs](https://fmriprep.org)
+
+### Tutorials
+
+1. [fmriprep Cheaha Tutorial](https://youtu.be/4W6qBIpE404)
