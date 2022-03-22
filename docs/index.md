@@ -10,8 +10,8 @@ This houses technical information for CINL pertaining to both scanner procedures
 
 For more information about MRI cores at UAB, please visit the following pages:
 
-UAB CINL: [https://www.uab.edu/medicine/cinl](https://www.uab.edu/medicine/cinl)
-Research MRI Core: [https://www.uab.edu/cores/ircp/rmric](https://www.uab.edu/cores/ircp/rmric)
+- UAB CINL: [https://www.uab.edu/medicine/cinl](https://www.uab.edu/medicine/cinl)
+- Research MRI Core: [https://www.uab.edu/cores/ircp/rmric](https://www.uab.edu/cores/ircp/rmric)
 
 !!! note
 
