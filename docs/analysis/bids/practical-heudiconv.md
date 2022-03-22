@@ -1,8 +1,27 @@
 # Practical HeuDiConv Example
 
-For this example, the dataset will be named `D01`, and its parent directory will be `/data/project/genlab/datasets` to mimic a generic project directory found on Cheaha. When running this tool, be sure to change any paths and folder or subject names to match your dataset.
+## HeuDiConv
+
+The tool we use for automatic conversion is [HeuDiConv](https://github.com/nipy/heudiconv), a heuristic-based dicom converter. This tool is packaged as a Python library, and so in order to have access to it, you will need to create an Anaconda environment and install both HeuDiConv as well as dcm2niix, the actual dicom conversion engine.
+
+You can do this process manually through the following commands
+
+``` bash
+module load Anaconda3/2020.11
+
+conda create -n bids
+conda activate bids
+
+pip install heudiconv==0.9.0
+
+conda install -c conda-forge dcm2niix
+```
+
+Or, you can go to [the example scripts page](heudiconv-scripts.md#create-conda-environment), copy the environment creation script there to a .sh file, and then submit it as a batch job.
 
 ## Initial Folder Structure
+
+For this example, the dataset will be named `D01`, and its parent directory will be `/data/project/genlab/datasets` to mimic a generic project directory found on Cheaha. When running this tool, be sure to change any paths and folder or subject names to match your dataset.
 
 For this walkthrough and in the example scripts, we assume an single session initial folder structure that looks like:
 
