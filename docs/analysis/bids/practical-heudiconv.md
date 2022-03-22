@@ -62,6 +62,7 @@ Every multiband scan will have a corresponding SBRef scan that will also need to
 
 ## Step 1: Generate Scan Info
 
+<!-- markdownlint-disable MD046 -->
 !!! note
 
     Remember, Step 1 only needs to be done once to generate the base heuristic and the scan parameters for key matching. The same heuristic can be used for every participant as long as the scan parameters are not changed.
