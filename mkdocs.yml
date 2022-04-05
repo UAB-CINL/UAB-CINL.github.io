@@ -5,8 +5,9 @@ theme:
   name: 'material'
   include_search_page: true
   search_index_only: true
-  feature:
-    tabs: true
+  features:
+    - tabs: true
+    - navigation.indexes
   custom_dir: 'theme'
 
 extra_css:
@@ -37,6 +38,13 @@ nav:
     - Training: scanner/training.md
     - Scheduling and Billing: scanner/scheduling.md
     - Screening and Implants: scanner/implants.md
+    - Data Transfer:
+      - Local Transfer and OSIRIX: data_management.md
+      - XNAT:
+        - scanner/xnat/index.md
+        - scanner/xnat/account.md
+        - scanner/xnat/file_management.md
+        - scanner/xnat/projects.md
   - MRI Preprocessing and Analysis:
     - BIDS: 
       - Introduction: analysis/bids/index.md
