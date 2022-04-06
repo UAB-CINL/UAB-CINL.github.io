@@ -39,7 +39,7 @@ nav:
     - Scheduling and Billing: scanner/scheduling.md
     - Screening and Implants: scanner/implants.md
     - Data Transfer:
-      - Local Transfer and OSIRIX: data_management.md
+      - Local Transfer and OSIRIX: scanner/data_management.md
       - XNAT:
         - scanner/xnat/index.md
         - scanner/xnat/account.md
