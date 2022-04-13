@@ -41,7 +41,7 @@ conda activate preFS
 
 The shell script for running the PreFS pipeline can be found in the PreFreeSurfer directory in your HCP Pipelines directory. The script is already executable by default, so no permissions should need to be changed in order to run it. Some environment variables will need to be set up prior to executing the pipeline.
 
-### Environment Variables
+### PreFreeSurfer Environment Variables
 
 For all environment variables, set them using the following format:
 
@@ -95,7 +95,7 @@ This option sets the method for distortion correction. The default is using the 
 export SPIN_ECHO_METHOD_OPT="TOPUP"
 ```
 
-### Running PreFreeSurfer
+### PreFreeSurfer Inputs
 
 There are a number of options that can/should be included when running the pipeline. In order to see all of the potential options, open a terminal, set your environment variables, navigate to the PreFreeSurfer directory. You can use the following command to list all of the potential options for the script:
 
@@ -105,30 +105,28 @@ There are a number of options that can/should be included when running the pipel
 
 The PreFS pipeline has a large number of inputs that go along with it. For testing, we tried to be as verbose as possible, so some options may or may not be necessary. Here is a list:
 
-#### Data Inputs
-
 <!-- markdownlint-disable MD046 -->
 !!! note
 
-    Some options use either the {x,y,z} triad or the {i,j,k} triad to denote axes in 3D space. {x,y,z} is FSL nomenclature while {i,j,k} is BIDS nomenclature. When testing with BIDS converted data, {i,j,k} gave reasonable outputs. {x,y,z} and non-BIDS data were not tested, so use at your own risk.
+    Some options use either the `{x,y,z}` triad or the `{i,j,k}` triad to denote axes in 3D space. `{x,y,z}` is FSL nomenclature while `{i,j,k}` is BIDS nomenclature. When testing with BIDS converted data, `{i,j,k}` gave reasonable outputs. `{x,y,z}` and non-BIDS data were not tested, so use at your own risk.
 <!-- markdownlint-enable MD046 -->
 
 **Main Data:**
 
-- `--path`: the path to your subjects' directory (the BIDS directory if you converted your data to BIDS)
-- `--subject`: the name of the subject being processed
-- `--t1`: the path to the T1w nifti
-- `--t2`: the path to the T2w nifti (optional)
+- `--path`: the path to the main output directory. The full output path will be path/subject
+- `--subject`: the name of the subject being processed. The full output path will be path/subject
+- `--t1`: the path to the input T1w nifti
+- `--t2`: the path to the input T2w nifti
 - `--t1samplespacing`: sample spacing for the T1w scan in seconds. (see note under Spin Echo Field Maps)
 - `--t2samplespacing`: sample spacing for the T2w scan in seconds.
-- `--unwarpdir`: readout direction of the T1w and T2w images according to the voxel axes. One of {x,y,z,i,j,k,x-,y-,z-,i-,j-, or k-}. The `-` indicates the negative direction on the specified axis. When testing with T1 and T2 data from the HCP sequences, `k` gave reasonable outputs.
+- `--unwarpdir`: readout direction of the T1w and T2w images according to the voxel axes. One of `{x,y,z,i,j,k,x-,y-,z-,i-,j-, or k-}`. The `-` indicates the negative direction on the specified axis. When testing with T1 and T2 data from the HCP sequences, `k` gave reasonable outputs.
 
 **Spin Echo Field Maps:**
 
 - `--SEPhaseNeg`: path to the spin echo field map in the negative phase-encoding direction (AP for data collected on the Anterior-Posterior axis)
 - `--SEPhasePos`: path to the spin echo field map in the positive phase-encoding direction (PA for data collected on the Anterior-Posterior axis)
 - `--seechospacing`: effective echo spacing for the spin echo field maps in seconds.
-- `--seunwarpdir`: phase enconding direction according to the voxel axes for the spin echo field map. Can be either {x,y}, {i,j}, or NONE. `{i,j}` was used when testing data collected using HCP sequences and gave reasonable outputs.
+- `--seunwarpdir`: phase enconding direction according to the voxel axes for the spin echo field map. Can be either `{x,y}`, `{i,j}`, or NONE. `{i,j}` was used when testing data collected using HCP sequences and gave reasonable outputs.
 
 <!-- markdownlint-disable MD046 -->
 !!! note
@@ -136,4 +134,40 @@ The PreFS pipeline has a large number of inputs that go along with it. For testi
     The sample spacing values for the T1 and T2 as well as the echo spacing value for the field maps can be found on a detailed scan export. Ask Elizabeth or Eleanor about how to export this from the scanner if your lab does not have one already.
 <!-- markdownlint-enable MD046 -->
 
-****
+**Template Options:**
+
+These options define the standard atlases used for conversion from native to normalized space. The templates can be found the $HCPPIPEDIR_Templates directory you set previously. Multiple MNI templates at various resolutions are provided.
+
+- `--t1template`: the T1 template. Can be any resolution.
+- `--t1templatebrain`: the skull-stripped brain of the template named above. This is included in the template directory
+- `--templatemask`: the brain mask for the chosen T1 template
+- `--t1template2mm`: the 2mm MNI template
+- `--template2mmmask`: brain mask for the 2mm T1 MNI template
+- `--t2template`: the chosen T2 template.
+- `--t2templatebrain`: skull stripped brain of the T2 template
+- `--t2template2mm`: the 2mm T2 template
+
+**Other Options:**
+
+- `--avgrdcmethod`: set to ${SPIN_ECHO_METHOD_OPT}
+- `--topupconfig`: path to the topup configuration file. Can be set to ${HCPPIPEDIR}/global/config/b02b0.cnf
+- `--fnirtconfig`: Config file for the 2mm template used during FNIRT. Can be set to ${HCPPIPEDIR}/global/config/T1_2_MNI152_2mm.cnf
+
+### Example Scripts
+
+Both the single subject script and the array script were tested using data acquired with the HCP sequences and had been converted to BIDS format prior to preprocessing. The array script in particular uses the list of subjects output during BIDS conversion as a list of inputs for the array job. If your data are not BIDS formatted, this method of getting the subject ID and setting the paths to the input data will need to be amended.
+
+- [Single Subject](scripts/PreFreeSurfer_ss_wrapper.sh)
+- [Array Job](scripts/PreFreeSurfer_array_wrapper.sh)
+
+For researchers new to running array jobs, please read over the documentation for array jobs at [the Cheaha documentation](https://uabrc.github.io/cheaha/slurm/sbatch_usage/#array-jobs).
+
+### Outputs
+
+The outputs for the PreFreeSurfer pipeline are divided into 3 directories: MNINonLinear, T1w, and T2w. 
+
+## FreeSurfer Pipeline
+
+The main shell script for running the FreeSurfer pipeline can be found in the FreeSurfer directory in your HCP pipelines. The script is already executable by default, so no permissions should need to be changed in order to run it. Some environment variables will need to be set up prior to executing the pipeline.
+
+### FreeSurfer Environment Variables
