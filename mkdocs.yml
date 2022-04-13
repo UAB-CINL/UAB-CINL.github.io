@@ -8,6 +8,7 @@ theme:
   features:
     - tabs: true
     - navigation.indexes
+    - toc.follow
   custom_dir: 'theme'
 
 extra_css:
@@ -24,6 +25,7 @@ markdown_extensions:
       show_description_as_inline_caption: false
   - toc:
       permalink: true
+      toc_depth: 3
 
 plugins:
   - search
