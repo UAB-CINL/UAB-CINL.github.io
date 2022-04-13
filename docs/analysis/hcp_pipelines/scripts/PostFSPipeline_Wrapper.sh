@@ -25,12 +25,12 @@ cd ${HCPPIPEDIR}/PostFreeSurfer
 
 # run command with following options
 ./PostFreeSurferPipeline.sh --study-folder=/data/project/lahtilab/toriking/myelin_practice_data/FreeSurfer \
-			--subject=sub-control01 \
-			--surfatlasdir=${HCPPIPEDIR_templates}/standard_mesh_atlases \
-			--grayordinatesres=2 \
-			--grayordinatesdir=${HCPPIPEDIR_templates}/91282_Greyordinates \
-			--hiresmesh=164 \
-			--lowresmesh=32 \
-			--subcortgraylabels=${HCPPIPEDIR_config}/FreeSurferCorticalLabelTableLut.txt \
-			--freesurferlabels=${HCPPIPEDIR_config}/FreeSurferAllLut.txt \
-			--refmyelinmaps=${HCPPIPEDIR_templates}/standard_mesh_atlases/Conte69.MyelinMap_BC.164k_fs_LR.dscalar.nii \
+	--subject=sub-control01 \
+	--surfatlasdir=${HCPPIPEDIR_templates}/standard_mesh_atlases \
+	--grayordinatesres=2 \
+	--grayordinatesdir=${HCPPIPEDIR_templates}/91282_Greyordinates \
+	--hiresmesh=164 \
+	--lowresmesh=32 \
+	--subcortgraylabels=${HCPPIPEDIR_config}/FreeSurferCorticalLabelTableLut.txt \
+	--freesurferlabels=${HCPPIPEDIR_config}/FreeSurferAllLut.txt \
+	--refmyelinmaps=${HCPPIPEDIR_templates}/standard_mesh_atlases/Conte69.MyelinMap_BC.164k_fs_LR.dscalar.nii \
