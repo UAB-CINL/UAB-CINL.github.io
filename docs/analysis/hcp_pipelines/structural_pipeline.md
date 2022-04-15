@@ -155,16 +155,7 @@ These options define the standard atlases used for conversion from native to nor
 - `--topupconfig`: path to the topup configuration file. Can be set to ${HCPPIPEDIR}/global/config/b02b0.cnf
 - `--fnirtconfig`: Config file for the 2mm template used during FNIRT. Can be set to ${HCPPIPEDIR}/global/config/T1_2_MNI152_2mm.cnf
 
-### Example Scripts
-
-Both the single subject script and the array script were tested using data acquired with the HCP sequences and had been converted to BIDS format prior to preprocessing. The array script in particular uses the list of subjects output during BIDS conversion as a list of inputs for the array job. If your data are not BIDS formatted, this method of getting the subject ID and setting the paths to the input data will need to be amended.
-
-- [Single Subject](scripts/PreFreeSurfer_ss_wrapper.sh)
-- [Array Job](scripts/PreFreeSurfer_array_wrapper.sh)
-
-For researchers new to running array jobs, please read over the documentation for array jobs at [the Cheaha documentation](https://uabrc.github.io/cheaha/slurm/sbatch_usage/#array-jobs).
-
-### Outputs
+### PreFreeSurfer Outputs
 
 The outputs for the PreFreeSurfer pipeline are divided into 3 directories: `MNINonLinear`, `T1w`, and `T2w`. The files with `acpc_dc_restore` in the name are the final outputs. Both `T1w_acpc_dc_restore` and `T2w_acpc_dc_restore` images are in the `T1w` directory and should be used as inputs to the FreeSurfer pipeline.
 
@@ -178,4 +169,111 @@ This script is basically set up to only run the FreeSurfer recon-all command wit
 
 The environment variables are much simpler for the FreeSurfer pipeline, only the `HCPPIPEDIR` and `CARET7DIR` variables are necessary. Set each of these in the same way you set them in the [PreFreeSurfer environment section](structural_pipeline.md#prefreesurfer-environment-variables).
 
+### tkregister
+
+One alteration will need to be made to the FreeSurferPipeline.sh script before it can be run. It uses an outdated command called `tkregister` for the last section of the pipeline. This command is packaged with the Freesurfer module, and version 6.0.0 has updated the command name. `tkregister` no longer exists and will throw an error at the end of the pipeline.
+
+In order to fix this, change the following sections of code (lines 77-79 in HCP pipelines version 4.3.0):
+
+``` bash linenums="77"
+# Original
+log_Msg "Showing tkregister version"
+which tkregister
+tkregister -version
+```
+
+should be changed to:
+
+``` bash linenums="77"
+# New
+log_Msg "Showing tkregister version"
+which tkregister2_cmdl
+tkregister2_cmdl -version
+```
+
+Additionally, line 781 should be changed from:
+
+``` bash linenums="781"
+tkregister_cmd="tkregister"
+```
+
+to
+
+``` bash linenums="781"
+tkregister_cmd="tkregister2_cmdl"
+```
+
+After these changes are made, the pipeline should run correctly.
+
 ### FreeSurfer Inputs
+
+The FreeSurfer pipeline only has a few necessary arguments to add to the function call and a couple of extra you can add that change the performance of FreeSurfer itself. In order to see all of the potential options, open a terminal, set your environment variables, navigate to the FreeSurfer directory. You can use the following command to list all of the potential options for the script:
+
+```bash
+./FreeSurfer.sh --help
+```
+
+#### Output Options
+
+- `--subject-dir`: sets the path to the subjects' directory that stores the FreeSurfer outputs.
+- `--subject`: setting the individual subject's directory name. Should ideally be the same as the name of the subject used during PreFreeSurfer.
+
+<!-- markdownlint-disable MD046 -->
+!!! note
+
+    It is highly recommended that the `--subject-dir` is separate from the PreFreeSurfer outputs. FreeSurfer uses a `SUBJECTS_DIR` environment variable that assumes that all Freesurfer outputs for all subjects in a dataset are contained in that immediate directory. This is not possible if the FreeSurfer outputs are kept in the PreFreeSurfer output directory.
+<!-- markdownlint-enable MD046 -->
+
+#### Input Files
+
+- `--t1`: the full path to the T1w image from the PreFreeSurfer outputs. The input T1 should be `T1w_acpc_dc_restore.nii.gz`
+- `--t1brain`: the full path to the brain-extracted T1w image from the PreFreeSurfer outputs. Should be `T1w_acpc_dc_restore_brain.nii.gz`
+- `--t2`: the full path to the T2w image from the PreFreeSurfer outputs. The input T2 should be `T2w_acpc_dc_restore.nii.gz`. This is found in the `T1w` directory
+
+#### Optional Arguments
+
+- `--recon-seed`: sets the random seed for recon-all surface segmentation
+- `--flair`: tells recon-all to run with the `-FLAIR` option instead of the normal `-T2` option. The FLAIR image should still be input using the `--t2` option above.
+- `--existing-subject`: says that the recon has been at least partially performed already. This option should be paired with the `--extra-reconall-args` option to say which recon stage recon-all should start from.
+- `--extra-reconall-args`: extra arguments to pass to recon-all. See FreeSurferPipeline.sh's help output for details on how to use this option
+
+### FreeSurfer Outputs
+
+FreeSurfer outputs will be stored in the subjects directory set in the pipeline. This directory will contain a folder for each subject ran. These folders contain all of the normal FreeSurfer outputs. More information on this can be found on the [FreeSurfer website](https://surfer.nmr.mgh.harvard.edu/fswiki/ReconAllOutputFiles).
+
+## PostFreeSurfer
+
+The final part of the structural pipeline, the PostFreeSurfer pipeline, converts FreeSurfer outputs to native and standard fs_LR meshes of brainordinates and generates the final brain mask, the cortical ribbon volume, and the cortical myelin maps.
+
+### PostFreeSurfer Environment Variables
+
+The `HCPPIPEDIR`, `CARET7DIR`, and `HCPPIPEDIR_templates` environment variables used in the PreFreeSurfer pipeline are used here again. Be sure to set them to the same locations. In addition, a new variable should be set.
+
+#### HCPPIPEDIR_config
+
+This sets the path to some color tables necessary for converting FreeSurfer annotations. If you set the `HCPPIPEDIR` variable first, you can just use:
+
+``` bash
+export HCPPIPEDIR_config=${HCPPIPEDIR}/global/config
+```
+
+### PostFreeSurfer Input Options
+
+**Required Arguments**:
+
+
+## Example Scripts
+
+Both the single subject script and the array script were tested using data acquired with the HCP sequences and had been converted to BIDS format prior to preprocessing. The array script in particular uses the list of subjects output during BIDS conversion as a list of inputs for the array job. If your data are not BIDS formatted, this method of getting the subject ID and setting the paths to the input data will need to be amended.
+
+**PreFreeSurfer:**
+
+- [Single Subject](scripts/PreFreeSurfer_ss_wrapper.sh)
+- [Array Job](scripts/PreFreeSurfer_array_wrapper.sh)
+
+**FreeSurfer:**
+
+- [Single Subject](scripts/FreeSurfer_ss_wrapper.sh)
+- [Array Job](scripts/FreeSurfer_array_wrapper.sh)
+
+For researchers new to running array jobs, please read over the documentation for array jobs at [the Cheaha documentation](https://uabrc.github.io/cheaha/slurm/sbatch_usage/#array-jobs).
