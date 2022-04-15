@@ -41,6 +41,8 @@ conda activate preFS
 
 The shell script for running the PreFS pipeline can be found in the PreFreeSurfer directory in your HCP Pipelines directory. The script is already executable by default, so no permissions should need to be changed in order to run it. Some environment variables will need to be set up prior to executing the pipeline.
 
+This pipeline performs ACPC alignment, readout distortion correction, cross-model registration, and bias field correction (see Figure 9 in [Glasser et al. 2013](https://pubmed.ncbi.nlm.nih.gov/23668970/)) of T1w and T2w images. The outputs of these steps are used for surface reconstruction in the FreeSurfer pipeline.
+
 ### PreFreeSurfer Environment Variables
 
 For all environment variables, set them using the following format:
@@ -164,10 +166,16 @@ For researchers new to running array jobs, please read over the documentation fo
 
 ### Outputs
 
-The outputs for the PreFreeSurfer pipeline are divided into 3 directories: MNINonLinear, T1w, and T2w. 
+The outputs for the PreFreeSurfer pipeline are divided into 3 directories: `MNINonLinear`, `T1w`, and `T2w`. The files with `acpc_dc_restore` in the name are the final outputs. Both `T1w_acpc_dc_restore` and `T2w_acpc_dc_restore` images are in the `T1w` directory and should be used as inputs to the FreeSurfer pipeline.
 
 ## FreeSurfer Pipeline
 
 The main shell script for running the FreeSurfer pipeline can be found in the FreeSurfer directory in your HCP pipelines. The script is already executable by default, so no permissions should need to be changed in order to run it. Some environment variables will need to be set up prior to executing the pipeline.
 
+This script is basically set up to only run the FreeSurfer recon-all command with minor adjustements to take advantage of sub-1mm^3^ voxel sizes, but this step comprises the bulk of the compute time for the structural pipeline.
+
 ### FreeSurfer Environment Variables
+
+The environment variables are much simpler for the FreeSurfer pipeline, only the `HCPPIPEDIR` and `CARET7DIR` variables are necessary. Set each of these in the same way you set them in the [PreFreeSurfer environment section](structural_pipeline.md#prefreesurfer-environment-variables).
+
+### FreeSurfer Inputs
