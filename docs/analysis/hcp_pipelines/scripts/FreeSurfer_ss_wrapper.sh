@@ -17,7 +17,7 @@ export HCPPIPEDIR=$HOME/Scripts/HCPpipelines
 export CARET7DIR=$HOME/Scripts/workbench/bin_rh_linux64
 
 # set data path and grab the subject for the given array job
-data_path=/home/mdefende/Desktop/D01/nifti
+data_path=/home/mdefende/Desktop/hcp-test/D01/nifti
 subjects_dir=$data_path/derivatives/hcp-pipelines/FreeSurfer
 mkdir -p $subjects_dir
 
