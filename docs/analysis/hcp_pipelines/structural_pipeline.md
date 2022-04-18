@@ -203,6 +203,12 @@ to
 tkregister_cmd="tkregister2_cmdl"
 ```
 
+The same change should be made to line 814
+
+``` bash linenums="814"
+tkregister_cmd="tkregister2_cmdl"
+```
+
 After these changes are made, the pipeline should run correctly.
 
 ### FreeSurfer Inputs
@@ -261,6 +267,26 @@ export HCPPIPEDIR_config=${HCPPIPEDIR}/global/config
 
 **Required Arguments**:
 
+- `--study-folder`: the path to the folder containing all subjects' Freesurfer outputs
+- `--subject`: the subject ID
+- `--surfatlasdir`: path to the standardized surface templates. Set to `${HCPPIPEDIR_templates}/standard_mesh_atlases`
+- `--grayordinatesres`: resolution of grayordinates to use, usually 2
+- `--grayordinatesdir`: set to `${HCPPIPEDIR_templates}/<num>_Greyordinates`. The value for `<num>` should be linked `--grayordinatesres`. For example, if `--grayordinatesres` was set to 2, set `<num>` here to `91282`.
+- `--hiresmesh`: set to `164`
+- `--loresmesh`: set to `32`
+- `--subcortgraylabels`: path to the lookup table containing the subcortical label names and color values. Set to `${HCPPIPEDIR_config}/FreeSurferSubcorticalLabelTableLut.txt`
+- `--freesurferlabels`: path to the lookup table containing all of the ROI names and color values. Set to `${HCPPIPEDIR_config}/FreeSurferAllLut.txt`
+- `--refmyelinmaps`: path to the hi-res group reference myelin maps. Set this to `${HCPPIPEDIR_templates}/standard_mesh_atlases/Conte69.MyelinMap_BC.164k_fs_LR.dscalar.nii`.
+
+**Optional Arguments**:
+
+For the most part, the default values for the optional arguments will suffice. Do not change these unless you know what you're doing.
+
+- `--mcsigma`: myelin map bias correction sigma, default is 14.14213562373095048801
+- `--regname`: surface registration to use, default is MSMSulc
+- `--inflatescale`: surface inflation scaling factor, default is 1
+- `--processing-mode`: either HCPStyleData (default) or LegacyStyleData. This can disable some of the preprocessing steps if the acquired data do not meet HCP acquisition guidelines.
+- `--structural-qc`: set to `yes` (default) ,`no`, or `only`. Whether to run structural qc or not.
 
 ## Example Scripts
 
@@ -275,5 +301,10 @@ Both the single subject script and the array script were tested using data acqui
 
 - [Single Subject](scripts/FreeSurfer_ss_wrapper.sh)
 - [Array Job](scripts/FreeSurfer_array_wrapper.sh)
+
+**PostFreeSurfer:**
+
+-[Single Subject](scripts/PostFreeSurfer_ss_wrapper.sh)
+-[Array Job](scripts/PostFreeSurfer_array_wrapper.sh)
 
 For researchers new to running array jobs, please read over the documentation for array jobs at [the Cheaha documentation](https://uabrc.github.io/cheaha/slurm/sbatch_usage/#array-jobs).
