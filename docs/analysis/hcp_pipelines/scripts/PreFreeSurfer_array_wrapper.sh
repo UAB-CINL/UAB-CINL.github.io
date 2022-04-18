@@ -1,12 +1,12 @@
 #!/bin/bash
 #
-#SBATCH --job-name=PreFS_test-%a
+#SBATCH --job-name=PreFS-%a
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=6G
 #SBATCH --time=4:00:00
 #SBATCH --partition=amd-hdr100
-#SBATCH --output=/home/mdefende/Desktop/hcp-test/D01/code/PreFS-outputs/PreFS-%A-%a.txt
+#SBATCH --output=/home/mdefende/Desktop/hcp-test/D01/code/PreFS-%A-%a.txt
 #
 # load necessary modules
 module load FreeSurfer/6.0.0-centos6_x86_64
