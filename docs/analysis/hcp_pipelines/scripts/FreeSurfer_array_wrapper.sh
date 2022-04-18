@@ -10,6 +10,7 @@
 #
 # load necessary modules
 module load FSL/6.0.3
+source ${FSLDIR}/etc/fslconf/fsl.sh
 module load FreeSurfer/6.0.0-centos6_x86_64
 
 # set necessary environmental variables
