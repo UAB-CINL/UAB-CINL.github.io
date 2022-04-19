@@ -33,7 +33,8 @@ subj=$(awk "NR==$(($SLURM_ARRAY_TASK_ID)){print;exit}" $data_path/subjlist.txt)
 # change directory to the HCPPIPEDIR PreFreeSurfer directory
 cd ${HCPPIPEDIR}/PreFreeSurfer
 
-./PreFreeSurferPipeline.sh --path=${data_path}/derivatives/hcp-pipelines \
+./PreFreeSurferPipeline.sh \
+    --path=${data_path}/derivatives/hcp-pipelines \
 	--subject=${subj} \
 	--t1=${data_path}/${subj}/anat/${subj}_T1W.nii.gz \
 	--t2=${data_path}/${subj}/anat/${subj}_T2W.nii.gz \

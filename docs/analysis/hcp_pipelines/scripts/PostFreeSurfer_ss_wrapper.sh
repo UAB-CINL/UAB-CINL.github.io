@@ -21,14 +21,13 @@ export HCPPIPEDIR_config=${HCPPIPEDIR}/global/config
 
 # set data path and grab the subject for the given array job
 data_path=/home/mdefende/Desktop/hcp-test/D01/nifti
-subjects_dir=$data_path/derivatives/hcp-pipelines/FreeSurfer
 
 # change directory to the HCPPIPEDIR PostFreeSurfer directory
 cd ${HCPPIPEDIR}/PostFreeSurfer
 
 # run command with following options
 ./PostFreeSurferPipeline.sh \
-    --study-folder=${subjects_dir} \
+    --study-folder=${data_path}/derivatives/hcp-pipelines \
 	--subject=sub-S01 \
 	--surfatlasdir=${HCPPIPEDIR_templates}/standard_mesh_atlases \
 	--grayordinatesres=2 \

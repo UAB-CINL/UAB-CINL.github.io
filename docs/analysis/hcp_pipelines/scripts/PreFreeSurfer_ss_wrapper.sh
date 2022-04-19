@@ -32,7 +32,8 @@ cd ${HCPPIPEDIR}/PreFreeSurfer
 data_path=$HOME/Desktop/hcp-test/D01/nifti
 
 # run command with following options
-./PreFreeSurferPipeline.sh --path=$data_path/derivatives/hcp-pipelines \
+./PreFreeSurferPipeline.sh \
+    --path=$data_path/derivatives/hcp-pipelines \
 	--subject=sub-S01 \
 	--t1=$data_path/sub-S01/anat/sub-S01_T1w.nii.gz \
 	--t2=$data_path/sub-S01/anat/sub-S01_T2w.nii.gz \
