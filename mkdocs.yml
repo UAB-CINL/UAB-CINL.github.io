@@ -51,6 +51,7 @@ nav:
       - analysis/bids/principles.md
       - analysis/bids/practical-heudiconv.md
       - analysis/bids/heudiconv-scripts.md
+    - MRIQC: analysis/mriqc.md
     - fmriprep:
       - Introduction: analysis/fmriprep/index.md
       - analysis/fmriprep/fmriprep-usage.md
