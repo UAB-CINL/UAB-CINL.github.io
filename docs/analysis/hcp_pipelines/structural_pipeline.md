@@ -247,7 +247,7 @@ The FreeSurfer pipeline only has a few necessary arguments to add to the functio
 
 FreeSurfer outputs will be stored in the subjects directory set in the pipeline. This directory will contain a folder for each subject ran. These folders contain all of the normal FreeSurfer outputs. More information on this can be found on the [FreeSurfer website](https://surfer.nmr.mgh.harvard.edu/fswiki/ReconAllOutputFiles).
 
-## PostFreeSurfer
+## PostFreeSurfer Pipeline
 
 The final part of the structural pipeline, the PostFreeSurfer pipeline, converts FreeSurfer outputs to native and standard fs_LR meshes of brainordinates and generates the final brain mask, the cortical ribbon volume, and the cortical myelin maps.
 
@@ -263,7 +263,7 @@ This sets the path to some color tables necessary for converting FreeSurfer anno
 export HCPPIPEDIR_config=${HCPPIPEDIR}/global/config
 ```
 
-### PostFreeSurfer Input Options
+### PostFreeSurfer Inputs
 
 **Required Arguments**:
 
