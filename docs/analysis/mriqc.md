@@ -32,7 +32,7 @@ All available options for use with the mriqc can be seen using `singularity run 
 ### Positional Arguments
 
 - `bids_dir`: the path to the directory with BIDS formatted data
-- `output_dir`: the path to the output directory. If you are running group level analysis this folder should be prepopulated with the results of theparticipant level analysis.
+- `output_dir`: the path to the output directory. If you are running group level analysis this folder should be prepopulated with the results of the participant level analysis.
 - `analysis_level`: either set to participant or group.
 
 ### Filtering Data
@@ -51,3 +51,103 @@ All available options for use with the mriqc can be seen using `singularity run 
 - `--mem_gb`: amount of total memory available in GB
 
 ## Outputs
+
+### Participant Level
+
+All relevant outputs of mriqc are in html files and can be opened in your native web browser. On Cheaha, Firefox is installed and available by default for all users. When running on a single participant level, one html file is output for each structural, functional, or diffusion scan.
+
+Each output will show a set of slices for the scan in the horizontal and sagittal planes for visual inspection. Only a single volume is presented for 4D images. These images can be used to identify various artifacts such as ghosting, motion-induced ringing, coil failures, and others that may have been missed during the scan session. These artifacts are able to be marked on the html output and a rating given to the scan.
+
+In addition, for 4D images, motion metrics are given as well. [DVARS](https://mriqc.readthedocs.io/en/latest/iqms/bold.html#measures-for-the-temporal-information) and framewise displacement are both given as measures of head motion over time. Both are presented in absolute units and framewise displacement is given a cutoff line of 0.2 mm total on the graph so you can estimate how many frames went above that specific threshold.
+
+For all scans, numerous single-value image quality metrics (IQMs) are provided for interpretation after the visual reports section. For information on these IQMs, please visit [MRIQC's documentation](https://mriqc.readthedocs.io/en/latest/measures.html).
+
+It's important to note that no alterations are made to the raw data during MRIQC. Volumes with extreme motion are still there afterwards, and it is up to the investigator to decide how to deal with them. This tool just provides you general information on overall scan quality to determine whether to remove it from the study or not.
+
+### Group Level
+
+Group level outputs read from the participant level html files and aggregate data into single files for each scan. Interactive graphs are made with distributions of each IQM, and each data point links to the report it came from. This means you can inspect the group level and then immediately navigate to scans with outlier IQM values for a closer inspection. Additonally, you can click the names of the IQMs to be taken to the docs for an explanation of what the measure is.
+
+## Example Scripts
+
+### Single Subject
+
+``` bash
+#!/bin/bash
+#
+#SBATCH --job-name=mriqc
+#SBATCH --output=mriqc_out.txt
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --partition=amd-hdr100
+#SBATCH --time=6:00:00
+#SBATCH --mem-per-cpu=8G
+
+module load Singularity/3.5.2-GCC-5.4.0-2.26
+
+# set the BIDS directory
+export bidsdir=$USER_DATA/D01/nifti/
+
+singularity run ~/Scripts/mriqc/mriqc-21.0.0rc2.sif \
+    --participant-label S01 \
+    --n_procs 4 \
+    --mem_gb 32 \
+    --no-sub \
+    ${bidsdir} \
+    ${bidsdir}/derivatives/mriqc \
+    participant
+```
+
+### Array Job
+
+``` bash
+#!/bin/bash
+#
+#SBATCH --job-name=mriqc-%a
+#SBATCH --output=mriqc-%A-%a.txt
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --partition=amd-hdr100
+#SBATCH --time=6:00:00
+#SBATCH --mem-per-cpu=8G
+
+module load Singularity/3.5.2-GCC-5.4.0-2.26
+
+# set the BIDS directory and the participant
+export bidsdir=$USER_DATA/D01/nifti/
+export pid=$(awk "NR==$(($SLURM_ARRAY_TASK_ID+1)){print;exit}" $bidsdir/participants.tsv | cut -f 1)
+
+singularity run ~/Scripts/mriqc/mriqc-21.0.0rc2.sif \
+    --participant-label ${pid} \
+    --n_procs 4 \
+    --mem_gb 32 \
+    --no-sub \
+    ~/Desktop/bids-test/D01/nifti \
+    ~/Desktop/bids-test/D01/nifti/derivatives/mriqc \
+    participant
+```
+
+### Group Stats
+
+``` bash
+#!/bin/bash
+#
+#SBATCH --job-name=mriqc_group
+#SBATCH --output=mriqc_group.txt
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --partition=amd-hdr100
+#SBATCH --time=2:00:00
+#SBATCH --mem-per-cpu=8G
+
+module load Singularity/3.5.2-GCC-5.4.0-2.26
+
+# set the BIDS directory
+export bidsdir=$USER_DATA/D01/nifti/
+
+singularity run ~/Scripts/mriqc/mriqc-21.0.0rc2.sif \
+    --no-sub \
+    ${bidsdir} \
+    ${bidsdir}/derivatives/mriqc \
+    group
+```
