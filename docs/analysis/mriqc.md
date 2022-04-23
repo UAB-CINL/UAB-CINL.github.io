@@ -54,7 +54,7 @@ All available options for use with the mriqc can be seen using `singularity run 
 
 ### Participant Level
 
-All relevant outputs of mriqc are in html files and can be opened in your native web browser. On Cheaha, Firefox is installed and available by default for all users. When running on a single participant level, one html file is output for each structural, functional, or diffusion scan.
+All relevant outputs of mriqc are in html files and can be opened in your native web browser. On Cheaha, Firefox is installed and available by default for all users. When running on a single participant level, one html file is output for each structural or functional scan.
 
 Each output will show a set of slices for the scan in the horizontal and sagittal planes for visual inspection. Only a single volume is presented for 4D images. These images can be used to identify various artifacts such as ghosting, motion-induced ringing, coil failures, and others that may have been missed during the scan session. These artifacts are able to be marked on the html output and a rating given to the scan.
 
