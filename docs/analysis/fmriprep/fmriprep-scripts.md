@@ -76,7 +76,7 @@ dataset_dir=$USER_DATA/D01
 bidsdir=$dataset_dir/nifti/
 
 # set the participant id from the participants.tsv file in the bidsdir
-pid=$(awk "NR==$(($SLURM_ARRAY_TASK_ID+1)){print;exit}" $bidsdir/participants.tsv | cut -f 1)
+pid=$(awk "NR==$(($SLURM_ARRAY_TASK_ID+2)){print;exit}" $bidsdir/participants.tsv | cut -f 1)
 
 # load the module
 module load rc/fmriprep/20.2.3
