@@ -10,7 +10,7 @@ In order to download the MRIQC Singularity container, start an HPC Desktop sessi
 
 ``` bash
 module load Singularity
-singularity pull mriqc-21.0.0rc2.sif docker://nipreps/mriqc:21.0.0rc2
+singularity pull mriqc-0.16.1.sif docker://poldracklab/mriqc:0.16.1
 ```
 
 The container creation process will take a while to run, but once downloaded, this container will not need to be downloaded again unless a new version comes out that you would like to use instead.
@@ -20,14 +20,14 @@ The container creation process will take a while to run, but once downloaded, th
 The basic command for running MRIQC will look like the following:
 
 ``` bash
-singularity run mriqc-21.0.0rc2.sif \
+singularity run mriqc-0.16.1.sif \
     [optional inputs] \
     <bids_dir> \
     <output_dir> \
     <analysis level>
 ```
 
-All available options for use with the mriqc can be seen using `singularity run mriqc-21.0.0rc2.sif --help`. Below are a list of selected options. The positional arguments are the only ones required to used.
+All available options for use with the mriqc can be seen using `singularity run mriqc-0.16.1.sif --help`. Below are a list of selected options. The positional arguments are the only ones required to used.
 
 ### Positional Arguments
 
@@ -44,6 +44,7 @@ All available options for use with the mriqc can be seen using `singularity run 
 
 - `--work-dir`: change the working directory that stores intermediate results
 - `--no-sub`: turn off submission of anonymized quality metrics to MRIQC's metrics repo
+- `--verbose-reports`: add extra information to the reports
 
 ### Performance Options
 
@@ -78,21 +79,22 @@ Group level outputs read from the participant level html files and aggregate dat
 #SBATCH --job-name=mriqc
 #SBATCH --output=mriqc_out.txt
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=1
 #SBATCH --partition=amd-hdr100
 #SBATCH --time=6:00:00
-#SBATCH --mem-per-cpu=8G
+#SBATCH --mem-per-cpu=40G
 
 module load Singularity/3.5.2-GCC-5.4.0-2.26
 
 # set the BIDS directory
 export bidsdir=$USER_DATA/D01/nifti/
 
-singularity run ~/Scripts/mriqc/mriqc-21.0.0rc2.sif \
-    --participant-label S01 \
-    --n_procs 4 \
-    --mem_gb 32 \
+singularity run ~/Scripts/mriqc/mriqc-0.16.1.sif \
+    --participant-label S01 S02 \
+    --n_procs 1 \
+    --mem_gb 40 \
     --no-sub \
+    --verbose-reports \
     ${bidsdir} \
     ${bidsdir}/derivatives/mriqc \
     participant
@@ -106,7 +108,7 @@ singularity run ~/Scripts/mriqc/mriqc-21.0.0rc2.sif \
 #SBATCH --job-name=mriqc_group
 #SBATCH --output=mriqc_group.txt
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=1
 #SBATCH --partition=amd-hdr100
 #SBATCH --time=2:00:00
 #SBATCH --mem-per-cpu=8G
@@ -116,8 +118,9 @@ module load Singularity/3.5.2-GCC-5.4.0-2.26
 # set the BIDS directory
 export bidsdir=$USER_DATA/D01/nifti/
 
-singularity run ~/Scripts/mriqc/mriqc-21.0.0rc2.sif \
+singularity run ~/Scripts/mriqc/mriqc-0.16.1.sif \
     --no-sub \
+    --verbose-reports \
     ${bidsdir} \
     ${bidsdir}/derivatives/mriqc \
     group
