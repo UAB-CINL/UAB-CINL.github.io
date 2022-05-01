@@ -44,7 +44,6 @@ All available options for use with the mriqc can be seen using `singularity run 
 
 - `--work-dir`: change the working directory that stores intermediate results
 - `--no-sub`: turn off submission of anonymized quality metrics to MRIQC's metrics repo
-- `--verbose-reports`: add extra information to the reports
 
 ### Performance Options
 
@@ -94,7 +93,6 @@ singularity run ~/Scripts/mriqc/mriqc-0.16.1.sif \
     --n_procs 1 \
     --mem_gb 40 \
     --no-sub \
-    --verbose-reports \
     ${bidsdir} \
     ${bidsdir}/derivatives/mriqc \
     participant
@@ -120,7 +118,6 @@ export bidsdir=$USER_DATA/D01/nifti/
 
 singularity run ~/Scripts/mriqc/mriqc-0.16.1.sif \
     --no-sub \
-    --verbose-reports \
     ${bidsdir} \
     ${bidsdir}/derivatives/mriqc \
     group
