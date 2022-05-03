@@ -26,3 +26,13 @@ This page provides links to written documentation, tutorials, and videos for rel
 ### Tutorials
 
 1. [fmriprep Cheaha Tutorial](https://youtu.be/4W6qBIpE404)
+
+## MRIQC
+
+### Documentation
+
+1. [Main MRIQC Docs](https://mriqc.readthedocs.io/en/stable/)
+
+### Tutorials
+
+1. [MRIQC Cheaha Tutorial](https://www.youtube.com/watch?v=In6Dez_uuxQ)
