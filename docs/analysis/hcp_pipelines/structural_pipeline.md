@@ -251,6 +251,8 @@ FreeSurfer outputs will be stored in the subjects directory set in the pipeline.
 
 The final part of the structural pipeline, the PostFreeSurfer pipeline, converts FreeSurfer outputs to native and standard fs_LR meshes of brainordinates and generates the final brain mask, the cortical ribbon volume, and the cortical myelin maps. At the end of the pipeline, all of the major surfaces and volumes are in a standardized CIFTI space viewable on the fs_LR average brain using ConnectomeWorkbench's `wb_view`.
 
+To create some of the files viewable in `wb_view`, a ConnectomeWorkbench module will need to be loaded in your script. This can be seen in the example scripts below.
+
 ### PostFreeSurfer Environment Variables
 
 The `HCPPIPEDIR`, `CARET7DIR`, and `HCPPIPEDIR_Templates` environment variables used in the PreFreeSurfer pipeline are used here again. Be sure to set them to the same locations. In addition, there are a few new variables that need to be set.
@@ -306,6 +308,86 @@ For the most part, the default values for the optional arguments will suffice. D
 ### PostFreeSurfer Outputs
 
 Outputs will be somewhat scattered between the subject's `T1w` and `MNINonLinear` directories. Basic surface information such as thickness and curvature files are converted to GIFTI format
+
+#### T1w Directory
+
+The main additions to this directory are the following:
+
+1. `fsaverage_LR32k`: directory containing the fsaverage surfaces in GIFTI transformed to the fs_LR32k mesh
+2. `Native`: native space participant surfaces in GIFTI format
+3. `aparc+aseg volumes`: FreeSurfer's general parcellation and segmentation volume transformed to native T1w_acpc space. Available in native resolution and 1mm isotropic
+4. `brainmask` and cortical `ribbon` files
+
+#### MNINonLinear
+
+Most of the PostFS output surfaces from the T1w directory seem to have been copied to the MNINonLinear directory as well.
+
+All major surfaces and volumes either extracted or derived from Freesurfer outputs have been transferred to the fs_LR 164k mesh and are stored in the top level of the `MNINonLinear` directory. This includes things like the smoothed and unsmoothed myelin maps. `fsaverage_LR32k` and `Native` contain most of the 164k mesh surfaces on the 32k and native meshes, respectively.
+
+The large number of generated surfaces may seem overwhelming, so for visualization, it is suggested to begin using the auto-generated .scene and .spec files. In the main MNINonLinear directory, there will be a file named `<sub>.164k_fs_LR.wb.spec`. This file can be opened directly using `wb_view`, part of the [Connectome Workbench toolbox](https://www.humanconnectome.org/software/connectome-workbench). It will load a number of surfaces and volumes for you to view the data for your subject.
+
+Additionally, there is a `StructuralQC` folder with a file called `<sub>.structuralQC.wb_scene` you can use to easily load volumes and surfaces for visual inspection. To see the scene file when trying open files, you will need to change the file type filter.
+
+<!-- markdownlint-disable MD046 -->
+!!! warning
+
+    Currently, Cheaha does not have the graphic capabilities to use `wb_view` in a stable way. Please use your local machine for viewing data. Additionally, the scene and spec files do not contain data themselves as they only point to the volumes and surfaces. The entire participant's output folder including MNINonLinear, T1w, and T2w will need to be downloaded to be able to use these scene and spec files.
+<!-- markdownlint-enable MD046 -->
+
+### Output Surface Glossary
+
+All of the listed files will be from the 164k mesh, the standard high res output in the MNINonLinear directory. There are a number of different file types (i.e. metric scalar, dtseries, etc.). For more information about the Workbench file types, please read see [https://balsa.wustl.edu/about/fileTypes](https://balsa.wustl.edu/about/fileTypes). Given names here will omit the `164k_fs_LR` tag for brevity
+
+#### CIFTI Files
+
+1. `aparc.dlabel.nii`: standard FreeSurfer parcellation from the Desikan-Killiany atlas. Contains cortical and subcortical ROIs
+2. `aparc.a2009s.dlabel.nii`: standard FreeSurfer parcellation from the Destrieux atlas. Contains cortical and subcortical ROIs
+3. `ArealDistortion.dscalar.nii`: measure of change of area at each vertex between native and fs_LR spheres after conversion using either MSMSulc or FreeSurfer. See more under the `-caret5-method` option on [wb_command's help page](https://www.humanconnectome.org/software/workbench-command/-surface-distortion)
+4. `corrThickness.dscalar.nii`: cortical thickness with effects of curvature regressed out. See [the HCP Users Archive](https://www.mail-archive.com/hcp-users@humanconnectome.org/msg03074.html) for more info.
+5. `curvature.dscalar.nii`: curvature
+6. `EdgeDistortion.dscalar.nii`: Instead of taking the ratio of areas, it is instead a scaled log of average edge lengths connected to each vertex. See more under the `-edge-method` option on [wb_command's help page](https://www.humanconnectome.org/software/workbench-command/-surface-distortion)
+7. `MyelinMap.dscalar.nii`: estimated myelin fraction measured as the ratio of the T1w image to the T2w image
+8. `MyelinMap_BC.dscalar.nii`: myelin values after bias correction
+9. `SmoothedMyelinMap.dscalar.nii`: myelin values after smoothing (FWHM = 5 according to CreateMyelinMaps.sh in PostFreeSurfer)
+10. `SmoothedMyelinMap_BC.dscalar.nii`: myelin values after smoothing and bias correction
+11. `StrainJ.dscalar.nii`
+12. `StrainR.dscalar.nii`
+13. `sulc.dscalar.nii`: how deep in a sulcus a vertex is. Measured relative to a midsurface, sulcal vertices are generally positive and gyral vertices are generally negative.
+14. `thickness.dscalar.nii`: raw thickness
+
+#### GIFTI Data Files
+
+Some of the label and shape files here are repeated from the CIFTI files, but only have data from either the left or right cortex with no subcortical data. Left and right hemispheres will be designated in the name of the surface file as `L` or `R`.
+
+1. `aparc.label.gii`
+2. `aparc.a2009s.label.gii`
+3. `ArealDistortion.shape.gii`
+4. `atlasroi.shape.gii`: cortical area that is considered outside the medial wall for the standard grayordinate spaces.
+5. `corrThickness.shape.gii`
+6. `curvature.shape.gii`
+7. `EdgeDistortion.shape.gii`
+8. `MyelinMap.func.gii`
+9. `MyelinMap_BC.func.gii`
+10. `RefMyelinMap.func.gii`: group-average reference myelin map
+11. `refsulc.shape.gii`: template files for MSMSulc registration to fs_LR
+12. `SmoothedMyelinMap.func.gii`: similar to above, except uses a 4 mm FWHM smoothing kernel after the MyelinMap was converted to GIFTI. The data do not come immediately from the CIFTI file
+13. `SmoothedMyelinMap_BC.func.gii`: similar to above, except uses a 4 mm FWHM smoothing kernel after the MyelinMap_BC was converted to GIFTI. The data do not come immediately from the CIFTI file
+14. `StrainJ.shape.gii`
+15. `StrainR.shape.gii`
+16. `sulc.shape.gii`
+17. `thickness.shape.gii`
+
+#### GIFTI Surface Files
+
+The files listed here contain information about the actual 3D models of the surfaces. These are the file that the GIFTI data files are plotted on top of.
+
+1. `flat.surf.gii`
+2. `inflated.surf.gii`: semi-inflated surface make sulcal vertices more visible
+3. `midthickness.surf.gii`: artificial surface designated as halfway between the white matter surface and the pial surface
+4. `pial.surf.gii`
+5. `sphere.surf.gii`
+6. `very_inflated.surf.gii`: maximally inflated surface
+7. `white.surf.gii`
 
 ## Example Scripts
 
