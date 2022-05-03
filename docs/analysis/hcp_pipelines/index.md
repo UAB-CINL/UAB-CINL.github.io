@@ -2,7 +2,7 @@
 
 The [Human Connectome Project](https://www.humanconnectome.org), as part of its goal for making MRI data acquisition and analysis more uniform across projects and sites, developed a series of preprocessing pipelines for MRI images. These pipelines take advantage of the advanced image quality of HCP sequences and are available for multiple modalities including structural, functional, diffusion, and more.
 
-The [HCP Pipelines](https://www.humanconnectome.org/software/hcp-mr-pipelines) are distributed as a collection of shell scripts that are able to be run on Cheaha at UAB with some changes. This documentation will give an overview of the major features of the pipelines as well as some example scripts.
+The [HCP Pipelines](https://www.humanconnectome.org/software/hcp-mr-pipelines) are distributed as a collection of shell scripts that are able to be run on Cheaha at UAB with some changes. This documentation will give an overview of the major features of the pipelines as well as some example scripts.[^1]
 
 ## What is Included in the Pipelines
 
@@ -37,3 +37,5 @@ git clone https://github.com/Washington-University/HCPpipelines.git
 Unlike fmriprep, another minimal preprocessing pipeline, the HCP Pipelines are not BIDS apps, so the input data do not need to be in BIDS format. Nonetheless, it is highly recommended that you convert data to BIDS format before using the pipelines as this converts your raw data to a standard and predictable organization minimizing time spent debugging why the pipeline may have failed for individual participants.
 
 To learn more about conversion to BIDS format, please read [our documentation on the subject](../bids/index.md). If you choose not to convert to BIDS beforehand, make sure your raw data has a consistent organization and naming structure across scan types and participants.
+
+[^1]: Thanks to Tori King and Dr. Nina Kraguljac for their contributions to the structural pipeline on Cheaha.
