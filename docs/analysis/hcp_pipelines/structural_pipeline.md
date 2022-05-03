@@ -405,8 +405,8 @@ Both the single subject script and the array script were tested using data acqui
 
 **PostFreeSurfer:**
 
--[Single Subject](scripts/PostFreeSurfer_ss_wrapper.sh)
--[Array Job](scripts/PostFreeSurfer_array_wrapper.sh)
+- [Single Subject](scripts/PostFreeSurfer_ss_wrapper.sh)
+- [Array Job](scripts/PostFreeSurfer_array_wrapper.sh)
 
 For researchers new to running array jobs, please read over the documentation for array jobs at [the Cheaha documentation](https://uabrc.github.io/cheaha/slurm/sbatch_usage/#array-jobs).
 
