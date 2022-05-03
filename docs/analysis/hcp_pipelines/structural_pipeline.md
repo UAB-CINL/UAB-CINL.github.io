@@ -249,19 +249,34 @@ FreeSurfer outputs will be stored in the subjects directory set in the pipeline.
 
 ## PostFreeSurfer Pipeline
 
-The final part of the structural pipeline, the PostFreeSurfer pipeline, converts FreeSurfer outputs to native and standard fs_LR meshes of brainordinates and generates the final brain mask, the cortical ribbon volume, and the cortical myelin maps.
+The final part of the structural pipeline, the PostFreeSurfer pipeline, converts FreeSurfer outputs to native and standard fs_LR meshes of brainordinates and generates the final brain mask, the cortical ribbon volume, and the cortical myelin maps. At the end of the pipeline, all of the major surfaces and volumes are in a standardized CIFTI space viewable on the fs_LR average brain using ConnectomeWorkbench's `wb_view`.
 
 ### PostFreeSurfer Environment Variables
 
-The `HCPPIPEDIR`, `CARET7DIR`, and `HCPPIPEDIR_templates` environment variables used in the PreFreeSurfer pipeline are used here again. Be sure to set them to the same locations. In addition, a new variable should be set.
+The `HCPPIPEDIR`, `CARET7DIR`, and `HCPPIPEDIR_Templates` environment variables used in the PreFreeSurfer pipeline are used here again. Be sure to set them to the same locations. In addition, there are a few new variables that need to be set.
 
-#### HCPPIPEDIR_config
+#### HCPPIPEDIR_Config
 
 This sets the path to some color tables necessary for converting FreeSurfer annotations. If you set the `HCPPIPEDIR` variable first, you can just use:
 
 ``` bash
 export HCPPIPEDIR_config=${HCPPIPEDIR}/global/config
 ```
+
+#### MSMBINDIR
+
+This sets the path to the binaries directory containing the `msm` command. This is a special folder that is not contained within the main HCP pipelines distribution. Please download the [MSM_HOCR](scripts/MSM_HOCR-3.0.zip) zip file, create a containing folder in your main HCP Pipelines directory, and extract the zip file into that containing folder. Ideally it would look something like `.../HCPpipelines/MSM_HOCR/extracted files here...`. This variable will then point the to `MSM_HOCR` folder.
+
+<!-- markdownlint-disable MD046 -->
+!!! note
+
+    This zip file was created from the [MSM_HOCR github repo](https://github.com/ecr05/MSM_HOCR). Use straight from the repo requires some compilation and troubleshooting and is not adequately explained in the instructions. Until a new version is released and required for a new version of the overall pipelines, use the zip file linked above to save time.
+
+<!-- markdownlint-enable MD046 -->
+
+#### MSMCONFIGDIR
+
+This sets the path to the configuration directory for MSM. This directory is included with the main distribution of the pipelines and is located at `${HCPPIPEDIR}/MSMConfig`.
 
 ### PostFreeSurfer Inputs
 
@@ -287,6 +302,10 @@ For the most part, the default values for the optional arguments will suffice. D
 - `--inflatescale`: surface inflation scaling factor, default is 1
 - `--processing-mode`: either HCPStyleData (default) or LegacyStyleData. This can disable some of the preprocessing steps if the acquired data do not meet HCP acquisition guidelines.
 - `--structural-qc`: set to `yes` (default) ,`no`, or `only`. Whether to run structural qc or not.
+
+### PostFreeSurfer Outputs
+
+Outputs will be somewhat scattered between the subject's `T1w` and `MNINonLinear` directories. Basic surface information such as thickness and curvature files are converted to GIFTI format
 
 ## Example Scripts
 
