@@ -12,6 +12,7 @@
 module load FSL/6.0.3
 source ${FSLDIR}/etc/fslconf/fsl.sh
 module load FreeSurfer/6.0.0-centos6_x86_64
+module load ConnectomeWorkbench/1.5.0-rh_linux64
 
 # set necessary environmental variables
 export HCPPIPEDIR=$HOME/Scripts/HCPpipelines
