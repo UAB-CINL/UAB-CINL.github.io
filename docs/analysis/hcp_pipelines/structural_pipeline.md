@@ -1,6 +1,6 @@
 # Structural Pipeline
 
-The structural pipeline performs preprocessing for T1w and T2w images and is made up of 3 scripts: the PreFreeSurfer, FreeSurfer, and PostFreeSurfer pipelines which must be run in that specific order. As the names suggest, the structural pipeline is built around FreeSurfer's surface reconstruction. Some minor distortion correction is performed prior to surface reconstruction as well as conversion of surfaces from FreeSurfer space to fs_LR (the standard HCP) space after reconstruction.
+The structural pipeline performs preprocessing for T1w and T2w images and is made up of 3 scripts: the PreFreeSurfer, FreeSurfer, and PostFreeSurfer pipelines which must be run in that specific order. As the names suggest, the structural pipeline is built around FreeSurfer's surface reconstruction. Some minor distortion correction is performed prior to surface reconstruction as well as conversion of surfaces from FreeSurfer space to fs_LR (the standard HCP) space after reconstruction. [^1]
 
 ## Setup
 
@@ -409,3 +409,5 @@ Both the single subject script and the array script were tested using data acqui
 -[Array Job](scripts/PostFreeSurfer_array_wrapper.sh)
 
 For researchers new to running array jobs, please read over the documentation for array jobs at [the Cheaha documentation](https://uabrc.github.io/cheaha/slurm/sbatch_usage/#array-jobs).
+
+[^1]: Thanks to Tori King and Dr. Nina Kraguljac for their contributions towards debugging and running the structural pipeline on Cheaha.
