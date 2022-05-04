@@ -4,8 +4,8 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --mem-per-cpu=8G
-#SBATCH --time=24:00:00
-#SBATCH --partition=medium
+#SBATCH --time=6:00:00
+#SBATCH --partition=amd-hdr100
 #SBATCH --output=/home/mdefende/Desktop/hcp-test/code/PostFreeSurfer_out.txt
 #
 # load necessary modules
@@ -19,6 +19,8 @@ export HCPPIPEDIR=$HOME/Scripts/HCPpipelines
 export CARET7DIR=$HOME/Scripts/workbench/bin_rh_linux64
 export HCPPIPEDIR_templates=${HCPPIPEDIR}/global/templates
 export HCPPIPEDIR_config=${HCPPIPEDIR}/global/config
+export MSMBINDIR=${HCPPIPEDIR}/MSM_HOCR
+export MSMCONFIGDIR=${HCPPIPEDIR}/MSMConfig
 
 # set data path and grab the subject for the given array job
 data_path=/home/mdefende/Desktop/hcp-test/D01/nifti
@@ -35,6 +37,6 @@ cd ${HCPPIPEDIR}/PostFreeSurfer
 	--grayordinatesdir=${HCPPIPEDIR_templates}/91282_Greyordinates \
 	--hiresmesh=164 \
 	--lowresmesh=32 \
-	--subcortgraylabels=${HCPPIPEDIR_config}/FreeSurferCorticalLabelTableLut.txt \
+	--subcortgraylabels=${HCPPIPEDIR_config}/FreeSurferSubcorticalLabelTableLut.txt \
 	--freesurferlabels=${HCPPIPEDIR_config}/FreeSurferAllLut.txt \
 	--refmyelinmaps=${HCPPIPEDIR_templates}/standard_mesh_atlases/Conte69.MyelinMap_BC.164k_fs_LR.dscalar.nii
