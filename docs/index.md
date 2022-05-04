@@ -13,6 +13,8 @@ For more information about MRI cores at UAB, please visit the following pages:
 - UAB CINL: [https://www.uab.edu/medicine/cinl](https://www.uab.edu/medicine/cinl)
 - Research MRI Core: [https://www.uab.edu/cores/ircp/rmric](https://www.uab.edu/cores/ircp/rmric)
 
+<!-- markdownlint-disable MD046 -->
 !!! note
 
     This project is under active development. To request changes or additions to the documentation, please submit an issue to the [main Github Repository](https://github.com/UAB-CINL/UAB-CINL.github.io)
+<!-- markdownlint-enable MD046 -->
