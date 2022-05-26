@@ -1,0 +1,3 @@
+# QSIprep
+
+[QSIprep](https://qsiprep.readthedocs.io/en/latest/index.html) is a BIDS app that performs minimal preprocessing for diffusion-weighted MRI (dMRI) data. Preprocessing steps include head motion correction, susceptibility distortion correction, MP-PCA denoising, coregistration to T1w images, spatial normalization and tissue segmentation using tools from popular standalone packages such as MRTrix, FSL, DSIStudio, and ANTs. For a full breakdown of the preprocessing pipeline, please visit [their docs](https://qsiprep.readthedocs.io/en/latest/preprocessing.html#preprocessing-pipeline-details).
