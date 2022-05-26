@@ -4,15 +4,16 @@ Full documentation on executing fmriprep can be found on its [ReadTheDocs](https
 
 The easiest way to access fmriprep on Cheaha is through using the module for version 20.2.3 (the most recent as of September 2021) already installed on the cluster. It is assumed at this point that all your data is stored in a [valid BIDS format](../bids/principles.md). fmriprep can perform BIDS validation during runtime, or you can perform BIDS validation [here](https://bids-standard.github.io/bids-validator/).
 
+<!-- markdownlint-disable MD046 -->
 !!! note
 
     If you require an older version of fmriprep, it's suggested you download the version you need as a Singularity container. More information on use of fmriprep via Singularity can be found [here](https://fmriprep.org/en/20.2.2/singularity.html). Singularity versions \>= v2.5 are available as modules on Cheaha.
+<!-- markdownlint-enable MD046 -->
 
 ## Loading the Module
 
 Cheaha users can access a variety of installed software through modules. Loading the module to use in either an interactive session or in a batch job can be done using the following command:
 
-<!-- markdownlint-disable MD046 -->
 ``` bash
 module load rc/fmriprep/20.2.3
 ```
@@ -40,9 +41,11 @@ These are the only options that must be listed every time fmriprep is run. A mul
 - --participant-label: list of participant identifiers ('sub-' tag optional)
 - --output-spaces: which standardized or native space to sample functional data onto. Options include standard MNI, native T1w, and many, many others.
 
+<!-- markdownlint-disable MD046 -->
 !!! note
 
     Standardized atlas choices are those in TemplateFlow. Please view the[fmriprep documenation](https://fmriprep.org/en/stable/spaces.html?highlight=templateflow#templateflow) to use the `output_spaces` option correctly.
+<!-- markdownlint-enable MD046 -->
 
 ### FreeSurfer Options
 
@@ -59,9 +62,11 @@ These are the only options that must be listed every time fmriprep is run. A mul
 
 - --cifti-output: output processed BOLD in CIFTI format. Choices are 91k or 170k
 
+<!-- markdownlint-disable MD046 -->
 !!! note
 
     Although the naming convention is different here, the 91k option corresponds to the fs_LR 32k grayordinate space from HCP.
+<!-- markdownlint-enable MD046 -->
 
 ## FreeSurfer License File
 
@@ -77,8 +82,10 @@ Use the --fs-license-file option followed by the path to your copied license.txt
 
 While it is difficult to guess the exact correct amount of resources needed for any given preprocessing job, general guidelines have been given [here](https://fmriprep.org/en/stable/faq.html#how-much-cpu-time-and-ram-should-i-allocate-for-a-typical-fmriprep-run). Briefly, 4 CPUs and 5 GBs per CPU (20 total GBs) can complete preprocessing (without FreeSurfer surface reconstruction) in approximately 2 hours. Including surface reconstruction will dramatically increase the amount of time required, but the resources required should be consistent.
 
+<!-- markdownlint-disable MD046 -->
 !!! note
 
     While increasing the amount of resources will decrease computation time, there is a limit, and no performance increase was seen past 16 CPUs. Recognize that requesting a large number of CPUs for each of multiple preprocessing jobs will increase the amount of time needed to allocate resources for that job to start, increasing total time from job submission to finish and functionally minimizing the gains of using a large amount of resources in the first place.
+<!-- markdownlint-enable MD046 -->
 
 Even though the main documentation claims processing without surface reconstruction can be performed in 2 hours, it is advised that extra time be requested in case a processing step takes longer than normal. 6-12 hours on the short partition when not performing recon-all, or 32-50 hours on the medium partition (depending on the total number of scans to process) when performing recon-all is suggested.

@@ -52,13 +52,16 @@ nav:
     - BIDS: 
       - Introduction: analysis/bids/index.md
       - analysis/bids/principles.md
-      - analysis/bids/practical-heudiconv.md
-      - analysis/bids/heudiconv-scripts.md
+      - analysis/bids/practical_heudiconv.md
+      - analysis/bids/heudiconv_scripts.md
     - MRIQC: analysis/mriqc.md
     - fmriprep:
       - Introduction: analysis/fmriprep/index.md
       - analysis/fmriprep/fmriprep-usage.md
       - analysis/fmriprep/fmriprep-scripts.md
+    - qsiprep:
+      - Introduction: analysis/qsiprep/index.md
+      - analysis/qsiprep/qsiprep_usage.md
     - HCP Pipelines: 
       - Introduction: analysis/hcp_pipelines/index.md
       - Structural Pipeline: analysis/hcp_pipelines/structural_pipeline.md
