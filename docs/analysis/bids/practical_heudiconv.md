@@ -17,7 +17,7 @@ pip install heudiconv==0.9.0
 conda install -c conda-forge dcm2niix
 ```
 
-Or, you can go to [the example scripts page](heudiconv-scripts.md#create-conda-environment), copy the environment creation script there to a .sh file, and then submit it as a batch job.
+Or, you can go to [the example scripts page](heudiconv_scripts.md#create-conda-environment), copy the environment creation script there to a .sh file, and then submit it as a batch job.
 
 ## Initial Folder Structure
 
