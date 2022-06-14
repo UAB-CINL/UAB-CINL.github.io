@@ -288,6 +288,38 @@ The only options that have changed are:
 - `-c`: changed from none to dcm2niix
 - `-b`: added
 
+## Step 4: Clean Up
+
+After BIDS conversion, there are a couple of things that need to be done as cleanup: changing permissions for your images and associating any fieldmaps with functional and diffusion images.
+
+### File Permissions
+
+By default, HeuDiConv makes all output files read-only. This causes some issues with some software, such as fmriprep, which need write permissions on the json and images files to operate correctly. Changing file permissions is straightforward:
+
+``` bash
+# change the permissions of all of the files in the BIDS directory to have user and group write permissions
+find $base_dir/nifti/<BIDS subject name> -exec chmod ug+w {} \;
+find $base_dir/nifti/.heudiconv/<BIDS subject name> -exec chmod ug+w {} \;
+```
+
+These lines are included at the end of the [example scripts](heudiconv_scripts.md) and will add user and group write permissions for the BIDS files.
+
+### Associating FieldMaps with Func and DWI scans
+
+Some preprocessing pipelines will automatically perform distortion correction on EPI images using fieldmaps, if you have acquired them. However, there's no metadata automatically created associating fieldmaps with the EPI scans they are used to correct, and so needs to be added manually. You do this by adding the `"IntendedFor"` field to the json sidecars. An example of this field can be seen below:
+
+``` json
+"IntendedFor":[
+    "dwi/sub-S01_dir-AP_run-1_dwi.nii.gz",
+    "func/sub-S01_task-rest_dir-AP_run-1_bold.nii.gz",
+    "func/sub-S01_task-rest_dir-PA_run-2_bold.nii.gz"
+],
+```
+
+The names of the files should change to match your BIDS files. If you have collected a single set of fieldmaps (e.g. AP and PA spin echo fieldmaps), the IntendedFor fields should be the same for both of them. If you have collected multiple sets through the same scan session, you will need to choose which scans each individual fieldmap or fieldmap set will be intended for.
+
+An example use case for this would be reaquiring field maps after letting the participant out of the scanner for a break in the middle of a session. The reacquired field maps would be intended for EPI images only acquired after the break while the original field maps would be intended for scans acquired before the break. Each EPI scan should only be named in an IntendedFor field for a single fieldmap or fieldmap set.
+
 ## BIDS Outputs
 
 Once the function finishes, there will a subject and session path in the `$BASE_DIR/nifti` directory that leads to the BIDS converted files. For this example, there will be `anat`, `fmap`, `func`, and `dwi` folders. The output file structure for these folders can be seen below.
