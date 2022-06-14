@@ -36,3 +36,13 @@ This page provides links to written documentation, tutorials, and videos for rel
 ### Tutorials
 
 1. [MRIQC Cheaha Tutorial](https://www.youtube.com/watch?v=In6Dez_uuxQ)
+
+## QSIprep
+
+### Documentation
+
+1. [Main QSIprep Docs](https://qsiprep.readthedocs.io/en/stable/)
+
+### Tutorials
+
+1. [QSIprep Cheaha Tutorial](https://youtu.be/vJ6-wNgnNtI)
