@@ -43,6 +43,10 @@ A full description of the optional arguments can be found in the [QSIprep docume
 - `--fs_license_file`: path to the FreeSurfer license file. See [our fmriprep docs](../fmriprep/fmriprep-usage.md#freesurfer-license-file) for more information. **This is a required argument**.
 - `--work_dir`: path to a working directory to store intermediate results. These files will be deleted after the script ends.
 
+### Fieldmaps
+
+If you are using fieldmaps for distortion correction, remember to include the [IntendedFor](../bids/practical_heudiconv.md#associating-fieldmaps-with-func-and-dwi-scans) field in the fieldmap json sidecars naming the diffusion scans they are intended to correct.
+
 ## Outputs
 
 A detailed list of qsiprep outputs can be found in [their documentation](https://qsiprep.readthedocs.io/en/stable/preprocessing.html#outputs-of-qsiprep).
