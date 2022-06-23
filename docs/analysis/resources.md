@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD024 -->
 
-This page provides links to written documentation, tutorials, and videos for relevent software in neuroimaging analysis.
+This page provides links to written documentation, tutorials, and videos for relevent software in neuroimaging analysis. Most video links on the page will go to the [MRI analysis](https://www.youtube.com/playlist?list=PLfodFxaCrr0eNkoc2F1IOidg4qe_TuOT4) playlist on UAB Research Computing's Youtube channel.
 
 ## BIDS
 
