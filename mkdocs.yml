@@ -48,7 +48,7 @@ nav:
         - scanner/xnat/account.md
         - scanner/xnat/file_management.md
         - scanner/xnat/projects.md
-  - MRI Preprocessing and Analysis:
+  - Image Preprocessing:
     - BIDS: 
       - Introduction: analysis/bids/index.md
       - analysis/bids/principles.md
@@ -65,5 +65,6 @@ nav:
     - HCP Pipelines: 
       - Introduction: analysis/hcp_pipelines/index.md
       - Structural Pipeline: analysis/hcp_pipelines/structural_pipeline.md
-    - Resources: analysis/resources.md
-    - R: analysis/cifti-r.html
+  - Image Analysis:
+    - R: analysis/R/cifti-r.html
+  - Resources: analysis/resources.md
