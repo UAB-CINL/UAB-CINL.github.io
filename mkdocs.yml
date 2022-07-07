@@ -2,14 +2,14 @@ site_name: Civitan International Neuroimaging Laboratory
 repo_url: https://github.com/UAB-CINL/UAB-CINL.github.io
 
 theme:
-  name: material
+  name: 'material'
   include_search_page: true
   search_index_only: true
   features:
     - tabs: true
     - navigation.indexes
     - toc.follow
-  custom_dir: theme
+  custom_dir: 'theme'
 
 extra_css:
   - stylesheets/extra.css
@@ -18,24 +18,23 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
-  - pymdownx.highlight:
-      anchor_linenums: true
   - attr_list
+  - md_in_html
+  - footnotes
   - lightgallery:
       show_description_in_lightgallery: true
       show_description_as_inline_caption: false
   - toc:
       permalink: true
       toc_depth: 3
-  - tables
 
 plugins:
   - search
   - table-reader:
-      data_path: docs
+      data_path: 'docs'
 
 nav:
-  - Home: index.md
+  - Home: 'index.md'
   - Policies and Procedures:
     - Getting Started: scanner/getting_started.md
     - Onboarding: scanner/onboarding.md
