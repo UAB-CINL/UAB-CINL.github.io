@@ -35,7 +35,10 @@ There is up to a 30 minute window that we allow for setup and teardown (enough t
 
 ### Example Calendar Event
 
+<!-- markdownlint-disable MD033 -->
+<figure markdown="1">
 ![!Scheduling MRI scans including setup time on the Prisma should be done on the Prisma Request Calendar](images/example_calendar_request.png)
+</figure>
 
 ## Requesting a Scanner Operator
 
