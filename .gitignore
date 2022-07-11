@@ -3,5 +3,3 @@
 .RData
 .Ruserdata
 docs/analysis/R/data
-*_cache
-*_files
