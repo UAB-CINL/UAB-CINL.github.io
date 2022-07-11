@@ -65,4 +65,8 @@ nav:
     - HCP Pipelines: 
       - Introduction: analysis/hcp_pipelines/index.md
       - Structural Pipeline: analysis/hcp_pipelines/structural_pipeline.md
+  - Image Analysis:
+    - Using CIFTI in R:
+      - Walkthrough: analysis/R/cifti-r.html
+      - Example Analysis: analysis/R/cifti-example.html
   - Resources: analysis/resources.md
