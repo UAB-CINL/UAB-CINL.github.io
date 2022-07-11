@@ -1,0 +1,129 @@
+---
+title: "CIFTI Analysis Example"
+format: 
+  html:
+    theme: 
+      light: sandstone
+      dark: darkly
+    toc: true
+    toc-depth: 4
+---
+
+## Introduction
+
+We've gone through a general tutorial about how to import and work with the cifti format in R, so this document will give a short example of how to calculate average thickness within FreeSurfer's `aparc` parcellation labels for three participants. These labels are automatically transferred to `fs_LR` space by HCP's Structural Preprocessing Pipeline and can be exported by fmriprep as well. We will be using data from the `fs_LR_32k` atlas in cifti space. The same general process can be done for gifti as well.
+
+## Libraries
+
+For this, we will only need the `cifti` and `tidyverse` packages.
+
+```{r load libraries}
+#| message: false
+library(cifti)
+library(tidyverse)
+```
+
+
+## Creating a Function
+
+We can create a custom function and apply it using the `purrr` package to wrangle the same data for three different participants. This function will read in a participant's `thickness` and `aparc` cifti files, organize those data into data frames, and then join them together.
+
+```{r data wrangle function}
+import_ciftis <- function(subj){
+  
+  # read in aparc cifti and get aparc of key-area pairs
+  aparc_cii <- read_cifti(file.path('data',subj,'fsaverage_LR32k',paste0(subj,'.aparc.32k_fs_LR.dlabel.nii')))
+  aparc_table <- tibble(key = aparc_cii$NamedMap$look_up_table[[1]]$Key,
+                        area = aparc_cii$NamedMap$look_up_table[[1]]$Label)
+  
+  # convert aparc data to tibble with hemisphere, vertex number, and assigned area key
+  aparc_lhvert <- length(aparc_cii$BrainModel[[1]]) # number of left hemisphere vertices in aparc
+  aparc_rhvert <- length(aparc_cii$BrainModel[[2]]) # number of right hemisphere vertices in aparc
+  
+  aparc_data <- tibble(hemi = rep(c('LH','RH'),times = c(aparc_lhvert,aparc_rhvert)),
+                       vertex = c(aparc_cii$BrainModel[[1]],aparc_cii$BrainModel[[2]]),
+                       key = aparc_cii$data[1:(aparc_lhvert+aparc_rhvert)])
+  
+  # join the table and the data together to get the assigned area for each vertex then drop the key
+  aparc <- left_join(aparc_data, aparc_table, by = 'key') %>%
+    select(-key)
+  
+  
+  # read in thickness data and convert to a tibble with hemisphere, vertex number, and thickness
+  thick_cii <- read_cifti(file.path('data',subj,'fsaverage_LR32k',paste0(subj,'.thickness.32k_fs_LR.dscalar.nii')))
+  
+  thick_lhvert <- length(thick_cii$BrainModel[[1]]) # number of left hemisphere vertices in thickness cifti
+  thick_rhvert <- length(thick_cii$BrainModel[[2]]) # number of right hemisphere vertices in thickness cifti
+  
+  thick <- tibble(hemi = rep(c('LH','RH'),times = c(thick_lhvert,thick_rhvert)),
+                  vertex = c(thick_cii$BrainModel[[1]],
+                             thick_cii$BrainModel[[2]]), # concatenate the vertex numbers
+                  thickness = thick_cii$data[1:(thick_lhvert + thick_rhvert)]) # get data for all vertices
+  
+  # join aparc and thickness together by hemisphere and vertex number, then drop vertices with "???" area
+  combined <- right_join(aparc, thick, by = c('hemi','vertex')) %>%
+    filter(area != "???")
+  
+  # add the subject name to the final dataframe and move it to the beginning
+  combined <- combined %>%
+    mutate(PID = subj) %>%
+    relocate(PID, .before = 'hemi')
+}
+```
+
+A couple of notes about this function:
+
+1. Paths and file names are hard-coded because the only difference in file paths across subjects is the subject name. For less organized data, full file paths may need to be given instead of assumed in the function.
+2. Because the values in the `aparc` data field are just the key values, we needed to make a table first that gives the area names and their associated key values to merge with the data. Integer keys by themselves are meaningless without the associated area.
+3. The left join at the end of the aparc replicates the area names for each time the associates key was found. This gives an output tibble with size equal to the `aparc` data size.
+4. We calculated the vertex numbers for `aparc` and `thick` individually instead of assuming all vertices that had an aparc value also had a thickness value and vice-versa. In this case, assuming would have worked but in cases where you're dealing with a partial parcellation or individual labels you have created that don't cover the entire brain, calculating single vertex values and applying them across all maps would have given an incorrect data frame at the end. In general, if you don't know that the set of vertices with assigned data in your files are identical, calculating vertex counts for each type of file is suggested.
+5. If there is other cleaning that needs to be done to your data after import that is the same across participants, it's best to include in the function instead of doing after all of the data has been concatenated. R is much faster when altering smaller dataframes as opposed to larger ones. This is especially true for timeseries data as the concatenated data frame can be extremely large.
+
+## Applying the Function
+
+As mentioned before, we can apply the function to each subject in our `data` folder using `map_df` from `purrr`. If you haven't used the `map` functions before, they operate similarly to the family of `apply` functions from base R. In their basic form, you pass a vector of values to `map` as well as a function name. The function is then run on each element of the vector. In essence, it's a simplified `for` loop. `map` can be customized to return a specific data type at the end of processing by adding tags, in our case `_df`.
+
+```{r apply the function}
+#| warning: false
+
+# subject names are listed as folder names in 'data'. turn off recursive search and full names
+subs <- list.dirs('data',recursive = FALSE, full.names = FALSE)
+
+# apply import_ciftis to each element of subs. The .x is a replacement variable for the subject name
+full_thick <- map_df(subs, ~import_ciftis(.x))
+
+glimpse(full_thick)
+```
+
+## Calculate Stats and Plot
+
+From here, we can do whatever stats we want to do for our analysis. In this case, we will just calculate the average thickness in each region in aparc. In this case, the area names already have hemisphere tags, we so don't need to group by the hemisphere.
+
+```{r descriptive stats}
+#| message: false
+thick_stats <- full_thick %>% 
+  group_by(PID, area) %>%
+  summarize(mean_thick_subject = mean(thickness)) %>%
+  ungroup()
+
+glimpse(thick_stats)
+```
+
+We can also create a simple bar graph of the 5 thickest and thinnest areas on average across participants.
+
+```{r simple bar graph}
+# calculate mean thickness across participants
+group_stats <- thick_stats %>%
+  group_by(area) %>%
+  summarize(mean_thick = mean(mean_thick_subject))
+
+# get 5 thickest and thinnest areas, then start plotting
+group_stats %>%
+  arrange(mean_thick) %>%
+  filter(row_number() %in% c(1:5,(n()-4):n())) %>%
+  ggplot(aes(x = mean_thick, y = reorder(area,mean_thick))) + # reorder will plot in order of mean_thick instead of abc
+  geom_bar(stat = 'identity') + # plot actual thickness value instead of count
+  theme_minimal() +
+  labs(y = '', x = "Mean Cortical Thickness (mm)", title = "5 Thickest and Thinnest Areas") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
