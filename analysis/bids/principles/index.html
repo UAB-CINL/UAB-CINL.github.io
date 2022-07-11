@@ -1,0 +1,1404 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Basic BIDS Principles - Civitan International Neuroimaging Laboratory</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+<link rel="stylesheet" href="../../../css/lightgallery.min.css" />
+
+    
+
+<script src="../../../js/lightgallery.min.js"></script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic-bids-principles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Civitan International Neuroimaging Laboratory" class="md-header__button md-logo" aria-label="Civitan International Neuroimaging Laboratory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Civitan International Neuroimaging Laboratory
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Basic BIDS Principles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/UAB-CINL/UAB-CINL.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Civitan International Neuroimaging Laboratory" class="md-nav__button md-logo" aria-label="Civitan International Neuroimaging Laboratory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Civitan International Neuroimaging Laboratory
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/UAB-CINL/UAB-CINL.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Policies and Procedures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Policies and Procedures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Policies and Procedures
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/getting_started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/onboarding/" class="md-nav__link">
+        Onboarding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/training/" class="md-nav__link">
+        Training
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/scheduling/" class="md-nav__link">
+        Scheduling and Billing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/implants/" class="md-nav__link">
+        Screening and Implants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Data Transfer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Transfer" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Data Transfer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/data_management/" class="md-nav__link">
+        Local Transfer and OSIRIX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" type="checkbox" id="__nav_2_6_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../scanner/xnat/">XNAT</a>
+          
+            <label for="__nav_2_6_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="XNAT" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          XNAT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/xnat/account/" class="md-nav__link">
+        User Registration and Accounts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/xnat/file_management/" class="md-nav__link">
+        File Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/xnat/projects/" class="md-nav__link">
+        XNAT Projects
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Image Preprocessing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Image Preprocessing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Image Preprocessing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">BIDS</a>
+          
+            <label for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="BIDS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          BIDS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Basic BIDS Principles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Basic BIDS Principles
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#file-name-structure" class="md-nav__link">
+    File Name Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-sidecars" class="md-nav__link">
+    JSON sidecars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-name-formats" class="md-nav__link">
+    Example Name Formats
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Name Formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-keys" class="md-nav__link">
+    Common Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anatomical" class="md-nav__link">
+    Anatomical
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functional-task-and-resting" class="md-nav__link">
+    Functional (Task and Resting)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diffusion" class="md-nav__link">
+    Diffusion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fieldmap" class="md-nav__link">
+    Fieldmap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bids-validation" class="md-nav__link">
+    BIDS Validation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practical_heudiconv/" class="md-nav__link">
+        Practical HeuDiConv Example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../heudiconv_scripts/" class="md-nav__link">
+        Example Scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mriqc/" class="md-nav__link">
+        MRIQC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../fmriprep/">fmriprep</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="fmriprep" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          fmriprep
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fmriprep/fmriprep-usage/" class="md-nav__link">
+        Using fmriprep on Cheaha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fmriprep/fmriprep-scripts/" class="md-nav__link">
+        Example fmriprep Scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../qsiprep/">qsiprep</a>
+          
+            <label for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="qsiprep" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          qsiprep
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qsiprep/qsiprep_usage/" class="md-nav__link">
+        Using QSIprep on Cheaha
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../hcp_pipelines/">HCP Pipelines</a>
+          
+            <label for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="HCP Pipelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          HCP Pipelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hcp_pipelines/structural_pipeline/" class="md-nav__link">
+        Structural Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Image Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Image Analysis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Image Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Using CIFTI in R
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using CIFTI in R" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Using CIFTI in R
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../R/cifti-r.html" class="md-nav__link">
+        Walkthrough
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../R/cifti-example.html" class="md-nav__link">
+        Example Analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        Resources
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#file-name-structure" class="md-nav__link">
+    File Name Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-sidecars" class="md-nav__link">
+    JSON sidecars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-name-formats" class="md-nav__link">
+    Example Name Formats
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Name Formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-keys" class="md-nav__link">
+    Common Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anatomical" class="md-nav__link">
+    Anatomical
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functional-task-and-resting" class="md-nav__link">
+    Functional (Task and Resting)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diffusion" class="md-nav__link">
+    Diffusion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fieldmap" class="md-nav__link">
+    Fieldmap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bids-validation" class="md-nav__link">
+    BIDS Validation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/UAB-CINL/UAB-CINL.github.io/edit/master/docs/analysis/bids/principles.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="basic-bids-principles">Basic BIDS Principles<a class="headerlink" href="#basic-bids-principles" title="Permanent link">&para;</a></h1>
+<p>This document will give a short and sweet introduction to the basic naming system for BIDS-compliant niftis and their JSON sidecars as well as example folder structures. For a much more comprehensive introduction to the BIDS structure, see <a href="https://bids-specification.readthedocs.io/en/stable/01-introduction.html">the BIDS docs</a></p>
+<h2 id="file-name-structure">File Name Structure<a class="headerlink" href="#file-name-structure" title="Permanent link">&para;</a></h2>
+<p>File names are made from combinations of key-value pairs strung together. Some key-value pairs are optional based on the experimental design, but others, such as subject name and task type for fMRI scans, are not. Key-value pairs are linked with hyphens while underscores separate each pair. For example, if a participant with ID TS001 had a resting state scan, the portion of the scan name telling us such would read <code>sub-TS001_task-rest</code>.</p>
+<p>Since both <code>-</code> and <code>_</code> are protected characters in the BIDS naming system, they cannot be used in participant or scan IDs and should be removed during BIDS conversion. Conversion tools can take care of that automatically, but if you choose to manually convert to BIDS, you will need to include this step in your pipeline.</p>
+<p>A summary of all possible key-value pairs that make up a BIDS name as well as whether they are optional or required can be found in the <a href="https://bids-specification.readthedocs.io/en/stable/99-appendices/04-entity-table.html">entity table</a>.</p>
+<h2 id="json-sidecars">JSON sidecars<a class="headerlink" href="#json-sidecars" title="Permanent link">&para;</a></h2>
+<p>Each nifti file in your study should also have an accompanying JSON file that contains relevant metadata from the DICOM files that can be lost when converting to nifti as well as pertinent information about the participant and study. The accompanying JSON files can be complex and tedious to create manually. If you choose to create custom JSON sidecars, it is imperative you read about the associated required metadata fields for each type of scan in your study. Those descriptions and naming guidelines for MRI data can be found in the <a href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/01-magnetic-resonance-imaging-data.html">BIDS MRI naming guide</a>.</p>
+<p>It is highly recommended to use a semi-automatic DICOM to BIDS converter to generate both the nifti and JSON files. Recommended converters are <a href="https://github.com/UNFmontreal/Dcm2Bids">dcm2bids</a> and <a href="https://github.com/nipy/heudiconv">heudiconv</a>. A general guide to using heudiconv can be found in this documentation as well.</p>
+<h2 id="example-name-formats">Example Name Formats<a class="headerlink" href="#example-name-formats" title="Permanent link">&para;</a></h2>
+<p>For the following examples, any key-value pain in [] is optional in the name. Replace entries in &lt;&gt; with corresponding information for the scan. Some values in &lt;&gt; must be chosen from a given list from the BIDS site. For example, a T1w anatomical image must have the \<suffix> field specified as T1w, not T1.</p>
+<p>These examples are not exhaustive but include some more common use cases. Links to more examples as well as a complete list and explanation of key-value pairs are given in each section.</p>
+<h3 id="common-keys">Common Keys<a class="headerlink" href="#common-keys" title="Permanent link">&para;</a></h3>
+<p>All common keys listed here can be used for multiple image types, but none are required to be included except in specific cases. However, these can be included to further describe the scan to other researchers without having to read metadata from the JSON files.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+<th>Example Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ses</td>
+<td>Session number the scan belongs to. If the subject</td>
+<td>ses-01, ses-02</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>Image phase-encoding direction</td>
+<td>dir-AP, dir-LR</td>
+</tr>
+<tr>
+<td>run</td>
+<td>Distinguishes between scans with the same acquisition and direction</td>
+<td>run-1, run-2</td>
+</tr>
+<tr>
+<td>acq</td>
+<td>Allows the user to distinguish between parameter sets used to acquire the same image modality</td>
+<td>acq-highres, acq-lowres</td>
+</tr>
+</tbody>
+</table>
+<h3 id="anatomical">Anatomical<a class="headerlink" href="#anatomical" title="Permanent link">&para;</a></h3>
+<p>Names for general anatomical nifti and json files can be found here. These include T1w, T2w, MP2RAGE, proton density, and others, but not diffusion-weighted or functional data. Also included are naming conventions for binary defacing masks, if defacing was performed for your dataset. Defacing is not required, and inclusion of the masks is not required even if defacing was performed.</p>
+<div class="highlight"><pre><span></span><code>anat/
+    # Naming structure for general anatomical scans
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_&lt;suffix&gt;.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_&lt;suffix&gt;.nii[.gz]
+
+    # Naming structure for binary mask used during potential defacing
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_mod-&lt;label&gt;]_defacemask.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_mod-&lt;label&gt;]_defacemask.nii[.gz]
+</code></pre></div>
+<p>A more complete list of anatomical names and key-value pair explanations can be found <a href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/01-magnetic-resonance-imaging-data.html#anatomy-imaging-data">here</a>.</p>
+<h3 id="functional-task-and-resting">Functional (Task and Resting)<a class="headerlink" href="#functional-task-and-resting" title="Permanent link">&para;</a></h3>
+<p>Currently, the supported contrasts for task and resting imaging data are BOLD and cerebral blood volume (CBV).</p>
+<div class="highlight"><pre><span></span><code>func/
+    # BOLD contrast naming scheme
+    sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_part-&lt;label&gt;]_bold.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_part-&lt;label&gt;]_bold.nii[.gz]
+
+    # CBV contrast naming scheme
+    sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_part-&lt;label&gt;]_cbv.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_part-&lt;label&gt;]_cbv.nii[.gz]
+
+    # Single-band reference images collected before multi-band sequences
+    sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_part-&lt;label&gt;]_sbref.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_part-&lt;label&gt;]_sbref.nii[.gz]
+
+    # Naming scheme for description of event timing during tasks scans
+    sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;]_events.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;]_events.tsv
+
+    # Naming scheme for physio data collected and stored as tsv
+    sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_recording-&lt;label&gt;]_physio.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_recording-&lt;label&gt;]_physio.tsv.gz
+</code></pre></div>
+<p>The task key followed by the task name is always required for BOLD and CBV scans. For resting-state scans, the appropriate key-value pair is <code>task-rest</code>. For multiple resting state or multiple of the same task, use the <code>run</code> and <code>dir</code> keys to differentiate them.</p>
+<p>Task event file names should match the scan name exactly, except replacing _bold.nii.gz with _events.tsv. As always, the json file name should match the events.tsv name.</p>
+<p>A more complete list of functional names and key-value pair explanations can be found <a href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/01-magnetic-resonance-imaging-data.html#task-including-resting-state-imaging-data">here</a>.</p>
+<h3 id="diffusion">Diffusion<a class="headerlink" href="#diffusion" title="Permanent link">&para;</a></h3>
+<p>Currently, the only supported diffusion imaging types are diffusion-weighted (dwi), and their corresponding single-band reference (sbref) images, if multi-band was used to collect the diffusion data.</p>
+<div class="highlight"><pre><span></span><code>dwi/
+    # bvec and bval outputs from converting to nifti
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_part-&lt;label&gt;]_dwi.bval
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_part-&lt;label&gt;]_dwi.bvec
+
+    # Diffusion scan naming scheme
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_part-&lt;label&gt;]_dwi.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_part-&lt;label&gt;]_dwi.nii[.gz]
+
+    # SBRef naming scheme
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_part-&lt;label&gt;]_sbref.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_dir-&lt;label&gt;][_run-&lt;index&gt;][_part-&lt;label&gt;]_sbref.nii[.gz]
+</code></pre></div>
+<p>bvec and bval files MUST follow the FSL format.</p>
+<p>A more complete list of diffusion names and key-value pair explanations as well as an explanation of the FSL format for bvec and bval files can be found <a href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/01-magnetic-resonance-imaging-data.html#diffusion-imaging-data">here</a>.</p>
+<h3 id="fieldmap">Fieldmap<a class="headerlink" href="#fieldmap" title="Permanent link">&para;</a></h3>
+<p>Multiple types of phasemaps can be stored using the BIDS data structure. These include phase-difference maps, two phase maps, direct field maps, and phase-encoded polar fieldmaps. Which type of fieldmap you acquire for your dataset will determine the suffix at the end of the file name.</p>
+<div class="highlight"><pre><span></span><code>fmap/
+    # Phase-difference maps
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_magnitude1.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_magnitude1.nii[.gz]
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_magnitude2.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_magnitude2.nii[.gz]
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_phasediff.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_phasediff.nii[.gz]
+
+    # Two phase maps 
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_magnitude1.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_magnitude1.nii[.gz]
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_magnitude2.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_magnitude2.nii[.gz]
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_phase1.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_phase1.nii[.gz]
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_phase2.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_phase2.nii[.gz]
+
+    # Direct fieldmap 
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_fieldmap.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_fieldmap.nii[.gz]
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_magnitude.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_run-&lt;index&gt;]_magnitude.nii[.gz]
+
+    # Multiple phase encoded directions (AP/PA; LR/RL)
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;]_dir-&lt;label&gt;[_run-&lt;index&gt;]_epi.json
+    sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;]_dir-&lt;label&gt;[_run-&lt;index&gt;]_epi.nii[.gz]
+</code></pre></div>
+<p>For multiple phase encoded directions, the dir key-pair must be included in the name. A more complete list of field map names and key-value pair explanations as well as an explanation of the FSL format for bvec and bval files can be found <a href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/01-magnetic-resonance-imaging-data.html#fieldmap-data">here</a>.</p>
+<h2 id="bids-validation">BIDS Validation<a class="headerlink" href="#bids-validation" title="Permanent link">&para;</a></h2>
+<p>After you convert a dataset to BIDS, you can validate it using a couple of tools. First, there is an online validator at <a href="https://bids-standard.github.io/bids-validator/">https://bids-standard.github.io/bids-validator/</a>. Select your BIDS output dataset folder and it will determine if anything is not BIDS compliant. It does not upload any data, so it is safe for PHI.</p>
+<p>fmriprep, as its first step, also will perform BIDS validation on any subject it is performed on. This can be disabled as a setting if you've already used the online tool. It's a good idea to always validate the dataset after conversion just in case something needs to be fixed.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../practical_heudiconv/" class="md-footer__link md-footer__link--next" aria-label="Next: Practical HeuDiConv Example" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Practical HeuDiConv Example
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [{"tabs": true}, "navigation.indexes", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+
+      <script src="../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+<script>
+  var elements = document.getElementsByClassName("lightgallery");
+  for (var i = 0; i < elements.length; i++) {
+    lightGallery(elements[i]);
+  }
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,1606 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Practical HeuDiConv Example - Civitan International Neuroimaging Laboratory</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+<link rel="stylesheet" href="../../../css/lightgallery.min.css" />
+
+    
+
+<script src="../../../js/lightgallery.min.js"></script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practical-heudiconv-example" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Civitan International Neuroimaging Laboratory" class="md-header__button md-logo" aria-label="Civitan International Neuroimaging Laboratory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Civitan International Neuroimaging Laboratory
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Practical HeuDiConv Example
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/UAB-CINL/UAB-CINL.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Civitan International Neuroimaging Laboratory" class="md-nav__button md-logo" aria-label="Civitan International Neuroimaging Laboratory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Civitan International Neuroimaging Laboratory
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/UAB-CINL/UAB-CINL.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Policies and Procedures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Policies and Procedures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Policies and Procedures
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/getting_started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/onboarding/" class="md-nav__link">
+        Onboarding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/training/" class="md-nav__link">
+        Training
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/scheduling/" class="md-nav__link">
+        Scheduling and Billing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/implants/" class="md-nav__link">
+        Screening and Implants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Data Transfer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Transfer" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Data Transfer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/data_management/" class="md-nav__link">
+        Local Transfer and OSIRIX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" type="checkbox" id="__nav_2_6_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../scanner/xnat/">XNAT</a>
+          
+            <label for="__nav_2_6_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="XNAT" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          XNAT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/xnat/account/" class="md-nav__link">
+        User Registration and Accounts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/xnat/file_management/" class="md-nav__link">
+        File Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/xnat/projects/" class="md-nav__link">
+        XNAT Projects
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Image Preprocessing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Image Preprocessing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Image Preprocessing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">BIDS</a>
+          
+            <label for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="BIDS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          BIDS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../principles/" class="md-nav__link">
+        Basic BIDS Principles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Practical HeuDiConv Example
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Practical HeuDiConv Example
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#heudiconv" class="md-nav__link">
+    HeuDiConv
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-folder-structure" class="md-nav__link">
+    Initial Folder Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-generate-scan-info" class="md-nav__link">
+    Step 1: Generate Scan Info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-example-heuristic" class="md-nav__link">
+    Step 2: Example Heuristic
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Example Heuristic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anatomicals" class="md-nav__link">
+    Anatomicals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-maps" class="md-nav__link">
+    Field Maps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functionals" class="md-nav__link">
+    Functionals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diffusion" class="md-nav__link">
+    Diffusion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-bids-conversion" class="md-nav__link">
+    Step 3: BIDS Conversion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-clean-up" class="md-nav__link">
+    Step 4: Clean Up
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Clean Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-permissions" class="md-nav__link">
+    File Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#associating-fieldmaps-with-func-and-dwi-scans" class="md-nav__link">
+    Associating FieldMaps with Func and DWI scans
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bids-outputs" class="md-nav__link">
+    BIDS Outputs
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../heudiconv_scripts/" class="md-nav__link">
+        Example Scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mriqc/" class="md-nav__link">
+        MRIQC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../fmriprep/">fmriprep</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="fmriprep" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          fmriprep
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fmriprep/fmriprep-usage/" class="md-nav__link">
+        Using fmriprep on Cheaha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fmriprep/fmriprep-scripts/" class="md-nav__link">
+        Example fmriprep Scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../qsiprep/">qsiprep</a>
+          
+            <label for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="qsiprep" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          qsiprep
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qsiprep/qsiprep_usage/" class="md-nav__link">
+        Using QSIprep on Cheaha
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../hcp_pipelines/">HCP Pipelines</a>
+          
+            <label for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="HCP Pipelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          HCP Pipelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hcp_pipelines/structural_pipeline/" class="md-nav__link">
+        Structural Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Image Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Image Analysis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Image Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Using CIFTI in R
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using CIFTI in R" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Using CIFTI in R
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../R/cifti-r.html" class="md-nav__link">
+        Walkthrough
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../R/cifti-example.html" class="md-nav__link">
+        Example Analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        Resources
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#heudiconv" class="md-nav__link">
+    HeuDiConv
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-folder-structure" class="md-nav__link">
+    Initial Folder Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-generate-scan-info" class="md-nav__link">
+    Step 1: Generate Scan Info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-example-heuristic" class="md-nav__link">
+    Step 2: Example Heuristic
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Example Heuristic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anatomicals" class="md-nav__link">
+    Anatomicals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-maps" class="md-nav__link">
+    Field Maps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functionals" class="md-nav__link">
+    Functionals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diffusion" class="md-nav__link">
+    Diffusion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-bids-conversion" class="md-nav__link">
+    Step 3: BIDS Conversion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-clean-up" class="md-nav__link">
+    Step 4: Clean Up
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Clean Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-permissions" class="md-nav__link">
+    File Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#associating-fieldmaps-with-func-and-dwi-scans" class="md-nav__link">
+    Associating FieldMaps with Func and DWI scans
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bids-outputs" class="md-nav__link">
+    BIDS Outputs
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/UAB-CINL/UAB-CINL.github.io/edit/master/docs/analysis/bids/practical_heudiconv.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="practical-heudiconv-example">Practical HeuDiConv Example<a class="headerlink" href="#practical-heudiconv-example" title="Permanent link">&para;</a></h1>
+<h2 id="heudiconv">HeuDiConv<a class="headerlink" href="#heudiconv" title="Permanent link">&para;</a></h2>
+<p>The tool we use for automatic conversion is <a href="https://github.com/nipy/heudiconv">HeuDiConv</a>, a heuristic-based dicom converter. This tool is packaged as a Python library, and so in order to have access to it, you will need to create an Anaconda environment and install both HeuDiConv as well as dcm2niix, the actual dicom conversion engine.</p>
+<p>You can do this process manually through the following commands</p>
+<div class="highlight"><pre><span></span><code>module load Anaconda3/2020.11
+
+conda create -n bids
+conda activate bids
+
+pip install <span class="nv">heudiconv</span><span class="o">==</span><span class="m">0</span>.9.0
+
+conda install -c conda-forge dcm2niix
+</code></pre></div>
+<p>Or, you can go to <a href="../heudiconv_scripts/#create-conda-environment">the example scripts page</a>, copy the environment creation script there to a .sh file, and then submit it as a batch job.</p>
+<h2 id="initial-folder-structure">Initial Folder Structure<a class="headerlink" href="#initial-folder-structure" title="Permanent link">&para;</a></h2>
+<p>For this example, the dataset will be named <code>D01</code>, and its parent directory will be <code>/data/project/genlab/datasets</code> to mimic a generic project directory found on Cheaha. When running this tool, be sure to change any paths and folder or subject names to match your dataset.</p>
+<p>For this walkthrough and in the example scripts, we assume an single session initial folder structure that looks like:</p>
+<div class="highlight"><pre><span></span><code>D01/
+└── dicoms/
+    ├── participant01/
+    │   ├── scan-01/
+    │   │   └── dicom files
+    │   ├── scan-02/
+    │   │   └── dicom files
+    │   └── ...
+    ├── participant02/
+    │   ├── scan-01/
+    │   │   └── dicom files
+    │   └── ...
+    └── ...
+</code></pre></div>
+<p>The raw dicoms are all stored in the <code>D01/dicoms</code> folder and are organized by participant and by scan. If multiple sessions were acquired for each participant, those sessions would be separated under the participant directory.</p>
+<p>The example session has the following scan types:</p>
+<ul>
+<li>1 T1w and 1 T2w</li>
+<li>2 multiband resting state BOLDS</li>
+<li>1 multiband emotion recognition BOLD named Emotion</li>
+<li>2 two multiband diffusion scans</li>
+<li>A pair of spin-echo fieldmaps</li>
+</ul>
+<p>A folder with those scans could look like the following:</p>
+<!-- markdownlint-disable MD033 -->
+<figure>
+<p><div class="lightgallery"><a data-sub-html="Example of a raw data structure downloaded from XNAT" href="../images/dicom-folder-example.png"><img alt="Example of a raw data structure downloaded from XNAT" src="../images/dicom-folder-example.png" /></a></div></p>
+</figure>
+<p>Every multiband scan will have a corresponding SBRef scan that will also need to be accounted for in the key.</p>
+<h2 id="step-1-generate-scan-info">Step 1: Generate Scan Info<a class="headerlink" href="#step-1-generate-scan-info" title="Permanent link">&para;</a></h2>
+<!-- markdownlint-disable MD046 -->
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember, Step 1 only needs to be done once to generate the base heuristic and the scan parameters for key matching. The same heuristic can be used for every participant as long as the scan parameters are not changed.</p>
+</div>
+<p>The first step is to generate the scan info to match to. We can assign our dataset directory path to <code>BASE_DIR</code> for to make the command easier to type and more succinct.</p>
+<!-- markdownlint-disable MD046 -->
+<div class="highlight"><pre><span></span><code><span class="c1"># set the base dataset directory</span>
+<span class="nv">BASE_DIR</span><span class="o">=</span>/data/project/genlab/datasets/D01
+
+heudiconv -s S101 -ss <span class="m">01</span> -d <span class="nv">$BASE_DIR</span>/dicom/<span class="o">{</span>subject<span class="o">}</span>/ses-<span class="o">{</span>session<span class="o">}</span>/*/*.dcm
+-o <span class="nv">$BASE_DIR</span>/nifti -f convertall -c none --overwrite
+</code></pre></div>
+<h2 id="step-2-example-heuristic">Step 2: Example Heuristic<a class="headerlink" href="#step-2-example-heuristic" title="Permanent link">&para;</a></h2>
+<h3 id="anatomicals">Anatomicals<a class="headerlink" href="#anatomicals" title="Permanent link">&para;</a></h3>
+<p>We have one T1w and one T2w scan, both of which have raw and normalized versions. In our case, we only want to convert the normalized versions. Our key for the anatomicals will be basic, only including the subject and session as variable. The keys will look like:</p>
+<div class="highlight"><pre><span></span><code><span class="n">t1</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/anat/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_T1w&#39;</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/anat/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_T2w&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Next, we can determine the <code>if</code> statements for associating the keys with the <code>info</code> dictionary. Since we only want to use one T1w and one T2w, we can just assign the series ID directly to the <code>info</code> dictionary. We will match on the number of acquired slices, the <code>T?w</code> portion of the protocol name to differentiate between T1w and T2w, and 'NORM' in the image_type so that we choose the normalized scans. These <code>if</code> statements that go in the association loop will look like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim3</span> <span class="o">==</span> <span class="mi">208</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;T1w&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">protocol_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;NORM&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">image_type</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">t1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">]</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim3</span> <span class="o">==</span> <span class="mi">208</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;T2w&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">protocol_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;NORM&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">image_type</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">t2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">]</span>
+</code></pre></div>
+<p>It is possible to use multiple T1w and T2w scans, although the keys and association statements would need to be amended to include run information. Examples of this can be seen in the <code>Functionals</code>, <code>Field Maps</code>, and <code>Diffusion</code> sections.</p>
+<h3 id="field-maps">Field Maps<a class="headerlink" href="#field-maps" title="Permanent link">&para;</a></h3>
+<p>We have two field maps taken in the AP and PA directions. In order to create a sufficient key, we will need to add the direction information to the key and association sections. Additionally, we can add run information in case some subjects have multiple fieldmaps. Our key for Spin Echo field maps will be:</p>
+<div class="highlight"><pre><span></span><code><span class="n">fmap</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/fmap/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_dir-</span><span class="si">{dir}</span><span class="s1">_run-</span><span class="si">{item:01d}</span><span class="s1">_epi&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Since we are accounting for the possiblity of multiple field maps in the same direction, we will use the <code>append</code> method instead of direct assignment to the <code>info</code> dictionary. The field map association statement will look like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;SpinEchoFieldMap_AP&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">protocol_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">fmap</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;AP&#39;</span><span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;SpinEchoFieldMap_PA&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">protocol_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">fmap</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;PA&#39;</span><span class="p">})</span>
+</code></pre></div>
+<p>We chose to match on the fact each field map has 3 volumes and contains SpinEchoFieldMap in the protocol_name. There is a split based on which direction the field map was acquired in which changes the <code>dir</code> field.</p>
+<h3 id="functionals">Functionals<a class="headerlink" href="#functionals" title="Permanent link">&para;</a></h3>
+<p>We have multiple resting state scans as well as an emotion recognition task scan. We will create separate keys and association statements for both of these types of scans. Because there are multiple resting state scans acquired in multiple directions, we will include direction and run information in the <code>rest</code> key.</p>
+<p>Additionally, because these are multiband scans, there are SBRef volumes associated with both scan types. An SBRef key should be made alongside each BOLD scan type.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rest</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/func/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_task-rest_dir-</span><span class="si">{dir}</span><span class="s1">_run-</span><span class="si">{item:01d}</span><span class="s1">_bold&#39;</span><span class="p">)</span>
+<span class="n">rest_sbref</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/func/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_task-rest_dir-</span><span class="si">{dir}</span><span class="s1">_run-</span><span class="si">{item:01d}</span><span class="s1">_sbref&#39;</span><span class="p">)</span>
+
+<span class="n">emotion</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/func/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_task-Emotion_run-</span><span class="si">{item:01d}</span><span class="s1">_bold&#39;</span><span class="p">)</span>
+<span class="n">emotion_sbref</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/func/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_task-Emotion_run-</span><span class="si">{item:01d}</span><span class="s1">_sbref&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>You can see that the only difference between the BOLD scans and their SBRef keys is that the <code>bold</code> tag at the end of the scan has been changed to <code>sbref</code>. The rest of the name should be exactly the same.</p>
+<p>In the same way as the field maps, we will include run number for both rest and Emotion keys and direction information for the rest key and association statements.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># match REST scans and their SBRefs</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">420</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;REST&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;AP&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">rest</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span> <span class="s1">&#39;AP&#39;</span><span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">420</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;REST&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;PA&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">rest</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span> <span class="s1">&#39;PA&#39;</span><span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;REST&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;AP&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">rest_sbref</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;AP&#39;</span><span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;REST&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;PA&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">rest_sbref</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;PA&#39;</span><span class="p">})</span>    
+
+
+<span class="c1"># match Emotion scans and their SBRefs</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">176</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;EMOTION&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">emotion</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;Emotion&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;SBRef&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">emotion_sbref</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">})</span>
+</code></pre></div>
+<p>For resting state scans, we matched on having 'REST' in the name and the direction the scan was acquired in. We also matched based on the number of volumes to differentiate between the BOLD scans and their SBRefs. The same thing was done for the Emotion scan and its SBRef minus the direction information.</p>
+<h3 id="diffusion">Diffusion<a class="headerlink" href="#diffusion" title="Permanent link">&para;</a></h3>
+<p>The diffusion block looks very similar to the functional block since we are adding both direction and run number to the key. Again, since the diffusion scans are also multiband, there will be SBRef volumes to convert as well. These SBrefs will have the same <code>sbref</code> tag at the end that the functional SBRefs had, but are differentiated by being stored in the <code>dwi</code> output directory with the diffusion scans.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dwi</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/dwi/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_dir-</span><span class="si">{dir}</span><span class="s1">_run-</span><span class="si">{item:01d}</span><span class="s1">_dwi&#39;</span><span class="p">)</span>
+<span class="n">dwi_sbref</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/dwi/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_dir-</span><span class="si">{dir}</span><span class="s1">_run-</span><span class="si">{item:01d}</span><span class="s1">_sbref&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>The key association portion will also look similar to the functional section, substituting in diffusion scan information where necessary. Since we only have one overall type of diffusion scan (as opposed to task and rest being different for functionals), we will match on the 'dMRI' in the name as well as the direction.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># match full diffusion scans including direction</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">99</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;dMRI&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;AP&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">dwi</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;AP&#39;</span><span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">99</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;dMRI&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;PA&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">dwi</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;PA&#39;</span><span class="p">})</span>
+
+<span class="c1"># match diffusion SBRef including direction to match the full dwi</span>
+<span class="c1"># scan names</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;dMRI&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;AP&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">dwi_sbref</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;AP&#39;</span><span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;dMRI&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;PA&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+    <span class="n">info</span><span class="p">[</span><span class="n">dwi_sbref</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;PA&#39;</span><span class="p">})</span>
+</code></pre></div>
+<p>These block together form the full heuristic file we will use for sorting these data into BIDS format.The full heuristic file for this example, including the matching criteria, can be seen below:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">create_key</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">outtype</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;nii.gz&#39;</span><span class="p">,),</span> <span class="n">annotation_classes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">template</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">template</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Template must be a valid format string&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">template</span><span class="p">,</span> <span class="n">outtype</span><span class="p">,</span> <span class="n">annotation_classes</span>
+
+
+<span class="k">def</span> <span class="nf">infotodict</span><span class="p">(</span><span class="n">seqinfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Heuristic evaluator for determining which runs belong where</span>
+
+<span class="sd">    allowed template fields - follow python string module:</span>
+
+<span class="sd">    item: index within category</span>
+<span class="sd">    subject: participant id</span>
+<span class="sd">    seqitem: run number during scanning</span>
+<span class="sd">    subindex: sub index within group</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">########################## Scan Keys ##############################</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/anat/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_T1w&#39;</span><span class="p">)</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/anat/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_T2w&#39;</span><span class="p">)</span>
+
+    <span class="n">fmap</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/fmap/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_dir-</span><span class="si">{dir}</span><span class="s1">_run-</span><span class="si">{item:01d}</span><span class="s1">_epi&#39;</span><span class="p">)</span>
+
+    <span class="n">rest</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/func/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_task-rest_dir-</span><span class="si">{dir}</span><span class="s1">_run-</span><span class="si">{item:01d}</span><span class="s1">_bold&#39;</span><span class="p">)</span>
+    <span class="n">rest_sbref</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/func/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_task-rest_dir-</span><span class="si">{dir}</span><span class="s1">_run-</span><span class="si">{item:01d}</span><span class="s1">_sbref&#39;</span><span class="p">)</span>
+
+    <span class="n">emotion</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/func/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_task-Emotion_run-</span><span class="si">{item:01d}</span><span class="s1">_bold&#39;</span><span class="p">)</span>
+    <span class="n">emotion_sbref</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/func/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_task-Emotion_run-</span><span class="si">{item:01d}</span><span class="s1">_sbref&#39;</span><span class="p">)</span>
+
+    <span class="n">dwi</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/dwi/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_dir-</span><span class="si">{dir}</span><span class="s1">_run-</span><span class="si">{item:01d}</span><span class="s1">_dwi&#39;</span><span class="p">)</span>
+    <span class="n">dwi_sbref</span> <span class="o">=</span> <span class="n">create_key</span><span class="p">(</span><span class="s1">&#39;sub-</span><span class="si">{subject}</span><span class="s1">/</span><span class="si">{session}</span><span class="s1">/dwi/sub-</span><span class="si">{subject}</span><span class="s1">_</span><span class="si">{session}</span><span class="s1">_dir-</span><span class="si">{dir}</span><span class="s1">_run-</span><span class="si">{item:01d}</span><span class="s1">_sbref&#39;</span><span class="p">)</span>
+
+    <span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="n">t1</span><span class="p">:[],</span> <span class="n">t2</span><span class="p">:[],</span> <span class="n">fmap</span><span class="p">:[],</span> <span class="n">rest</span><span class="p">:[],</span> <span class="n">emotion</span><span class="p">:[],</span> <span class="n">rest_sbref</span><span class="p">:[],</span> <span class="n">emotion_sbref</span><span class="p">:[],</span> <span class="n">dwi</span><span class="p">:[],</span> <span class="n">dwi_sbref</span><span class="p">:[]}</span>
+
+    <span class="c1">################# Associate Keys with Scans #######################</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">seqinfo</span><span class="p">):</span>
+        <span class="c1"># match T1 and T2 scans. No appending due to only wanting a single</span>
+        <span class="c1"># of each type</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim3</span> <span class="o">==</span> <span class="mi">208</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;T1w&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">protocol_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;NORM&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">image_type</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">t1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim3</span> <span class="o">==</span> <span class="mi">208</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;T2w&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">protocol_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;NORM&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">image_type</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">t2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">]</span>
+
+        <span class="c1"># match phase-encoded fieldmaps including direction</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;SpinEchoFieldMap_AP&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">protocol_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">fmap</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;AP&#39;</span><span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;SpinEchoFieldMap_PA&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">protocol_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">fmap</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;PA&#39;</span><span class="p">})</span>
+
+        <span class="c1"># match full functional scans including direction for the REST scans</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">420</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;REST&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;AP&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">rest</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;AP&#39;</span><span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">420</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;REST&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;PA&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">rest</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;PA&#39;</span><span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;REST&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;AP&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">rest_sbref</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;AP&#39;</span><span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;REST&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;PA&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">rest_sbref</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;PA&#39;</span><span class="p">})</span>
+
+        <span class="c1"># match functional SBRef including direction to match the full functional scan names</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">176</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;EMOTION&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">emotion</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;EMOTION&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">emotion_sbref</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">})</span>
+
+        <span class="c1"># match full diffusion scans including direction</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">99</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;dMRI&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;AP&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">dwi</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;AP&#39;</span><span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">99</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;dMRI&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;PA&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">dwi</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;PA&#39;</span><span class="p">})</span>
+
+        <span class="c1"># match diffusion SBRef including direction to match the full dwi</span>
+        <span class="c1"># scan names</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;dMRI&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;AP&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">dwi_sbref</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;AP&#39;</span><span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;dMRI&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;PA&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dcm_dir_name</span><span class="p">):</span>
+            <span class="n">info</span><span class="p">[</span><span class="n">dwi_sbref</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">series_id</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">:</span><span class="s1">&#39;PA&#39;</span><span class="p">})</span>
+
+
+    <span class="k">return</span> <span class="n">info</span>
+</code></pre></div>
+<h2 id="step-3-bids-conversion">Step 3: BIDS Conversion<a class="headerlink" href="#step-3-bids-conversion" title="Permanent link">&para;</a></h2>
+<p>At this point, the heuristic is set up, and the last step is performing the sort. The command looks very similar to that in Step 1, with a couple of changes. The command we use here is:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Give a path to the dataset directory that we can use </span>
+<span class="nv">BASE_DIR</span><span class="o">=</span>/data/project/genlab/datasets/D01
+
+heudiconv -s S101 -ss <span class="m">01</span> -d <span class="nv">$BASE_DIR</span>/dicom/<span class="o">{</span>subject<span class="o">}</span>/ses-<span class="o">{</span>session<span class="o">}</span>/*/*.dcm -o <span class="nv">$BASE_DIR</span>/nifti -f <span class="nv">$BASE_DIR</span>/heuristic.py -c dcm2niix -b --overwrite
+</code></pre></div>
+<p>The only options that have changed are:</p>
+<ul>
+<li><code>-f</code>: changed from convertall to the path to the heuristic</li>
+<li><code>-c</code>: changed from none to dcm2niix</li>
+<li><code>-b</code>: added</li>
+</ul>
+<h2 id="step-4-clean-up">Step 4: Clean Up<a class="headerlink" href="#step-4-clean-up" title="Permanent link">&para;</a></h2>
+<p>After BIDS conversion, there are a couple of things that need to be done as cleanup: changing permissions for your images and associating any fieldmaps with functional and diffusion images.</p>
+<h3 id="file-permissions">File Permissions<a class="headerlink" href="#file-permissions" title="Permanent link">&para;</a></h3>
+<p>By default, HeuDiConv makes all output files read-only. This causes some issues with some software, such as fmriprep, which need write permissions on the json and images files to operate correctly. Changing file permissions is straightforward:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># change the permissions of all of the files in the BIDS directory to have user and group write permissions</span>
+find <span class="nv">$base_dir</span>/nifti/&lt;BIDS subject name&gt; -exec chmod ug+w <span class="o">{}</span> <span class="se">\;</span>
+find <span class="nv">$base_dir</span>/nifti/.heudiconv/&lt;BIDS subject name&gt; -exec chmod ug+w <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div>
+<p>These lines are included at the end of the <a href="../heudiconv_scripts/">example scripts</a> and will add user and group write permissions for the BIDS files.</p>
+<h3 id="associating-fieldmaps-with-func-and-dwi-scans">Associating FieldMaps with Func and DWI scans<a class="headerlink" href="#associating-fieldmaps-with-func-and-dwi-scans" title="Permanent link">&para;</a></h3>
+<p>Some preprocessing pipelines will automatically perform distortion correction on EPI images using fieldmaps, if you have acquired them. However, there's no metadata automatically created associating fieldmaps with the EPI scans they are used to correct, and so needs to be added manually. You do this by adding the <code>"IntendedFor"</code> field to the json sidecars. An example of this field can be seen below:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;IntendedFor&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;dwi/sub-S01_dir-AP_run-1_dwi.nii.gz&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;func/sub-S01_task-rest_dir-AP_run-1_bold.nii.gz&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;func/sub-S01_task-rest_dir-PA_run-2_bold.nii.gz&quot;</span><span class="w"></span>
+<span class="p">],</span><span class="w"></span>
+</code></pre></div>
+<p>The names of the files should change to match your BIDS files. If you have collected a single set of fieldmaps (e.g. AP and PA spin echo fieldmaps), the IntendedFor fields should be the same for both of them. If you have collected multiple sets through the same scan session, you will need to choose which scans each individual fieldmap or fieldmap set will be intended for.</p>
+<p>An example use case for this would be reaquiring field maps after letting the participant out of the scanner for a break in the middle of a session. The reacquired field maps would be intended for EPI images only acquired after the break while the original field maps would be intended for scans acquired before the break. Each EPI scan should only be named in an IntendedFor field for a single fieldmap or fieldmap set.</p>
+<h2 id="bids-outputs">BIDS Outputs<a class="headerlink" href="#bids-outputs" title="Permanent link">&para;</a></h2>
+<p>Once the function finishes, there will a subject and session path in the <code>$BASE_DIR/nifti</code> directory that leads to the BIDS converted files. For this example, there will be <code>anat</code>, <code>fmap</code>, <code>func</code>, and <code>dwi</code> folders. The output file structure for these folders can be seen below.</p>
+<p><strong>D01/nifti/sub-S101/ses-01/anat:</strong></p>
+<figure>
+<p><div class="lightgallery"><a data-sub-html="BIDS anatomical output" href="../images/anat-output.png"><img alt="BIDS anatomical output" src="../images/anat-output.png" /></a></div></p>
+</figure>
+<hr />
+<p><strong>D01/nifti/sub-S101/ses-01/fmap:</strong></p>
+<figure>
+<p><div class="lightgallery"><a data-sub-html="BIDS fieldmap output" href="../images/fmap-output.png"><img alt="BIDS fieldmap output" src="../images/fmap-output.png" /></a></div></p>
+</figure>
+<hr />
+<p><strong>D01/nifti/sub-S101/ses-01/func:</strong></p>
+<figure>
+<p><div class="lightgallery"><a data-sub-html="BIDS functional output" href="../images/func-output.png"><img alt="BIDS functional output" src="../images/func-output.png" /></a></div></p>
+</figure>
+<hr />
+<p><strong>D01/nifti/sub-S101/ses-01/dwi:</strong></p>
+<figure>
+<p><div class="lightgallery"><a data-sub-html="BIDS diffusion output" href="../images/dwi-output.png"><img alt="BIDS diffusion output" src="../images/dwi-output.png" /></a></div></p>
+</figure>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../principles/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Basic BIDS Principles" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Basic BIDS Principles
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../heudiconv_scripts/" class="md-footer__link md-footer__link--next" aria-label="Next: Example Scripts" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Example Scripts
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [{"tabs": true}, "navigation.indexes", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+
+      <script src="../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+<script>
+  var elements = document.getElementsByClassName("lightgallery");
+  for (var i = 0; i < elements.length; i++) {
+    lightGallery(elements[i]);
+  }
+</script>
+
+  </body>
+</html>

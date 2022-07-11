@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.183">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>CIFTI Analysis Example</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="cifti-example_files/libs/clipboard/clipboard.min.js"></script>
+  <script src="cifti-example_files/libs/quarto-html/quarto.js"></script>
+  <script src="cifti-example_files/libs/quarto-html/popper.min.js"></script>
+  <script src="cifti-example_files/libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="cifti-example_files/libs/quarto-html/anchor.min.js"></script>
+  <link href="cifti-example_files/libs/quarto-html/tippy.css" rel="stylesheet">
+  <link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="cifti-example_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="cifti-example_files/libs/quarto-html/quarto-syntax-highlighting-dark.css">
+  <script src="cifti-example_files/libs/bootstrap/bootstrap.min.js"></script>
+  <link href="cifti-example_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="cifti-example_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="cifti-example_files/libs/bootstrap/bootstrap-dark.min.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+<li><a href="#libraries" id="toc-libraries" class="nav-link" data-scroll-target="#libraries">Libraries</a></li>
+<li><a href="#creating-a-function" id="toc-creating-a-function" class="nav-link" data-scroll-target="#creating-a-function">Creating a Function</a></li>
+<li><a href="#applying-the-function" id="toc-applying-the-function" class="nav-link" data-scroll-target="#applying-the-function">Applying the Function</a></li>
+<li><a href="#calculate-stats-and-plot" id="toc-calculate-stats-and-plot" class="nav-link" data-scroll-target="#calculate-stats-and-plot">Calculate Stats and Plot</a></li>
+</ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block default">
+
+<div class="quarto-title"><h1 class="title display-7">CIFTI Analysis Example</h1></div></header>
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>We’ve gone through a general tutorial about how to import and work with the cifti format in R, so this document will give a short example of how to calculate average thickness within FreeSurfer’s <code>aparc</code> parcellation labels for three participants. These labels are automatically transferred to <code>fs_LR</code> space by HCP’s Structural Preprocessing Pipeline and can be exported by fmriprep as well. We will be using data from the <code>fs_LR_32k</code> atlas in cifti space. The same general process can be done for gifti as well.</p>
+</section>
+<section id="libraries" class="level2">
+<h2 class="anchored" data-anchor-id="libraries">Libraries</h2>
+<p>For this, we will only need the <code>cifti</code> and <code>tidyverse</code> packages.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifti)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-a-function" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-function">Creating a Function</h2>
+<p>We can create a custom function and apply it using the <code>purrr</code> package to wrangle the same data for three different participants. This function will read in a participant’s <code>thickness</code> and <code>aparc</code> cifti files, organize those data into data frames, and then join them together.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>import_ciftis <span class="ot">&lt;-</span> <span class="cf">function</span>(subj){</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read in aparc cifti and get aparc of key-area pairs</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  aparc_cii <span class="ot">&lt;-</span> <span class="fu">read_cifti</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>,subj,<span class="st">'fsaverage_LR32k'</span>,<span class="fu">paste0</span>(subj,<span class="st">'.aparc.32k_fs_LR.dlabel.nii'</span>)))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  aparc_table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">key =</span> aparc_cii<span class="sc">$</span>NamedMap<span class="sc">$</span>look_up_table[[<span class="dv">1</span>]]<span class="sc">$</span>Key,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">area =</span> aparc_cii<span class="sc">$</span>NamedMap<span class="sc">$</span>look_up_table[[<span class="dv">1</span>]]<span class="sc">$</span>Label)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert aparc data to tibble with hemisphere, vertex number, and assigned area key</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  aparc_lhvert <span class="ot">&lt;-</span> <span class="fu">length</span>(aparc_cii<span class="sc">$</span>BrainModel[[<span class="dv">1</span>]]) <span class="co"># number of left hemisphere vertices in aparc</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  aparc_rhvert <span class="ot">&lt;-</span> <span class="fu">length</span>(aparc_cii<span class="sc">$</span>BrainModel[[<span class="dv">2</span>]]) <span class="co"># number of right hemisphere vertices in aparc</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  aparc_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">hemi =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'LH'</span>,<span class="st">'RH'</span>),<span class="at">times =</span> <span class="fu">c</span>(aparc_lhvert,aparc_rhvert)),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                       <span class="at">vertex =</span> <span class="fu">c</span>(aparc_cii<span class="sc">$</span>BrainModel[[<span class="dv">1</span>]],aparc_cii<span class="sc">$</span>BrainModel[[<span class="dv">2</span>]]),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                       <span class="at">key =</span> aparc_cii<span class="sc">$</span>data[<span class="dv">1</span><span class="sc">:</span>(aparc_lhvert<span class="sc">+</span>aparc_rhvert)])</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># join the table and the data together to get the assigned area for each vertex then drop the key</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  aparc <span class="ot">&lt;-</span> <span class="fu">left_join</span>(aparc_data, aparc_table, <span class="at">by =</span> <span class="st">'key'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>key)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read in thickness data and convert to a tibble with hemisphere, vertex number, and thickness</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  thick_cii <span class="ot">&lt;-</span> <span class="fu">read_cifti</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>,subj,<span class="st">'fsaverage_LR32k'</span>,<span class="fu">paste0</span>(subj,<span class="st">'.thickness.32k_fs_LR.dscalar.nii'</span>)))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  thick_lhvert <span class="ot">&lt;-</span> <span class="fu">length</span>(thick_cii<span class="sc">$</span>BrainModel[[<span class="dv">1</span>]]) <span class="co"># number of left hemisphere vertices in thickness cifti</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  thick_rhvert <span class="ot">&lt;-</span> <span class="fu">length</span>(thick_cii<span class="sc">$</span>BrainModel[[<span class="dv">2</span>]]) <span class="co"># number of right hemisphere vertices in thickness cifti</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  thick <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">hemi =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'LH'</span>,<span class="st">'RH'</span>),<span class="at">times =</span> <span class="fu">c</span>(thick_lhvert,thick_rhvert)),</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                  <span class="at">vertex =</span> <span class="fu">c</span>(thick_cii<span class="sc">$</span>BrainModel[[<span class="dv">1</span>]],</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                             thick_cii<span class="sc">$</span>BrainModel[[<span class="dv">2</span>]]), <span class="co"># concatenate the vertex numbers</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                  <span class="at">thickness =</span> thick_cii<span class="sc">$</span>data[<span class="dv">1</span><span class="sc">:</span>(thick_lhvert <span class="sc">+</span> thick_rhvert)]) <span class="co"># get data for all vertices</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># join aparc and thickness together by hemisphere and vertex number, then drop vertices with "???" area</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  combined <span class="ot">&lt;-</span> <span class="fu">right_join</span>(aparc, thick, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">'hemi'</span>,<span class="st">'vertex'</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(area <span class="sc">!=</span> <span class="st">"???"</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add the subject name to the final dataframe and move it to the beginning</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  combined <span class="ot">&lt;-</span> combined <span class="sc">%&gt;%</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">PID =</span> subj) <span class="sc">%&gt;%</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">relocate</span>(PID, <span class="at">.before =</span> <span class="st">'hemi'</span>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A couple of notes about this function:</p>
+<ol type="1">
+<li>Paths and file names are hard-coded because the only difference in file paths across subjects is the subject name. For less organized data, full file paths may need to be given instead of assumed in the function.</li>
+<li>Because the values in the <code>aparc</code> data field are just the key values, we needed to make a table first that gives the area names and their associated key values to merge with the data. Integer keys by themselves are meaningless without the associated area.</li>
+<li>The left join at the end of the aparc replicates the area names for each time the associates key was found. This gives an output tibble with size equal to the <code>aparc</code> data size.</li>
+<li>We calculated the vertex numbers for <code>aparc</code> and <code>thick</code> individually instead of assuming all vertices that had an aparc value also had a thickness value and vice-versa. In this case, assuming would have worked but in cases where you’re dealing with a partial parcellation or individual labels you have created that don’t cover the entire brain, calculating single vertex values and applying them across all maps would have given an incorrect data frame at the end. In general, if you don’t know that the set of vertices with assigned data in your files are identical, calculating vertex counts for each type of file is suggested.</li>
+<li>If there is other cleaning that needs to be done to your data after import that is the same across participants, it’s best to include in the function instead of doing after all of the data has been concatenated. R is much faster when altering smaller dataframes as opposed to larger ones. This is especially true for timeseries data as the concatenated data frame can be extremely large.</li>
+</ol>
+</section>
+<section id="applying-the-function" class="level2">
+<h2 class="anchored" data-anchor-id="applying-the-function">Applying the Function</h2>
+<p>As mentioned before, we can apply the function to each subject in our <code>data</code> folder using <code>map_df</code> from <code>purrr</code>. If you haven’t used the <code>map</code> functions before, they operate similarly to the family of <code>apply</code> functions from base R. In their basic form, you pass a vector of values to <code>map</code> as well as a function name. The function is then run on each element of the vector. In essence, it’s a simplified <code>for</code> loop. <code>map</code> can be customized to return a specific data type at the end of processing by adding tags, in our case <code>_df</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subject names are listed as folder names in 'data'. turn off recursive search and full names</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>subs <span class="ot">&lt;-</span> <span class="fu">list.dirs</span>(<span class="st">'data'</span>,<span class="at">recursive =</span> <span class="cn">FALSE</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># apply import_ciftis to each element of subs. The .x is a replacement variable for the subject name</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>full_thick <span class="ot">&lt;-</span> <span class="fu">map_df</span>(subs, <span class="sc">~</span><span class="fu">import_ciftis</span>(.x))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(full_thick)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>Rows: 175,982
+Columns: 5
+$ PID       &lt;chr&gt; "102109", "102109", "102109", "102109", "102109", "102109", …
+$ hemi      &lt;chr&gt; "LH", "LH", "LH", "LH", "LH", "LH", "LH", "LH", "LH", "LH", …
+$ vertex    &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
+$ area      &lt;chr&gt; "L_isthmuscingulate", "L_postcentral", "L_precentral", "L_su…
+$ thickness &lt;dbl&gt; 3.162518, 2.270701, 3.053933, 3.499338, 2.217890, 2.389992, …</code></pre>
+</div>
+</div>
+</section>
+<section id="calculate-stats-and-plot" class="level2">
+<h2 class="anchored" data-anchor-id="calculate-stats-and-plot">Calculate Stats and Plot</h2>
+<p>From here, we can do whatever stats we want to do for our analysis. In this case, we will just calculate the average thickness in each region in aparc. In this case, the area names already have hemisphere tags, we so don’t need to group by the hemisphere.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>thick_stats <span class="ot">&lt;-</span> full_thick <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PID, area) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_thick_subject =</span> <span class="fu">mean</span>(thickness)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(thick_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>Rows: 204
+Columns: 3
+$ PID                &lt;chr&gt; "102109", "102109", "102109", "102109", "102109", "…
+$ area               &lt;chr&gt; "L_bankssts", "L_caudalanteriorcingulate", "L_cauda…
+$ mean_thick_subject &lt;dbl&gt; 2.695727, 2.692136, 2.631260, 1.973687, 3.136468, 2…</code></pre>
+</div>
+</div>
+<p>We can also create a simple bar graph of the 5 thickest and thinnest areas on average across participants.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate mean thickness across participants</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>group_stats <span class="ot">&lt;-</span> thick_stats <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(area) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_thick =</span> <span class="fu">mean</span>(mean_thick_subject))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># get 5 thickest and thinnest areas, then start plotting</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>group_stats <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(mean_thick) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,(<span class="fu">n</span>()<span class="sc">-</span><span class="dv">4</span>)<span class="sc">:</span><span class="fu">n</span>())) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mean_thick, <span class="at">y =</span> <span class="fu">reorder</span>(area,mean_thick))) <span class="sc">+</span> <span class="co"># reorder will plot in order of mean_thick instead of abc</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">'identity'</span>) <span class="sc">+</span> <span class="co"># plot actual thickness value instead of count</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">''</span>, <span class="at">x =</span> <span class="st">"Mean Cortical Thickness (mm)"</span>, <span class="at">title =</span> <span class="st">"5 Thickest and Thinnest Areas"</span>) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="cifti-example_files/figure-html/simple%20bar%20graph-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+</section>
+</main>
+<!-- /main column -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+    } else {
+      disableStylesheet(alternateStylesheets);
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>

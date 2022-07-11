@@ -1,0 +1,44 @@
+:root {
+    --md-primary-fg-color: #1e6b52;
+  }
+  
+  .md-grid {
+    max-width: 90%;
+  }
+  
+  .md-content a {
+    color: revert;
+  }
+  
+  .md-content a:visited {
+    color: revert;
+  }
+  
+  .md-content a:hover {
+    color: revert;
+    border-bottom: 1px solid;
+  }
+  
+  .md-typeset .headerlink:hover {
+    border-bottom: none;
+  }
+  
+  html .md-footer-meta.md-typeset a.supportemail {
+    color: #aaaaff;
+  }
+  
+  img[alt$=">"] {
+      float: right;
+    }
+    
+  img[alt$="<"] {
+      float: left;
+    }
+    
+  img[alt$="><"] {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: auto;
+      float: none!important;
+    }
