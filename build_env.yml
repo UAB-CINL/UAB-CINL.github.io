@@ -6,6 +6,7 @@ dependencies:
   - jinja2=3.0.3
   - markupsafe=2.0.1
   - mkdocs=1.2.3
+  - markdown=3.3.7
   - mkdocs-material=8.1.6
   - mkdocs-material-extensions=1.0.3
   - mkdocs-table-reader-plugin=1.0.0
