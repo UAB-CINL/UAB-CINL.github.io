@@ -6,7 +6,7 @@
 
 One of the best ways to get your files to XNAT is to send them directly from the scanner immediately after the scan session ends. Anything sent using this method will go to XNAT, but if you want your files to be associated with your porject, and want to access your files without the help of an administrator, you should make sure you know your project's Project ID. If you are collection data for a new project, it only takes a few minutes to [create a new project in XNAT](projects.md#creating-a-new-project)
 
-In order to associate the scans with your project, you need to add a tag with your Project ID during the scan setup process. Once you make it to the Patient Confirmation page, locate the **Study Comment** entry under **Requested Procedure**. Input "Project: *your project ID*" with no quotes. For example, if a Project ID was BRF, you would insert "Project ID: BRF" with no quotes.
+In order to associate the scans with your project, you need to add a tag with your Project ID during the scan setup process. Once you make it to the Patient Confirmation page, locate the **Study Comment** entry under **Requested Procedure**. Input "Project: *your project ID*" with no quotes. For example, if a Project ID was BRF, you would insert "Project: BRF" with no quotes.
 
 ![! Study Comments ><](images/study-comments.png)
 
@@ -16,9 +16,11 @@ Once you have completed data collection, locate your data in the Patient Browser
 
 In the Patient Browser window, select Transfer >> Send To and select XNAT. Select Send to queue your files to be sent to XNAT. This process can be slow, but will operate in the background of the computer, allowing subsequent investigators to begin scanning. Send to OSIRIX in the same way to have a  backup.
 
+<!-- markdownlint-disable MD046 -->
 !!! note
 
     Only files in DICOM format can be sent to XNAT from the Prisma scanner. Magnetic resonance spectroscopy images cannot be sent to or stored on XNAT. These scans will have to be downloaded directly from the scanner.
+<!-- markdownlint-enable MD046 -->
 
 ### DicomBrowser
 
