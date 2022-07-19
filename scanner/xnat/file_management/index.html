@@ -1143,15 +1143,18 @@
 <h2 id="uploading-files">Uploading Files<a class="headerlink" href="#uploading-files" title="Permanent link">&para;</a></h2>
 <h3 id="uploading-from-the-scanner">Uploading from the scanner<a class="headerlink" href="#uploading-from-the-scanner" title="Permanent link">&para;</a></h3>
 <p>One of the best ways to get your files to XNAT is to send them directly from the scanner immediately after the scan session ends. Anything sent using this method will go to XNAT, but if you want your files to be associated with your porject, and want to access your files without the help of an administrator, you should make sure you know your project's Project ID. If you are collection data for a new project, it only takes a few minutes to <a href="../projects/#creating-a-new-project">create a new project in XNAT</a></p>
-<p>In order to associate the scans with your project, you need to add a tag with your Project ID during the scan setup process. Once you make it to the Patient Confirmation page, locate the <strong>Study Comment</strong> entry under <strong>Requested Procedure</strong>. Input "Project: <em>your project ID</em>" with no quotes. For example, if a Project ID was BRF, you would insert "Project ID: BRF" with no quotes.</p>
+<p>In order to associate the scans with your project, you need to add a tag with your Project ID during the scan setup process. Once you make it to the Patient Confirmation page, locate the <strong>Study Comment</strong> entry under <strong>Requested Procedure</strong>. Input "Project: <em>your project ID</em>" with no quotes. For example, if a Project ID was BRF, you would insert "Project: BRF" with no quotes.</p>
 <p><div class="lightgallery"><a data-sub-html=" Study Comments &gt;&lt;" href="../images/study-comments.png"><img alt=" Study Comments &gt;&lt;" src="../images/study-comments.png" /></a></div></p>
 <p>Once you have completed data collection, locate your data in the Patient Browser. Select the folder with your patient's name. Do not select any of the scans, only select the folder with the patient name.</p>
 <p><div class="lightgallery"><a data-sub-html=" Patient Browser &gt;&lt;" href="../images/patient-browser.png"><img alt=" Patient Browser &gt;&lt;" src="../images/patient-browser.png" /></a></div></p>
 <p>In the Patient Browser window, select Transfer &gt;&gt; Send To and select XNAT. Select Send to queue your files to be sent to XNAT. This process can be slow, but will operate in the background of the computer, allowing subsequent investigators to begin scanning. Send to OSIRIX in the same way to have a  backup.</p>
+<!-- markdownlint-disable MD046 -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Only files in DICOM format can be sent to XNAT from the Prisma scanner. Magnetic resonance spectroscopy images cannot be sent to or stored on XNAT. These scans will have to be downloaded directly from the scanner.</p>
 </div>
+<!-- markdownlint-enable MD046 -->
+
 <h3 id="dicombrowser">DicomBrowser<a class="headerlink" href="#dicombrowser" title="Permanent link">&para;</a></h3>
 <p>DicomBrowser can be used to view images stored on your computer or flash drive and can upload them to XNAT. It is available on Mac, Windows, and Linux from <a href="https://wiki.xnat.org/xnat-tools/dicombrowser">https://wiki.xnat.org/xnat-tools/dicombrowser</a>.</p>
 <p>You can open individual images or folders of images by clicking File &gt;&gt; Open and navigating to the location of the files on your computer. Once DicomBrowser loads your files, you can select one or more files or folders and click View &gt;&gt; View selected images to open up a toolbar that allows you to view, animate, and process your files. If you save after processing your files, DicomBrowser will overwrite the original image files, so it is always important to have a backup copy of your data.</p>
