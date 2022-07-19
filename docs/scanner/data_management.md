@@ -8,7 +8,7 @@ To transfer scans to OSIRIX, perform the following steps:
 
 1. Open the patient file browser
 
-    ![! Patient browser ><](xnat/images/patient-browser.png)
+    ![! Patient browser](xnat/images/patient-browser.png)
 
 2. Select the participant you would like to transfer
 3. Select Transfer >> Send To >> OSIRIX
