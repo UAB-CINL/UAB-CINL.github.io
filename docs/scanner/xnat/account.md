@@ -18,7 +18,7 @@ There are 3 ways in which a user account can be created:
 
 In a standard XNAT installation, user accounts must be created by either the user themselves or by the site administrator. Users will be given the option of registering for an account when they first visit the site. At UAB, navigate to xnat.rc.uab.edu/xnat and click Register on the home page. The following registration page will appear
 
-![! Registration ><](images/registration.png)
+![! Registration](images/registration.png)
 
 Fill out all of fields and submit registration. Your account should be ready to use.
 
