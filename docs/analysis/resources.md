@@ -34,3 +34,39 @@ He also has [video series](https://www.andysbrainblog.com/videos) going through 
 
 1. [Main QSIprep Docs](https://qsiprep.readthedocs.io/en/stable/)
 2. [QSIprep Cheaha Video Tutorial](https://youtu.be/vJ6-wNgnNtI)
+
+## Data Repositories
+
+Some projects may want to take advantage of published data. This is a short list of repositories for MRI data with different modalities and participant demographics. If you would like a repository added to this list, please submit an issue on our documentation's [github page](https://github.com/UAB-CINL/UAB-CINL.github.io).
+
+### Human Connectome Project
+
+1. [Young Adult Dataset](https://www.humanconnectome.org/study/hcp-young-adult)
+   1. [Database site](db.humanconnectome.org). Data collection has completed
+   2. Demographics: >1000 Healthy participants aged 18-32
+   3. Accessibility: Free account available to anyone associated with a university. No access renewal required
+2. [Aging Dataset](https://www.humanconnectome.org/study/hcp-lifespan-aging)
+   1. [Database Site](https://nda.nih.gov/general-query.html?q=query=featured-datasets:HCP%20Aging%20and%20Development). Data collection is ongoing.
+   2. Demographics: 1200 healthy participants aged 36-100+
+   3. Accessibility: Access via NDAR account. Access must be renewed yearly
+3. [Development Dataset](https://www.humanconnectome.org/study/hcp-lifespan-development)
+   1. [Database Site](https://nda.nih.gov/general-query.html?q=query=featured-datasets:HCP%20Aging%20and%20Development). Data collection is ongoing.
+   2. Demographics: 1350 healthy participants aged 5-21
+   3. Accessibility: Access via NDAR account. Access must be renewed yearly
+
+### Adolescent Brain Cognitive Development
+
+1. [Main site](https://abcdstudy.org/)
+2. [Database Site](https://nda.nih.gov/general-query.html?q=query=featured-datasets:Adolescent%20Brain%20Cognitive%20Development%20Study%20(ABCD))
+3. Demographics: 12,000 children originally aged 8-10. Longitudinal scans over 10 years.
+4. Accessibility: Access via NDAR account. Access must be renewed yearly
+
+### Alzheimers Disease Neuroimaging Initiative
+
+1. [Main Site](https://adni.loni.usc.edu/)
+2. Demographics: >400 AD patients and controls. See exact breakdown across the multiple studies on [their site](https://adni.loni.usc.edu/about/)
+3. Accessibility: See [details](https://adni.loni.usc.edu/data-samples/access-data/)
+
+### OpenfMRI
+
+[OpenfMRI](https://openfmri.org/) is a data warehouse containing a large number of publicly available datasets. These data are distributed using a Pulic Domain license, and so no registration or license agreement is necessary for accessing these data. Data scope and type vary highly across submitted studies. These data can be useful for both analyis for the purpose of publishing as well as teaching and learning.
