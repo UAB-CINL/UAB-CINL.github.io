@@ -12,7 +12,7 @@ To be present during an MRI scan, you must read over the following documents reg
 - [Safety Training Policies and Procedures](https://uab365.sharepoint.com/:b:/r/sites/som/circ/cinl/Shared%20Documents/Training/L2%20Safety%20Training.pdf?csf=1&web=1&e=GcfDmX)
 - [Safety Test](https://uab365.sharepoint.com/:b:/r/sites/som/circ/cinl/Shared%20Documents/Training/L2%20Safety%20Test.pdf?csf=1&web=1&e=6vTyPl)
 
-After safety training is complete, a researcher can be operationally certified by scheduling operational training and testing through Eleanor and Elizabeth.
+MRI Safety trained users may seek Operational Certification (O.C.) by first contacting Elizabeth and/or Eleanor, then either working with CINL staff or an O.C. user to train prior to certification. Anyone seeking Operational Certification (O.C.) must email either Elizabeth and/or Eleanor prior to training. Failure to report scanner operations training to CINL Leadership is a safety concern and will lead to disciplinary actions and may void O.C. status for the research group involved. After OC training, please contact Elizabeth ekingram@uabmc.edu to schedule on-site certification
 
 ## MRI Key Card Access
 
