@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD024 -->
 
-This page provides links to written documentation, tutorials, and videos for relevent software in neuroimaging analysis. Most video links on the page will go to the [MRI analysis](https://www.youtube.com/playlist?list=PLfodFxaCrr0eNkoc2F1IOidg4qe_TuOT4) playlist on UAB Research Computing's Youtube channel.
+This page provides links to written documentation, tutorials, and videos for relevent software in neuroimaging analysis.
 
 ## Andy's Brain Book
 
@@ -10,7 +10,19 @@ This page provides links to written documentation, tutorials, and videos for rel
 
 He also has [video series](https://www.andysbrainblog.com/videos) going through different types of analyses himself.
 
+## Learning Neuroscience
+
+A variety of message boards and mailing lists exist when searching for answers in neuroscience or in general. There are also various conferences and courses you can take to learn more about neuroimaging analysis. A list of some of the more helpful ones can be seen below:
+
+1. [Neurostars](https://neurostars.org/): message board with a wide array of neuroscience topics.
+2. [NITRC](https://www.nitrc.org/): focuses more on specific software and technical questions in neuroimaging
+3. [Neurohackademy](https://neurohackademy.org/): A summer school in neuroimaging and data science at University of Washington. Also have recordings of courses from previous years covering a huge variety of topics in the computational space.
+4. [Neuromatch](https://neuromatch.io/): online community of computational neuroscientists whose mission is to foster inclusive global interactions for learning, mentorship, networking, and professional development. There is an [academy](https://academy.neuromatch.io/) that focuses on teaching students through small group projects and a [conference](https://conference.neuromatch.io/) that provides a virtual platform for sharing scientific ideas and research.
+5. [A more complete list](https://docs.fedoraproject.org/en-US/neurofedora/related-links/)
+
 ## Software
+
+Most video links on the page will go to the [MRI analysis](https://www.youtube.com/playlist?list=PLfodFxaCrr0eNkoc2F1IOidg4qe_TuOT4) playlist on UAB Research Computing's Youtube channel.
 
 ### BIDS
 
@@ -42,17 +54,17 @@ Some projects may want to take advantage of published data. This is a short list
 ### Human Connectome Project
 
 1. [Young Adult Dataset](https://www.humanconnectome.org/study/hcp-young-adult)
-   1. [Database site](db.humanconnectome.org). Data collection has completed
-   2. Demographics: >1000 Healthy participants aged 18-32
-   3. Accessibility: Free account available to anyone associated with a university. No access renewal required
+    1. [Database site](db.humanconnectome.org). Data collection has completed
+    2. Demographics: >1000 Healthy participants aged 18-32
+    3. Accessibility: Free account available to anyone associated with a university. No access renewal required
 2. [Aging Dataset](https://www.humanconnectome.org/study/hcp-lifespan-aging)
-   1. [Database Site](https://nda.nih.gov/general-query.html?q=query=featured-datasets:HCP%20Aging%20and%20Development). Data collection is ongoing.
-   2. Demographics: 1200 healthy participants aged 36-100+
-   3. Accessibility: Access via NDAR account. Access must be renewed yearly
+    1. [Database Site](https://nda.nih.gov/general-query.html?q=query=featured-datasets:HCP%20Aging%20and%20Development). Data collection is ongoing.
+    2. Demographics: 1200 healthy participants aged 36-100+
+    3. Accessibility: Access via NDAR account. Access must be renewed yearly
 3. [Development Dataset](https://www.humanconnectome.org/study/hcp-lifespan-development)
-   1. [Database Site](https://nda.nih.gov/general-query.html?q=query=featured-datasets:HCP%20Aging%20and%20Development). Data collection is ongoing.
-   2. Demographics: 1350 healthy participants aged 5-21
-   3. Accessibility: Access via NDAR account. Access must be renewed yearly
+    1. [Database Site](https://nda.nih.gov/general-query.html?q=query=featured-datasets:HCP%20Aging%20and%20Development). Data collection is ongoing.
+    2. Demographics: 1350 healthy participants aged 5-21
+    3. Accessibility: Access via NDAR account. Access must be renewed yearly
 
 ### Adolescent Brain Cognitive Development
 
