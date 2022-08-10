@@ -54,17 +54,17 @@ Some projects may want to take advantage of published data. This is a short list
 ### Human Connectome Project
 
 1. [Young Adult Dataset](https://www.humanconnectome.org/study/hcp-young-adult)
-   1. [Database site](db.humanconnectome.org). Data collection has completed
-   2. Demographics: >1000 Healthy participants aged 18-32
-   3. Accessibility: Free account available to anyone associated with a university. No access renewal required
+    1. [Database site](db.humanconnectome.org). Data collection has completed
+    2. Demographics: >1000 Healthy participants aged 18-32
+    3. Accessibility: Free account available to anyone associated with a university. No access renewal required
 2. [Aging Dataset](https://www.humanconnectome.org/study/hcp-lifespan-aging)
-   1. [Database Site](https://nda.nih.gov/general-query.html?q=query=featured-datasets:HCP%20Aging%20and%20Development). Data collection is ongoing.
-   2. Demographics: 1200 healthy participants aged 36-100+
-   3. Accessibility: Access via NDAR account. Access must be renewed yearly
+    1. [Database Site](https://nda.nih.gov/general-query.html?q=query=featured-datasets:HCP%20Aging%20and%20Development). Data collection is ongoing.
+    2. Demographics: 1200 healthy participants aged 36-100+
+    3. Accessibility: Access via NDAR account. Access must be renewed yearly
 3. [Development Dataset](https://www.humanconnectome.org/study/hcp-lifespan-development)
-   1. [Database Site](https://nda.nih.gov/general-query.html?q=query=featured-datasets:HCP%20Aging%20and%20Development). Data collection is ongoing.
-   2. Demographics: 1350 healthy participants aged 5-21
-   3. Accessibility: Access via NDAR account. Access must be renewed yearly
+    1. [Database Site](https://nda.nih.gov/general-query.html?q=query=featured-datasets:HCP%20Aging%20and%20Development). Data collection is ongoing.
+    2. Demographics: 1350 healthy participants aged 5-21
+    3. Accessibility: Access via NDAR account. Access must be renewed yearly
 
 ### Adolescent Brain Cognitive Development
 
