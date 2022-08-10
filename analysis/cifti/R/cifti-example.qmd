@@ -7,6 +7,7 @@ format:
       dark: darkly
     toc: true
     toc-depth: 4
+    page-layout: full
 ---
 
 ## Introduction

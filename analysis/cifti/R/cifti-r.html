@@ -1,128 +1,148 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.183">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>The Cifti Data Structure in R</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
 
-  <script src="cifti-r_files/libs/clipboard/clipboard.min.js"></script>
-  <script src="cifti-r_files/libs/quarto-html/quarto.js"></script>
-  <script src="cifti-r_files/libs/quarto-html/popper.min.js"></script>
-  <script src="cifti-r_files/libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="cifti-r_files/libs/quarto-html/anchor.min.js"></script>
-  <link href="cifti-r_files/libs/quarto-html/tippy.css" rel="stylesheet">
-  <link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="cifti-r_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="cifti-r_files/libs/quarto-html/quarto-syntax-highlighting-dark.css">
-  <script src="cifti-r_files/libs/bootstrap/bootstrap.min.js"></script>
-  <link href="cifti-r_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-  <link class="quarto-color-scheme" href="cifti-r_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="cifti-r_files/libs/bootstrap/bootstrap-dark.min.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The Cifti Data Structure in R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="cifti-r_files/libs/clipboard/clipboard.min.js"></script>
+<script src="cifti-r_files/libs/quarto-html/quarto.js"></script>
+<script src="cifti-r_files/libs/quarto-html/popper.min.js"></script>
+<script src="cifti-r_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="cifti-r_files/libs/quarto-html/anchor.min.js"></script>
+<link href="cifti-r_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="cifti-r_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="cifti-r_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="cifti-r_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="cifti-r_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="cifti-r_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="cifti-r_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+
 </head>
+
 <body>
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
   <nav id="TOC" role="doc-toc">
-<h2 id="toc-title">Table of contents</h2>
-<ul>
-<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-<li><a href="#gifti" id="toc-gifti" class="nav-link" data-scroll-target="#gifti">GIFTI</a>
-<ul class="collapse">
-<li><a href="#surfaces" id="toc-surfaces" class="nav-link" data-scroll-target="#surfaces">Surfaces</a>
-<ul class="collapse">
-<li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
-</ul></li>
-<li><a href="#metric-and-label-data" id="toc-metric-and-label-data" class="nav-link" data-scroll-target="#metric-and-label-data">Metric and Label Data</a>
-<ul class="collapse">
-<li><a href="#metric" id="toc-metric" class="nav-link" data-scroll-target="#metric">Metric</a></li>
-<li><a href="#label" id="toc-label" class="nav-link" data-scroll-target="#label">Label</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#cifti" id="toc-cifti" class="nav-link" data-scroll-target="#cifti">CIFTI</a>
-<ul class="collapse">
-<li><a href="#subcortical-area-names" id="toc-subcortical-area-names" class="nav-link" data-scroll-target="#subcortical-area-names">Subcortical Area Names</a></li>
-<li><a href="#converting-to-data-frame" id="toc-converting-to-data-frame" class="nav-link" data-scroll-target="#converting-to-data-frame">Converting to Data Frame</a></li>
-</ul></li>
-</ul>
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#gifti" id="toc-gifti" class="nav-link" data-scroll-target="#gifti">GIFTI</a>
+  <ul class="collapse">
+  <li><a href="#surfaces" id="toc-surfaces" class="nav-link" data-scroll-target="#surfaces">Surfaces</a>
+  <ul class="collapse">
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
+  </ul></li>
+  <li><a href="#metric-and-label-data" id="toc-metric-and-label-data" class="nav-link" data-scroll-target="#metric-and-label-data">Metric and Label Data</a>
+  <ul class="collapse">
+  <li><a href="#metric" id="toc-metric" class="nav-link" data-scroll-target="#metric">Metric</a></li>
+  <li><a href="#label" id="toc-label" class="nav-link" data-scroll-target="#label">Label</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#cifti" id="toc-cifti" class="nav-link" data-scroll-target="#cifti">CIFTI</a>
+  <ul class="collapse">
+  <li><a href="#subcortical-area-names" id="toc-subcortical-area-names" class="nav-link" data-scroll-target="#subcortical-area-names">Subcortical Area Names</a></li>
+  <li><a href="#converting-to-data-frame" id="toc-converting-to-data-frame" class="nav-link" data-scroll-target="#converting-to-data-frame">Converting to Data Frame</a></li>
+  </ul></li>
+  </ul>
 </nav>
 </div>
-<main class="content" id="quarto-document-content">
-<header id="title-block-header" class="quarto-title-block default">
+<main class="content column-page-left" id="quarto-document-content">
 
-<div class="quarto-title"><h1 class="title display-7">The Cifti Data Structure in R</h1></div></header>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Cifti Data Structure in R</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
@@ -149,7 +169,7 @@ Note
 <h2 class="anchored" data-anchor-id="gifti">GIFTI</h2>
 <p>We will start with gifti because it is an easier format to understand and will help organize cifti data later on. All gifti data can be loaded using the <a href="https://cran.r-project.org/web/packages/gifti/index.html">gifti</a> library which can be downloaded from CRAN.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gifti)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gifti)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>All gifti data will be loaded using the <code>read_gifti</code> command. <code>readgii</code> and <code>readGIFTI</code> are both aliases for <code>read_gifti</code> and so can be used the same way as well if you prefer typing one of those. The output of these commands will be a named list.</p>
 <section id="surfaces" class="level3">
@@ -162,13 +182,13 @@ Note
 </div>
 <p>As said above, these surfaces can be imported using one of gifti’s <code>read</code> functions.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lhpial <span class="ot">&lt;-</span> <span class="fu">read_gifti</span>(<span class="st">'data/102109/fsaverage_LR32k/102109.L.pial.32k_fs_LR.surf.gii'</span>)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lhpial <span class="ot">&lt;-</span> <span class="fu">read_gifti</span>(<span class="st">'data/102109/fsaverage_LR32k/102109.L.pial.32k_fs_LR.surf.gii'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>rhpial <span class="ot">&lt;-</span> <span class="fu">read_gifti</span>(<span class="st">'data/102109/fsaverage_LR32k/102109.R.pial.32k_fs_LR.surf.gii'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Lists from gifti files are going to have 8 top-level fields with the following names:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lhpial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lhpial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] "data"                   "file_meta"              "data_meta"             
 [4] "version"                "transformations"        "parsed_transformations"
 [7] "label"                  "data_info"             </code></pre>
@@ -176,8 +196,8 @@ Note
 </div>
 <p>Most of the interesting information is in the <code>data</code> field of the output list.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lhpial<span class="sc">$</span>data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lhpial<span class="sc">$</span>data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>List of 2
  $ pointset: num [1:32492, 1:3] -4 -21.79 -52.8 -4.21 -25.59 ...
  $ triangle: int [1:64980, 1:3] 68 180 180 181 181 182 182 183 183 184 ...</code></pre>
@@ -201,13 +221,13 @@ Note
 </figure>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lhthick <span class="ot">&lt;-</span> <span class="fu">read_gifti</span>(<span class="st">'data/102109/fsaverage_LR32k/102109.L.thickness.32k_fs_LR.shape.gii'</span>)</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lhthick <span class="ot">&lt;-</span> <span class="fu">read_gifti</span>(<span class="st">'data/102109/fsaverage_LR32k/102109.L.thickness.32k_fs_LR.shape.gii'</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>rhthick <span class="ot">&lt;-</span> <span class="fu">read_gifti</span>(<span class="st">'data/102109/fsaverage_LR32k/102109.R.thickness.32k_fs_LR.shape.gii'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>These surfaces will have the same fields as the surface files.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lhthick)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lhthick)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] "data"                   "file_meta"              "data_meta"             
 [4] "version"                "transformations"        "parsed_transformations"
 [7] "label"                  "data_info"             </code></pre>
@@ -215,8 +235,8 @@ Note
 </div>
 <p>Similar to last time, the <code>data</code> field is the one of main interest and will contain at least one subfield, <code>normal</code> in this case.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lhthick<span class="sc">$</span>data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lhthick<span class="sc">$</span>data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>List of 1
  $ normal: num [1:32492, 1] 3.16 2.27 3.05 3.5 2.22 ...</code></pre>
 </div>
@@ -243,7 +263,7 @@ Base-0 and Base-1 Indexing
 </div>
 <p>While thickness data are stored in an array because each vertex only has a single thickness value, functional timeseries data are stored as a matrix. Functional data can be loaded and interacted with the same way though.</p>
 <div class="cell" data-hash="cifti-r_cache/html/load functional data_26e028f65b4286babc2451b4f53d55cf">
-<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lhrest_native <span class="ot">&lt;-</span> <span class="fu">read_gifti</span>(<span class="st">'data/102109/Results/rfMRI_REST1_LR/rfMRI_REST1_LR.L.native.func.gii'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lhrest_native <span class="ot">&lt;-</span> <span class="fu">read_gifti</span>(<span class="st">'data/102109/Results/rfMRI_REST1_LR/rfMRI_REST1_LR.L.native.func.gii'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -259,8 +279,8 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lhrest_native<span class="sc">$</span>data[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lhrest_native<span class="sc">$</span>data[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>List of 5
  $ normal: num [1:166272, 1] 7196 7087 7296 6051 6809 ...
  $ normal: num [1:166272, 1] 7273 7145 7323 5948 6840 ...
@@ -268,20 +288,20 @@ Note
  $ normal: num [1:166272, 1] 7413 7292 7497 6286 7138 ...
  $ normal: num [1:166272, 1] 7424 7261 7408 6295 7069 ...</code></pre>
 </div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(lhrest_native<span class="sc">$</span>data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(lhrest_native<span class="sc">$</span>data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] 1200</code></pre>
 </div>
 </div>
 <p>Now, the <code>data</code> field has more than one subfield, it now has 1200 subfields. This represents the 1200 timepoints in the scan. Each one of the subfields has 166272 values in it representing the scan value at each vertex in that hemisphere for a given timepoint (on the native space surface). Each timepoint is stored as an individual list of functional values within the <code>data</code> field.</p>
 <p>Storing timepoints as a series of lists can make the data difficult to work with. We can instead extract the data and store it in a simplified 2D matrix. Columns will represent timepoints which rows represent vertices, the standard representation for CIFTI data.</p>
 <div class="cell" data-hash="cifti-r_cache/html/gifti func to matrix_7f7843a4997539153bb9ce77a303f287">
-<div class="sourceCode" id="cb17"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>lhrest_native_data <span class="ot">&lt;-</span> <span class="fu">do.call</span>(cbind,lhrest_native<span class="sc">$</span>data)</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>lhrest_native_data <span class="ot">&lt;-</span> <span class="fu">do.call</span>(cbind,lhrest_native<span class="sc">$</span>data)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lhrest_native_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>[1] 166272</code></pre>
 </div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(lhrest_native_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(lhrest_native_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>[1] 1200</code></pre>
 </div>
@@ -293,13 +313,13 @@ Note
 <h4 class="anchored" data-anchor-id="label">Label</h4>
 <p>Label data are made up of integer values that each map to different names, typically for regions of interest or parcellation areas. Here, we will load the aparc label files that are automatically generated and transferred from FreeSurfer.</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lhlabel <span class="ot">&lt;-</span> <span class="fu">read_gifti</span>(<span class="st">'data/102109/fsaverage_LR32k/102109.L.aparc.32k_fs_LR.label.gii'</span>)</span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lhlabel <span class="ot">&lt;-</span> <span class="fu">read_gifti</span>(<span class="st">'data/102109/fsaverage_LR32k/102109.L.aparc.32k_fs_LR.label.gii'</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>rhlabel <span class="ot">&lt;-</span> <span class="fu">read_gifti</span>(<span class="st">'data/102109/fsaverage_LR32k/102109.R.aparc.32k_fs_LR.label.gii'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>These label files have the same structure as the metric files above where the <code>data</code> field gives the integer assignment for each vertex, but the <code>label</code> field is also used to give a list of names assigned to the integers as well as their RGB value for plotting on a surface.</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lhlabel<span class="sc">$</span>label</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lhlabel<span class="sc">$</span>label</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>                           Key  Red         Green       Blue        Alpha
 ???                        "0"  "0"         "0"         "0"         "0"  
 L_bankssts                 "1"  "0.0980392" "0.392157"  "0.156863"  "1"  
@@ -347,11 +367,11 @@ L_insula                   "35" "1"         "0.752941"  "0.12549"   "1"  </code>
 <h2 class="anchored" data-anchor-id="cifti">CIFTI</h2>
 <p>CIFTI files are a file type that can combine data from both hemispheres as well as subcortical regions. All cifti files can be imported using the <a href="https://cran.r-project.org/web/packages/cifti/cifti.pdf">cifti</a> package which can be installed from CRAN. The cifti package also installs <code>gifti</code> as a dependency.</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifti)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifti)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As opposed to gifti, cifti files can contain information about both hemispheres as well as subcortical regions in the same file. The basic import function is <code>read_cifti</code> (<code>readcii</code> and <code>readCIFTI</code> are also aliases). For example, we can go ahead and read in the subject’s thickness cifti file.</p>
 <div class="cell" data-hash="cifti-r_cache/html/read thickness_b9b794b3bc1e213a7bbfce2704b825e8">
-<div class="sourceCode" id="cb25"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>thick_cii <span class="ot">&lt;-</span> <span class="fu">read_cifti</span>(<span class="st">'data/102109/fsaverage_LR32k/102109.thickness.32k_fs_LR.dscalar.nii'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>thick_cii <span class="ot">&lt;-</span> <span class="fu">read_cifti</span>(<span class="st">'data/102109/fsaverage_LR32k/102109.thickness.32k_fs_LR.dscalar.nii'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stderr">
 <pre><code>Warning in read_cifti("data/102109/fsaverage_LR32k/
 102109.thickness.32k_fs_LR.dscalar.nii"): Dimensions of the data &gt; 2, so no
@@ -360,8 +380,8 @@ transposing done!</code></pre>
 </div>
 <p>The cifti list structure in R is slightly different from the gifti structure.</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(thick_cii)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(thick_cii)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] "NamedMap"   "BrainModel" "data"       "hdr"        "filename"  
 [6] "drop_data"  "trans_data"</code></pre>
 </div>
@@ -374,8 +394,8 @@ transposing done!</code></pre>
 </ol>
 <p>As opposed to gifti data from above, only brainordinates that have data assigned to them are given in the <code>data</code> field. In order to accurately assign data to the correct brainordinate and area, you need to use the values from the <code>BrainModel</code> field. For example, let’s look at the thickness cifti file we loaded earlier.</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(thick_cii<span class="sc">$</span>BrainModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(thick_cii<span class="sc">$</span>BrainModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>List of 2
  $ : num [1:29696] 0 1 2 3 4 5 6 8 9 10 ...
   ..- attr(*, "IndexOffset")= num 0
@@ -396,7 +416,7 @@ transposing done!</code></pre>
 <h3 class="anchored" data-anchor-id="subcortical-area-names">Subcortical Area Names</h3>
 <p>While the cortical hemispheres are named in the cifti’s R structure, the subcortical areas are not. For example, we can import a cifti with resting state data for both cortex and subcortical areas and look at the attributes for the first 4 areas.</p>
 <div class="cell" data-hash="cifti-r_cache/html/load rest cifti_fa97b0acb11f76ca0d6ac18daafdf232">
-<div class="sourceCode" id="cb31"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>rest_cii <span class="ot">&lt;-</span> <span class="fu">read_cifti</span>(<span class="st">'data/102109/Results/rfMRI_REST1_LR/rfMRI_REST1_LR_Atlas.dtseries.nii'</span>)</span>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>rest_cii <span class="ot">&lt;-</span> <span class="fu">read_cifti</span>(<span class="st">'data/102109/Results/rfMRI_REST1_LR/rfMRI_REST1_LR_Atlas.dtseries.nii'</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(rest_cii<span class="sc">$</span>BrainModel[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>List of 4
@@ -425,13 +445,13 @@ transposing done!</code></pre>
 <p>The first two areas are both left and right cortex and have an attribute saying their name, but the following subcortical areas are unnamed in this structure. This makes it impossible to tell explicitly which area each subcortical list belongs to just from this data structure.</p>
 <p>To get around this, we can take advantage of the fact the cifti format is essentially a fancy XML file and just read the text information directly using <code>cifti_xml_txt</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="fu">cifti_xml_txt</span>(<span class="st">'data/102109/Results/rfMRI_REST1_LR/rfMRI_REST1_LR_Atlas.dtseries.nii'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="fu">cifti_xml_txt</span>(<span class="st">'data/102109/Results/rfMRI_REST1_LR/rfMRI_REST1_LR_Atlas.dtseries.nii'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This gives us a single string with all of the text information from the cifti file in it. Looking at the cifti file in a text editor, we can see that each area name begins with the string “CIFTI_STRUCTURE_”. So to get all of the area names, we can extract strings that begin with “CIFTI_STRUCTURE_” using a regex.</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>areas <span class="ot">&lt;-</span> <span class="fu">str_extract_all</span>(txt,<span class="st">'CIFTI_STRUCTURE_[A-Z_]+'</span>)[[<span class="dv">1</span>]]</span>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>areas <span class="ot">&lt;-</span> <span class="fu">str_extract_all</span>(txt,<span class="st">'CIFTI_STRUCTURE_[A-Z_]+'</span>)[[<span class="dv">1</span>]]</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>areas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code> [1] "CIFTI_STRUCTURE_CORTEX_LEFT"               
  [2] "CIFTI_STRUCTURE_CORTEX_RIGHT"              
  [3] "CIFTI_STRUCTURE_ACCUMBENS_LEFT"            
@@ -475,7 +495,7 @@ Note
 <p>If you are using other packages such as the <code>tidyverse</code> for analyzing cifti data, it would make sense to convert the cifti list structure to a data frame (or tibble) first for data wrangling. I recommend keeping cortical data separate from subcortical data because they do not share a common ID format. In other words, cortical cifti data are identified via single vertex numbers while subcortical cifti data are identified using 3 coordinate locations. Keeping cortical and subcortical data in the same data frame would have 4 ID columns that are not shared among all of the data. If you do not need any form of brainordinate identifier beyond the area name, then keeping cortical and subcortical data together is fine</p>
 <p>Extracting cortical data from ciftis where the data is an array (such as thickness) is simple and straightforward.</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>lhvert <span class="ot">&lt;-</span> <span class="fu">length</span>(thick_cii<span class="sc">$</span>BrainModel[[<span class="dv">1</span>]]) <span class="co"># number of left hemisphere vertices</span></span>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>lhvert <span class="ot">&lt;-</span> <span class="fu">length</span>(thick_cii<span class="sc">$</span>BrainModel[[<span class="dv">1</span>]]) <span class="co"># number of left hemisphere vertices</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>rhvert <span class="ot">&lt;-</span> <span class="fu">length</span>(thick_cii<span class="sc">$</span>BrainModel[[<span class="dv">2</span>]]) <span class="co"># number of right hemisphere vertices</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>cortical_thick <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">hemi =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'LH'</span>,<span class="st">'RH'</span>),<span class="at">times =</span> <span class="fu">c</span>(lhvert,rhvert)),</span>
@@ -484,14 +504,14 @@ Note
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">thickness =</span> thick_cii<span class="sc">$</span>data[<span class="dv">1</span><span class="sc">:</span>(lhvert <span class="sc">+</span> rhvert)]) <span class="co"># get data for all vertices</span></span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">glimpse</span>(cortical_thick))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>Rows: 59,412
 Columns: 3
 $ hemi      &lt;chr&gt; "LH", "LH", "LH", "LH", "LH", "LH", "LH", "LH", "LH", "LH", …
 $ vertex    &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
 $ thickness &lt;dbl&gt; 3.162518, 2.270701, 3.053933, 3.499338, 2.217890, 2.389992, …</code></pre>
 </div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   hemi  vertex thickness
   &lt;chr&gt;  &lt;dbl&gt;     &lt;dbl&gt;
@@ -505,7 +525,7 @@ $ thickness &lt;dbl&gt; 3.162518, 2.270701, 3.053933, 3.499338, 2.217890, 2.3899
 </div>
 <p>For this, we do need the hemisphere designation because vertex numbers are not unique across hemispheres. Because the array of thickness data can easily be converted to a column in a data frame, there’s very little other data wrangling to perform. This isn’t the case for 2D cifti data such as timeseries where there are a couple of extra steps needed to convert the timeseries matrix to a data frame itself.</p>
 <div class="cell" data-hash="cifti-r_cache/html/cortical rest_3687ee8b6176a6489f0f172a8d4464b2">
-<div class="sourceCode" id="cb39"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>lhvert <span class="ot">&lt;-</span> <span class="fu">length</span>(rest_cii<span class="sc">$</span>BrainModel[[<span class="dv">1</span>]]) <span class="co"># number of left hemisphere vertices</span></span>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>lhvert <span class="ot">&lt;-</span> <span class="fu">length</span>(rest_cii<span class="sc">$</span>BrainModel[[<span class="dv">1</span>]]) <span class="co"># number of left hemisphere vertices</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>rhvert <span class="ot">&lt;-</span> <span class="fu">length</span>(rest_cii<span class="sc">$</span>BrainModel[[<span class="dv">2</span>]]) <span class="co"># number of right hemisphere vertices</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get the cortical data from the dataframe, name columns by their TR number, then convert to a tibble</span></span>
@@ -545,7 +565,7 @@ $ thickness &lt;dbl&gt; 3.162518, 2.270701, 3.053933, 3.499338, 2.217890, 2.3899
 </div>
 <p>For subcortical areas, there is a bit more wrangling to do since these brainordinates use i, j, and k positional values as opposed to single numbers, and there are 19 subcortical areas that will need to be replicated as opposed to just the two hemispheres.</p>
 <div class="cell" data-hash="cifti-r_cache/html/subcortical rest_09f725317ab966417de94d735570ae59">
-<div class="sourceCode" id="cb41"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate total number of cortical vertices to know how many rows to skip in the data field</span></span>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate total number of cortical vertices to know how many rows to skip in the data field</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>cort_vert <span class="ot">&lt;-</span> <span class="fu">length</span>(rest_cii<span class="sc">$</span>BrainModel[[<span class="dv">1</span>]]) <span class="sc">+</span> <span class="fu">length</span>(rest_cii<span class="sc">$</span>BrainModel[[<span class="dv">2</span>]])</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get ordinate counts of all subcortical areas</span></span>
@@ -590,14 +610,32 @@ $ thickness &lt;dbl&gt; 3.162518, 2.270701, 3.053933, 3.499338, 2.217890, 2.3899
 </div>
 </div>
 <p>We pretty much set up each individual component of the subcortical data frame outside of the <code>tibble</code> command because of the wrangling, so if you need to conserve memory be sure to delete the intermediate variables with <code>rm</code>.</p>
-<p>Remember, these steps are only creating a dataframe for a single person, but the size of the cortical and subcortical resting state data frames are 1.097847^{8} and this is not including other demographic variables such as participant ID and group. As opposed to creating full data frames for all your participants and then filtering afterwards, it will be useful to filter and curate data for each participant as they are being imported using a function.</p>
+<p>Remember, these steps are only creating a dataframe for a single person, but these cortical and subcortical resting state data frames have 109784704 total elements, and this is not including other demographic variables such as participant ID and group. As opposed to creating full data frames for all your participants and then filtering afterwards, it will be useful to filter and curate data for each participant as they are being imported using a function.</p>
+</section>
+</section>
 
-</section>
-</section>
 </main>
 <!-- /main column -->
-<script type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const disableStylesheet = (stylesheets) => {
     for (let i=0; i < stylesheets.length; i++) {
       const stylesheet = stylesheets[i];
@@ -627,8 +665,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     manageTransitions('#quarto-margin-sidebar .nav-link', false);
     if (alternate) {
       enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
     } else {
       disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
     }
     manageTransitions('#quarto-margin-sidebar .nav-link', true);
     // Switch the toggles
@@ -714,7 +758,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.blur();
     // flash "checked"
     button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
     setTimeout(function() {
+      button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
@@ -770,6 +817,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 </body></html>
