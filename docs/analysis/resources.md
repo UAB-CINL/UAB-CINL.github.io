@@ -54,7 +54,7 @@ Some projects may want to take advantage of published data. This is a short list
 ### Human Connectome Project
 
 1. [Young Adult Dataset](https://www.humanconnectome.org/study/hcp-young-adult)
-    1. [Database site](db.humanconnectome.org). Data collection has completed
+    1. [Database site](https://db.humanconnectome.org). Data collection has completed
     2. Demographics: >1000 Healthy participants aged 18-32
     3. Accessibility: Free account available to anyone associated with a university. No access renewal required
 2. [Aging Dataset](https://www.humanconnectome.org/study/hcp-lifespan-aging)

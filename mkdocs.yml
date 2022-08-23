@@ -34,9 +34,9 @@ plugins:
       data_path: 'docs'
 
 nav:
-  - Home: 'index.md'
-  - Policies and Procedures:
-    - Getting Started: scanner/getting_started.md
+  - Home: index.md
+  - Policies and Procedures: 
+    - scanner/index.md
     - Onboarding: scanner/onboarding.md
     - Training: scanner/training.md
     - Scheduling and Billing: scanner/scheduling.md
@@ -48,23 +48,24 @@ nav:
         - scanner/xnat/account.md
         - scanner/xnat/file_management.md
         - scanner/xnat/projects.md
-  - Image Preprocessing:
+  - Image Preprocessing: 
+    - preprocessing/index.md
     - BIDS: 
-      - Introduction: analysis/bids/index.md
-      - analysis/bids/principles.md
-      - analysis/bids/practical_heudiconv.md
-      - analysis/bids/heudiconv_scripts.md
-    - MRIQC: analysis/mriqc.md
+      - preprocessing/bids/index.md
+      - preprocessing/bids/principles.md
+      - preprocessing/bids/practical_heudiconv.md
+      - preprocessing/bids/heudiconv_scripts.md
+    - MRIQC: preprocessing/mriqc.md
     - fmriprep:
-      - Introduction: analysis/fmriprep/index.md
-      - analysis/fmriprep/fmriprep-usage.md
-      - analysis/fmriprep/fmriprep-scripts.md
+      - preprocessing/fmriprep/index.md
+      - preprocessing/fmriprep/fmriprep-usage.md
+      - preprocessing/fmriprep/fmriprep-scripts.md
     - qsiprep:
-      - Introduction: analysis/qsiprep/index.md
-      - analysis/qsiprep/qsiprep_usage.md
+      - preprocessing/qsiprep/index.md
+      - preprocessing/qsiprep/qsiprep_usage.md
     - HCP Pipelines: 
-      - Introduction: analysis/hcp_pipelines/index.md
-      - Structural Pipeline: analysis/hcp_pipelines/structural_pipeline.md
+      - preprocessing/hcp_pipelines/index.md
+      - Structural Pipeline: preprocessing/hcp_pipelines/structural_pipeline.md
   - Image Analysis:
     - Using CIFTI:
       - R:
