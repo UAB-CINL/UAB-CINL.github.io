@@ -26,9 +26,11 @@ To obtain key card access to the Prisma MRI scanner area, message Ingia Gentry a
 
 To gain access to the Google calendars used for scheduling, please send a request to Eleanor Yourich at elewis1@uabmc.edu. You will need to provide Eleanor your email address and it is easiest to use a gmail address (which will also integrate it into their already existing google calendar).
 
+<!-- markdownlint-disable MD046 -->
 !!! warning
 
     This is a Google calendar, so no PHI should ever be entered!
+<!-- markdownlint-enable MD046 -->
 
 See [scheduling](scheduling.md) documentation for more details on how to properly format a scan time request. Research groups may not use the scanner unless a request is submitted for a given timeslot.
 
