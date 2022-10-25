@@ -41,6 +41,7 @@ nav:
     - Training: scanner/training.md
     - Scheduling and Billing: scanner/scheduling.md
     - Screening and Implants: scanner/implants.md
+    - FIRMM: scanner/firmm.md
     - Data Transfer:
       - Local Transfer and OSIRIX: scanner/data_management.md
       - XNAT:
