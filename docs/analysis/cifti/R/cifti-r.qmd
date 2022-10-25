@@ -7,6 +7,7 @@ format:
       dark: darkly
     toc: true
     toc-depth: 4
+    page-layout: full
 ---
 
 ## Introduction
@@ -297,4 +298,4 @@ subcortical_rest
 
 We pretty much set up each individual component of the subcortical data frame outside of the `tibble` command because of the wrangling, so if you need to conserve memory be sure to delete the intermediate variables with `rm`.
 
-Remember, these steps are only creating a dataframe for a single person, but the size of the cortical and subcortical resting state data frames are `r prod(dim(subcortical_rest)) + prod(dim(cortical_rest))` and this is not including other demographic variables such as participant ID and group. As opposed to creating full data frames for all your participants and then filtering afterwards, it will be useful to filter and curate data for each participant as they are being imported using a function.
+Remember, these steps are only creating a dataframe for a single person, but these cortical and subcortical resting state data frames have `r format(prod(dim(subcortical_rest)) + prod(dim(cortical_rest)), scientific=FALSE)` total elements, and this is not including other demographic variables such as participant ID and group. As opposed to creating full data frames for all your participants and then filtering afterwards, it will be useful to filter and curate data for each participant as they are being imported using a function.

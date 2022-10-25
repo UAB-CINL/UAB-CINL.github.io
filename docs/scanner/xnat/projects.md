@@ -12,7 +12,7 @@ On the Home Page, click New >> Project from the dropdown menu to create a new pr
 
 You can also write a description for your project, assign searchable tags to it, or assign your project to a PI. None of these things are necessary, and all can be added or changed at a later time.
 
-![! Creating a New XNAT Project ><](images/new-project.png)
+![! Creating a New XNAT Project](images/new-project.png)
 
 ## User Roles and Permissions
 
@@ -35,4 +35,4 @@ User Permission Structure
 
 Users can be added to your project and assigned roles using the Manage User Access Dialogue
 
-![! User management ><](images/user-management.png)
+![! User management](images/user-management.png)
