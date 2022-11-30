@@ -9,7 +9,7 @@ NODDI was written as a MATLAB toolbox and can be downloaded from [the NITRC webs
 To access the toolbox in MATLAB, download it and use the following command in the MATLAB terminal
 
 ``` matlab
-addpath(genpath('<path/to/noddi/toolbox>'))
+addpath(genpath(<path/to/noddi/toolbox>))
 ```
 
 The NODDI toolbox depends on the [nifti_matlab](https://github.com/NIFTI-Imaging/nifti_matlab) toolbox as well. Download the toolbox from the linked Github repo and add the toolbox to your Matlab path in the same manner as above.
