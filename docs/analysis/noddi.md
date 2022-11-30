@@ -4,7 +4,7 @@ Neurite orientiation dispersion and density imaging (NODDI) is a diffusion weigh
 
 ## Installation
 
-NODDI was written as a MATLAB toolbox and can be downloaded from [the NITRC website](https://www.nitrc.org/projects/noddi_toolbox). To date, there is no public Github page or access to any support for the toolbox itself.
+NODDI was written as a MATLAB toolbox and can be downloaded from [the NITRC website](https://www.nitrc.org/projects/noddi_toolbox). General instructions on how to use the toolbox as well as a link to the support Google group can be found [on their site](http://mig.cs.ucl.ac.uk/index.php?n=Tutorial.NODDImatlab)
 
 To access the toolbox in MATLAB, download it and use the following command in the MATLAB terminal
 
