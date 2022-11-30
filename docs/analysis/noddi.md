@@ -180,3 +180,7 @@ protocol = FSL2Protocol('/home/mdefende/noddi/sub-S01/sub-S01-AP_PA.bval','/home
 noddi = MakeModel('WatsonSHStickTortIsoV_B0'); 
 batch_fitting('/home/mdefende/noddi/sub-S01/sub-S01-AP_PA_eddy_NODDI_roi.mat',protocol,noddi,'/home/mdefende/noddi/sub-S01/NODDI_fitted_params.mat',16);"
 ```
+
+## Acknowledgements
+
+Dr. Rodolphe Nenert at UAB helped with the development of this page by providing his own version of NODDI documentation to work off of. Please have a look at his docs at [myneurodoc](https://myneurodoc.readthedocs.io/en/latest/index.html) for more information.
