@@ -72,4 +72,5 @@ nav:
       - R:
         - Walkthrough: analysis/cifti/R/cifti-r.html
         - Example Analysis: analysis/cifti/R/cifti-example.html
+    - NODDI: analysis/noddi.md
   - Resources: analysis/resources.md
