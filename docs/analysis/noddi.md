@@ -18,14 +18,14 @@ The NODDI toolbox depends on the [nifti_matlab](https://github.com/NIFTI-Imaging
 
 While the toolbox can be used out-of-the-box within an interactive MATLAB session on Cheaha, if you're looking to submit a batch job running NODDI, you will need to make a couple of edits. The toolbox as written causes a pop-up progress window to appear which will not render in a batch job and will cause the job to die. To remove the progress bar, make the following edits in the `fitting/batch_fitting.m` script:
 
-1. Comment out lines 91 and 92. The lines are:
+- Comment out lines 91 and 92. The lines are:
 
 ``` matlab
 %ppm = ParforProgMon(['Fitting ' roifile, ' : '], numOfVoxels-current_split_start+1,...
 %                    progressStepSize, 400, 80);
 ```
 
-2. Comment out lines 119:122. The block should look like:
+- Comment out lines 119:122. The block should look like:
 
 ``` matlab
 % report to the progress monitor
@@ -34,7 +34,7 @@ While the toolbox can be used out-of-the-box within an interactive MATLAB sessio
 %end
 ```
 
-3. Comment out line 137 `%ppm.delete();`
+- Comment out line 137 `%ppm.delete();`
 
 All line numbers are from NODDI v1.05. The exact line numbers may differ in other versions, but all references to the `ppm` object should be commented out from the `batch_fitting.m` script.
 
@@ -53,14 +53,13 @@ Many others exist as well, choose whichever tool seems best for your data. At th
 
 1. Preprocessed DWI scan
 2. Voxel mask in the DWI scan space
+3. FSL-stlye bvals and rotated bvecs for the DWI scan. Bvecs are rotated to account for eddy current correction, do not use the raw bvecs.
 
 <!-- markdownlint-disable MD046 -->
-    !!! important
-        
-        The mask defines which voxels will be modelled. For instance, if you want to only model voxels in gray matter, you would want a cortical ribbon mask. Whole brain masks are also valid, just know that the processing takes a long time
-<!-- markdownlint-enable MD046 -->
+!!! important
 
-3. FSL-stlye bvals and rotated bvecs for the DWI scan. Bvecs are rotated to account for eddy current correction, do not use the raw bvecs.
+    The mask defines which voxels will be modelled. For instance, if you want to only model voxels in gray matter, you would want a cortical ribbon mask. Whole brain masks are also valid, just know that the processing takes a long time
+<!-- markdownlint-enable MD046 -->
 
 <!-- markdownlint-disable MD046 -->
 !!! note
@@ -84,17 +83,17 @@ The exact number of CPUs can be altered to either minimize time spent per job or
 The toolbox is run with some commands that set up the data in a format NODDI requires and then the fitting itself. A basic NODDI setup will look like the following:
 
 ``` matlab
-CreateROI('<dwi_scan>','<brain_mask>','<output_roi.mat>');
-protocol = FSL2Protocol('<bval>','<bvecs>',<b0_cutoff>);
+CreateROI(<dwi_scan>,<brain_mask>,<output_roi.mat>);
+protocol = FSL2Protocol(<bval>,<bvecs>,<b0_cutoff>);
 noddi = MakeModel('WatsonSHStickTortIsoV_B0'); 
-batch_fitting('<roi.mat>', protocol, noddi,'<noddi_out.mat>', ncpus);
+batch_fitting(<roi.mat>, protocol, noddi,<noddi_out.mat>, ncpus);
 ```
 
 ### CreateROI
 
 The `CreateROI` command converts the DWI and brain mask to forms usable by the `batch_fitting` command and has the following form:
 
-`CreateROI('<dwi_scan>','<brain_mask>','<output_roi.mat>');`
+`CreateROI(<dwi_scan>,<brain_mask>,<output_roi.mat>);`
 
 It needs the following inputs:
 
@@ -106,7 +105,7 @@ It needs the following inputs:
 
 The `FSL2Protocol` function performs some data conversion to the bvals and bvecs files necessary for NODDI analysis. It takes the following inputs:
 
-`protocol = FSL2Protocol('<bval>','<bvecs>',<b0_cutoff>);`
+`protocol = FSL2Protocol(<bval>,<bvecs>,<b0_cutoff>);`
 
 - `bval`: path to the DWI bvals file
 - `bvecs`: path to the rotated DWI-bvecs file
@@ -130,7 +129,7 @@ According to the [NODDI documentation](http://mig.cs.ucl.ac.uk/index.php?n=Tutor
 
 At this point, the NODDI model will be applied to each voxel in the mask. This is where the bulk of the computation happens and will take the longest time to finish. The `batch_fitting` function has the following form:
 
-`batch_fitting('<roi.mat>', protocol, noddi,'<noddi_out.mat>', ncpus);`
+`batch_fitting(<roi.mat>, protocol, noddi,<noddi_out.mat>, ncpus);`
 
 - `roi.mat`: the path to the output ROI generated in the [CreateROI](#createroi) step.
 - `protocol`: the protocol variable generated in the [FSL2Protocol](#fsl2protocol) step.
