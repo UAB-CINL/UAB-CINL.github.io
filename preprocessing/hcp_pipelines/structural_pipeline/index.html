@@ -1419,53 +1419,53 @@
 <!-- markdownlint-enable MD046 -->
 
 <p>The following modules have been tested with the structural pipeline, and the commands loading them can be included at the top of your script before running the pipeline:</p>
-<div class="highlight"><pre><span></span><code>module load FreeSurfer/6.0.0-centos6_x86_64
-module load FSL/6.0.3
-<span class="nb">source</span> <span class="si">${</span><span class="nv">FSLDIR</span><span class="si">}</span>/etc/fslconf/fsl.sh
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>FreeSurfer/6.0.0-centos6_x86_64
+module<span class="w"> </span>load<span class="w"> </span>FSL/6.0.3
+<span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">FSLDIR</span><span class="si">}</span>/etc/fslconf/fsl.sh
 </code></pre></div>
 <h4 id="anaconda">Anaconda<a class="headerlink" href="#anaconda" title="Permanent link">&para;</a></h4>
 <p>While testing the PreFreeSurfer pipeline, an issue was encountered where the python library <code>numpy</code> was required but not found on the default path. To resolve this issue, create an Anaconda environment with <code>numpy</code> installed. This can be done with the following commands:</p>
-<div class="highlight"><pre><span></span><code>module load Anaconda3/2020.11
-conda create -n preFS numpy
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>Anaconda3/2020.11
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>preFS<span class="w"> </span>numpy
 </code></pre></div>
 <p>From here, whenever you run the pipeline, you should load the Anaconda module and then activate the environment using</p>
-<div class="highlight"><pre><span></span><code>conda activate preFS
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>activate<span class="w"> </span>preFS
 </code></pre></div>
 <h2 id="prefreesurfer-pipeline">PreFreeSurfer Pipeline<a class="headerlink" href="#prefreesurfer-pipeline" title="Permanent link">&para;</a></h2>
 <p>The shell script for running the PreFS pipeline can be found in the PreFreeSurfer directory in your HCP Pipelines directory. The script is already executable by default, so no permissions should need to be changed in order to run it. Some environment variables will need to be set up prior to executing the pipeline.</p>
 <p>This pipeline performs ACPC alignment, readout distortion correction, cross-model registration, and bias field correction (see Figure 9 in <a href="https://pubmed.ncbi.nlm.nih.gov/23668970/">Glasser et al. 2013</a>) of T1w and T2w images. The outputs of these steps are used for surface reconstruction in the FreeSurfer pipeline.</p>
 <h3 id="prefreesurfer-environment-variables">PreFreeSurfer Environment Variables<a class="headerlink" href="#prefreesurfer-environment-variables" title="Permanent link">&para;</a></h3>
 <p>For all environment variables, set them using the following format:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> &lt;env_var&gt;<span class="o">=</span>&lt;value&gt;
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span>&lt;env_var&gt;<span class="o">=</span>&lt;value&gt;
 </code></pre></div>
 <h4 id="hcppipedir">HCPPIPEDIR<a class="headerlink" href="#hcppipedir" title="Permanent link">&para;</a></h4>
-<p><code>HCPPIPEDIR</code> sets the main directory for where you have stored the pipelines. give the full path to the main directory, not just the PreFS directory. An example would look like:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">HCPPIPEDIR</span><span class="o">=</span>/home/mdefende/Scripts/HCPpipelines
+<p><code>HCPPIPEDIR</code> sets the main directory for where you have stored the pipelines. Give the full path to the main directory, not just the PreFS directory. An example would look like:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">HCPPIPEDIR</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Scripts/HCPpipelines
 </code></pre></div>
 <h4 id="hcppipedir_global">HCPPIPEDIR_Global<a class="headerlink" href="#hcppipedir_global" title="Permanent link">&para;</a></h4>
 <p>This sets the path to the global scripts used across pipelines. If you set the <code>HCPPIPEDIR</code> variable first, you can just use:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">HCPPIPEDIR_Global</span><span class="o">=</span><span class="si">${</span><span class="nv">HCPPIPEDIR</span><span class="si">}</span>/global/scripts
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">HCPPIPEDIR_Global</span><span class="o">=</span><span class="si">${</span><span class="nv">HCPPIPEDIR</span><span class="si">}</span>/global/scripts
 </code></pre></div>
 <h4 id="hcppipedir_templates">HCPPIPEDIR_Templates<a class="headerlink" href="#hcppipedir_templates" title="Permanent link">&para;</a></h4>
 <p>This sets the path to the average templates used for converting data to specific spaces. This is also contained in the <code>global</code> directory. Just set it to:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">HCPPIPEDIR_Global</span><span class="o">=</span><span class="si">${</span><span class="nv">HCPPIPEDIR</span><span class="si">}</span>/global/templates
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">HCPPIPEDIR_Templates</span><span class="o">=</span><span class="si">${</span><span class="nv">HCPPIPEDIR</span><span class="si">}</span>/global/templates
 </code></pre></div>
 <h4 id="caret7dir">CARET7DIR<a class="headerlink" href="#caret7dir" title="Permanent link">&para;</a></h4>
 <p>In addition to the HCP Pipeline directory, another set of scripts is needed to run the pipeline, Caret7. This directory is included with the <a href="https://www.humanconnectome.org/software/get-connectome-workbench">Connectome Workbench</a>. You can either download the CentOS Linux distribution from the linked site and place it in your Cheaha space, or you can direct this variable to one of the installed Workbench modules on Cheaha. The path should end with the <code>bin_rh_linux64</code> directory.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Link directly to the module</span>
-<span class="nb">export</span> <span class="nv">CARET7DIR</span><span class="o">=</span>/share/apps/rc/software/ConnectomeWorkbench/1.5.0-rh_linux64/bin_rh_linux64
+<span class="nb">export</span><span class="w"> </span><span class="nv">CARET7DIR</span><span class="o">=</span>/share/apps/rc/software/ConnectomeWorkbench/1.5.0-rh_linux64/bin_rh_linux64
 
 <span class="c1"># OR download the distribution and link to it directly in your space</span>
-<span class="nb">export</span> <span class="nv">CARET7DIR</span><span class="o">=</span>/home/mdefende/Scripts/workbench/bin_rh_linux64
+<span class="nb">export</span><span class="w"> </span><span class="nv">CARET7DIR</span><span class="o">=</span>/home/mdefende/Scripts/workbench/bin_rh_linux64
 </code></pre></div>
-<p>Only one of the above lines is necessary. In the long run, it may be better to download your own copy of the Workbench and keep it as software may be removed from the cluster modules over a long period of time.</p>
+<p>Only one of the above lines is necessary. In the long run, it may be better to download your own copy of the Workbench and keep it as software may be removed from the cluster modules over time.</p>
 <h4 id="spin_echo_method_opt">SPIN_ECHO_METHOD_OPT<a class="headerlink" href="#spin_echo_method_opt" title="Permanent link">&para;</a></h4>
 <p>This option sets the method for distortion correction. The default is using the FSL function topup. We can also set the method here, using the default method.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">SPIN_ECHO_METHOD_OPT</span><span class="o">=</span><span class="s2">&quot;TOPUP&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SPIN_ECHO_METHOD_OPT</span><span class="o">=</span><span class="s2">&quot;TOPUP&quot;</span>
 </code></pre></div>
 <h3 id="prefreesurfer-inputs">PreFreeSurfer Inputs<a class="headerlink" href="#prefreesurfer-inputs" title="Permanent link">&para;</a></h3>
 <p>There are a number of options that can/should be included when running the pipeline. In order to see all of the potential options, open a terminal, set your environment variables, navigate to the PreFreeSurfer directory. You can use the following command to list all of the potential options for the script:</p>
-<div class="highlight"><pre><span></span><code>./PreFreeSurfer.sh --help
+<div class="highlight"><pre><span></span><code>./PreFreeSurfer.sh<span class="w"> </span>--help
 </code></pre></div>
 <p>The PreFS pipeline has a large number of inputs that go along with it. For testing, we tried to be as verbose as possible, so some options may or may not be necessary. Here is a list:</p>
 <!-- markdownlint-disable MD046 -->
@@ -1495,12 +1495,12 @@ conda create -n preFS numpy
 <!-- markdownlint-disable MD046 -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The sample spacing values for the T1 and T2 as well as the echo spacing value for the field maps can be found on a detailed scan export. Ask Elizabeth or Eleanor about how to export this from the scanner if your lab does not have one already.</p>
+<p>The sample spacing values for the T1 and T2 as well as the echo spacing value for the field maps can be found on a detailed scan export. Ask Elizabeth about how to export this from the scanner if your lab does not have one already.</p>
 </div>
 <!-- markdownlint-enable MD046 -->
 
 <p><strong>Template Options:</strong></p>
-<p>These options define the standard atlases used for conversion from native to normalized space. The templates can be found the $HCPPIPEDIR_Templates directory you set previously. Multiple MNI templates at various resolutions are provided.</p>
+<p>These options define the standard atlases used for conversion from native to normalized space. The templates can be found the ${HCPPIPEDIR_Templates} directory you set previously. Multiple MNI templates at various resolutions are provided.</p>
 <ul>
 <li><code>--t1template</code>: the T1 template. Can be any resolution.</li>
 <li><code>--t1templatebrain</code>: the skull-stripped brain of the template named above. This is included in the template directory</li>
@@ -1531,18 +1531,18 @@ conda create -n preFS numpy
 <span class="normal">78</span>
 <span class="normal">79</span>
 <span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Original</span>
-log_Msg <span class="s2">&quot;Showing tkregister version&quot;</span>
-which tkregister
-tkregister -version
+log_Msg<span class="w"> </span><span class="s2">&quot;Showing tkregister version&quot;</span>
+which<span class="w"> </span>tkregister
+tkregister<span class="w"> </span>-version
 </code></pre></div></td></tr></table></div>
 <p>should be changed to:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">77</span>
 <span class="normal">78</span>
 <span class="normal">79</span>
 <span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># New</span>
-log_Msg <span class="s2">&quot;Showing tkregister version&quot;</span>
-which tkregister2_cmdl
-tkregister2_cmdl -version
+log_Msg<span class="w"> </span><span class="s2">&quot;Showing tkregister version&quot;</span>
+which<span class="w"> </span>tkregister2_cmdl
+tkregister2_cmdl<span class="w"> </span>-version
 </code></pre></div></td></tr></table></div>
 <p>Additionally, line 781 should be changed from:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">781</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">tkregister_cmd</span><span class="o">=</span><span class="s2">&quot;tkregister&quot;</span>
@@ -1556,7 +1556,7 @@ tkregister2_cmdl -version
 <p>After these changes are made, the pipeline should run correctly.</p>
 <h3 id="freesurfer-inputs">FreeSurfer Inputs<a class="headerlink" href="#freesurfer-inputs" title="Permanent link">&para;</a></h3>
 <p>The FreeSurfer pipeline only has a few necessary arguments to add to the function call and a couple of extra you can add that change the performance of FreeSurfer itself. In order to see all of the potential options, open a terminal, set your environment variables, navigate to the FreeSurfer directory. You can use the following command to list all of the potential options for the script:</p>
-<div class="highlight"><pre><span></span><code>./FreeSurfer.sh --help
+<div class="highlight"><pre><span></span><code>./FreeSurfer.sh<span class="w"> </span>--help
 </code></pre></div>
 <h4 id="output-options">Output Options<a class="headerlink" href="#output-options" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1592,7 +1592,7 @@ tkregister2_cmdl -version
 <p>The <code>HCPPIPEDIR</code>, <code>CARET7DIR</code>, and <code>HCPPIPEDIR_Templates</code> environment variables used in the PreFreeSurfer pipeline are used here again. Be sure to set them to the same locations. In addition, there are a few new variables that need to be set.</p>
 <h4 id="hcppipedir_config">HCPPIPEDIR_Config<a class="headerlink" href="#hcppipedir_config" title="Permanent link">&para;</a></h4>
 <p>This sets the path to some color tables necessary for converting FreeSurfer annotations. If you set the <code>HCPPIPEDIR</code> variable first, you can just use:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">HCPPIPEDIR_config</span><span class="o">=</span><span class="si">${</span><span class="nv">HCPPIPEDIR</span><span class="si">}</span>/global/config
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">HCPPIPEDIR_config</span><span class="o">=</span><span class="si">${</span><span class="nv">HCPPIPEDIR</span><span class="si">}</span>/global/config
 </code></pre></div>
 <h4 id="msmbindir">MSMBINDIR<a class="headerlink" href="#msmbindir" title="Permanent link">&para;</a></h4>
 <p>This sets the path to the binaries directory containing the <code>msm</code> command. This is a special folder that is not contained within the main HCP pipelines distribution. Please download the <a href="../scripts/MSM_HOCR-3.0.zip">MSM_HOCR</a> zip file, create a containing folder in your main HCP Pipelines directory, and extract the zip file into that containing folder. Ideally it would look something like <code>.../HCPpipelines/MSM_HOCR/extracted files here...</code>. This variable will then point the to <code>MSM_HOCR</code> folder.</p>

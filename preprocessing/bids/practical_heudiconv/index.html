@@ -1330,14 +1330,14 @@
 <h2 id="heudiconv">HeuDiConv<a class="headerlink" href="#heudiconv" title="Permanent link">&para;</a></h2>
 <p>The tool we use for automatic conversion is <a href="https://github.com/nipy/heudiconv">HeuDiConv</a>, a heuristic-based dicom converter. This tool is packaged as a Python library, and so in order to have access to it, you will need to create an Anaconda environment and install both HeuDiConv as well as dcm2niix, the actual dicom conversion engine.</p>
 <p>You can do this process manually through the following commands</p>
-<div class="highlight"><pre><span></span><code>module load Anaconda3/2020.11
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>Anaconda3/2020.11
 
-conda create -n bids
-conda activate bids
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>bids
+conda<span class="w"> </span>activate<span class="w"> </span>bids
 
-pip install <span class="nv">heudiconv</span><span class="o">==</span><span class="m">0</span>.9.0
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">heudiconv</span><span class="o">==</span><span class="m">0</span>.9.0
 
-conda install -c conda-forge dcm2niix
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>dcm2niix
 </code></pre></div>
 <p>Or, you can go to <a href="../heudiconv_scripts/#create-conda-environment">the example scripts page</a>, copy the environment creation script there to a .sh file, and then submit it as a batch job.</p>
 <h2 id="initial-folder-structure">Initial Folder Structure<a class="headerlink" href="#initial-folder-structure" title="Permanent link">&para;</a></h2>
@@ -1383,8 +1383,8 @@ conda install -c conda-forge dcm2niix
 <div class="highlight"><pre><span></span><code><span class="c1"># set the base dataset directory</span>
 <span class="nv">BASE_DIR</span><span class="o">=</span>/data/project/genlab/datasets/D01
 
-heudiconv -s S101 -ss <span class="m">01</span> -d <span class="nv">$BASE_DIR</span>/dicom/<span class="o">{</span>subject<span class="o">}</span>/ses-<span class="o">{</span>session<span class="o">}</span>/*/*.dcm
--o <span class="nv">$BASE_DIR</span>/nifti -f convertall -c none --overwrite
+heudiconv<span class="w"> </span>-s<span class="w"> </span>S101<span class="w"> </span>-ss<span class="w"> </span><span class="m">01</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$BASE_DIR</span>/dicom/<span class="o">{</span>subject<span class="o">}</span>/ses-<span class="o">{</span>session<span class="o">}</span>/*/*.dcm
+-o<span class="w"> </span><span class="nv">$BASE_DIR</span>/nifti<span class="w"> </span>-f<span class="w"> </span>convertall<span class="w"> </span>-c<span class="w"> </span>none<span class="w"> </span>--overwrite
 </code></pre></div>
 <h2 id="step-2-example-heuristic">Step 2: Example Heuristic<a class="headerlink" href="#step-2-example-heuristic" title="Permanent link">&para;</a></h2>
 <h3 id="anatomicals">Anatomicals<a class="headerlink" href="#anatomicals" title="Permanent link">&para;</a></h3>
@@ -1468,7 +1468,7 @@ heudiconv -s S101 -ss <span class="m">01</span> -d <span class="nv">$BASE_DIR</s
 
 
 <span class="k">def</span> <span class="nf">infotodict</span><span class="p">(</span><span class="n">seqinfo</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Heuristic evaluator for determining which runs belong where</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Heuristic evaluator for determining which runs belong where</span>
 
 <span class="sd">    allowed template fields - follow python string module:</span>
 
@@ -1547,7 +1547,7 @@ heudiconv -s S101 -ss <span class="m">01</span> -d <span class="nv">$BASE_DIR</s
 <div class="highlight"><pre><span></span><code><span class="c1"># Give a path to the dataset directory that we can use </span>
 <span class="nv">BASE_DIR</span><span class="o">=</span>/data/project/genlab/datasets/D01
 
-heudiconv -s S101 -ss <span class="m">01</span> -d <span class="nv">$BASE_DIR</span>/dicom/<span class="o">{</span>subject<span class="o">}</span>/ses-<span class="o">{</span>session<span class="o">}</span>/*/*.dcm -o <span class="nv">$BASE_DIR</span>/nifti -f <span class="nv">$BASE_DIR</span>/heuristic.py -c dcm2niix -b --overwrite
+heudiconv<span class="w"> </span>-s<span class="w"> </span>S101<span class="w"> </span>-ss<span class="w"> </span><span class="m">01</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$BASE_DIR</span>/dicom/<span class="o">{</span>subject<span class="o">}</span>/ses-<span class="o">{</span>session<span class="o">}</span>/*/*.dcm<span class="w"> </span>-o<span class="w"> </span><span class="nv">$BASE_DIR</span>/nifti<span class="w"> </span>-f<span class="w"> </span><span class="nv">$BASE_DIR</span>/heuristic.py<span class="w"> </span>-c<span class="w"> </span>dcm2niix<span class="w"> </span>-b<span class="w"> </span>--overwrite
 </code></pre></div>
 <p>The only options that have changed are:</p>
 <ul>
@@ -1560,17 +1560,17 @@ heudiconv -s S101 -ss <span class="m">01</span> -d <span class="nv">$BASE_DIR</s
 <h3 id="file-permissions">File Permissions<a class="headerlink" href="#file-permissions" title="Permanent link">&para;</a></h3>
 <p>By default, HeuDiConv makes all output files read-only. This causes some issues with some software, such as fmriprep, which need write permissions on the json and images files to operate correctly. Changing file permissions is straightforward:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># change the permissions of all of the files in the BIDS directory to have user and group write permissions</span>
-find <span class="nv">$base_dir</span>/nifti/&lt;BIDS subject name&gt; -exec chmod ug+w <span class="o">{}</span> <span class="se">\;</span>
-find <span class="nv">$base_dir</span>/nifti/.heudiconv/&lt;BIDS subject name&gt; -exec chmod ug+w <span class="o">{}</span> <span class="se">\;</span>
+find<span class="w"> </span><span class="nv">$base_dir</span>/nifti/&lt;BIDS<span class="w"> </span>subject<span class="w"> </span>name&gt;<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span>ug+w<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+find<span class="w"> </span><span class="nv">$base_dir</span>/nifti/.heudiconv/&lt;BIDS<span class="w"> </span>subject<span class="w"> </span>name&gt;<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span>ug+w<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 </code></pre></div>
 <p>These lines are included at the end of the <a href="../heudiconv_scripts/">example scripts</a> and will add user and group write permissions for the BIDS files.</p>
 <h3 id="associating-fieldmaps-with-func-and-dwi-scans">Associating FieldMaps with Func and DWI scans<a class="headerlink" href="#associating-fieldmaps-with-func-and-dwi-scans" title="Permanent link">&para;</a></h3>
 <p>Some preprocessing pipelines will automatically perform distortion correction on EPI images using fieldmaps, if you have acquired them. However, there's no metadata automatically created associating fieldmaps with the EPI scans they are used to correct, and so needs to be added manually. You do this by adding the <code>"IntendedFor"</code> field to the json sidecars. An example of this field can be seen below:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;IntendedFor&quot;</span><span class="p">:[</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;dwi/sub-S01_dir-AP_run-1_dwi.nii.gz&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;func/sub-S01_task-rest_dir-AP_run-1_bold.nii.gz&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;func/sub-S01_task-rest_dir-PA_run-2_bold.nii.gz&quot;</span><span class="w"></span>
-<span class="p">],</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;IntendedFor&quot;</span><span class="p">:[</span>
+<span class="w">    </span><span class="s2">&quot;dwi/sub-S01_dir-AP_run-1_dwi.nii.gz&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;func/sub-S01_task-rest_dir-AP_run-1_bold.nii.gz&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;func/sub-S01_task-rest_dir-PA_run-2_bold.nii.gz&quot;</span>
+<span class="p">],</span>
 </code></pre></div>
 <p>The names of the files should change to match your BIDS files. If you have collected a single set of fieldmaps (e.g. AP and PA spin echo fieldmaps), the IntendedFor fields should be the same for both of them. If you have collected multiple sets through the same scan session, you will need to choose which scans each individual fieldmap or fieldmap set will be intended for.</p>
 <p>An example use case for this would be reaquiring field maps after letting the participant out of the scanner for a break in the middle of a session. The reacquired field maps would be intended for EPI images only acquired after the break while the original field maps would be intended for scans acquired before the break. Each EPI scan should only be named in an IntendedFor field for a single fieldmap or fieldmap set.</p>

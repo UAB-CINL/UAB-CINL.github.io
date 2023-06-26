@@ -1137,7 +1137,7 @@
 
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>The pipelines are currently only distributed as shell scripts from <a href="https://github.com/Washington-University/HCPpipelines">the HCP github repository</a>. You can either download the repository as a ZIP file using the green <code>Code</code> dropdown menu, or you can clone the repository onto Cheaha directly (recommended). To clone the repository, request an HPC Desktop session using Cheaha's <a href="https://rc.uab.edu">Open OnDemand portal</a>, open a terminal once the job has started, and navigate to the directory you would like to store the scripts in. Run the following command:</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/Washington-University/HCPpipelines.git
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Washington-University/HCPpipelines.git
 </code></pre></div>
 <h2 id="raw-data-setup">Raw Data Setup<a class="headerlink" href="#raw-data-setup" title="Permanent link">&para;</a></h2>
 <p>Unlike fmriprep, another minimal preprocessing pipeline, the HCP Pipelines are not BIDS apps, so the input data do not need to be in BIDS format. Nonetheless, it is highly recommended that you convert data to BIDS format before using the pipelines as this converts your raw data to a standard and predictable organization minimizing time spent debugging why the pipeline may have failed for individual participants.</p>

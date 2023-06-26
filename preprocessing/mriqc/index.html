@@ -1327,17 +1327,17 @@
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>MRIQC is designed to be easily used as a Docker/Singularity container. There is a bare-metal Python3 installation available, however it requires other dependencies (some versions of which may not be released at the time) and is not recommended.</p>
 <p>In order to download the MRIQC Singularity container, start an HPC Desktop session at <a href="https://rc.uab.edu">https://rc.uab.edu</a>, then open a terminal and navigate to the location you would like to store the container file. Then run the following commands:</p>
-<div class="highlight"><pre><span></span><code>module load Singularity
-singularity pull mriqc-0.16.1.sif docker://poldracklab/mriqc:0.16.1
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>Singularity
+singularity<span class="w"> </span>pull<span class="w"> </span>mriqc-0.16.1.sif<span class="w"> </span>docker://poldracklab/mriqc:0.16.1
 </code></pre></div>
 <p>The container creation process will take a while to run, but once downloaded, this container will not need to be downloaded again unless a new version comes out that you would like to use instead.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>The basic command for running MRIQC will look like the following:</p>
-<div class="highlight"><pre><span></span><code>singularity run mriqc-0.16.1.sif <span class="se">\</span>
-    <span class="o">[</span>optional inputs<span class="o">]</span> <span class="se">\</span>
-    &lt;bids_dir&gt; <span class="se">\</span>
-    &lt;output_dir&gt; <span class="se">\</span>
-    &lt;analysis level&gt;
+<div class="highlight"><pre><span></span><code>singularity<span class="w"> </span>run<span class="w"> </span>mriqc-0.16.1.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>optional<span class="w"> </span>inputs<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;bids_dir&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;output_dir&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;analysis<span class="w"> </span>level&gt;
 </code></pre></div>
 <p>All available options for use with the mriqc can be seen using <code>singularity run mriqc-0.16.1.sif --help</code>. Below are a list of selected options. The positional arguments are the only ones required to used.</p>
 <h3 id="positional-arguments">Positional Arguments<a class="headerlink" href="#positional-arguments" title="Permanent link">&para;</a></h3>
@@ -1382,19 +1382,19 @@ singularity pull mriqc-0.16.1.sif docker://poldracklab/mriqc:0.16.1
 <span class="c1">#SBATCH --time=6:00:00</span>
 <span class="c1">#SBATCH --mem-per-cpu=40G</span>
 
-module load Singularity/3.5.2-GCC-5.4.0-2.26
+module<span class="w"> </span>load<span class="w"> </span>Singularity/3.5.2-GCC-5.4.0-2.26
 
 <span class="c1"># set the BIDS directory</span>
-<span class="nb">export</span> <span class="nv">bidsdir</span><span class="o">=</span><span class="nv">$USER_DATA</span>/D01/nifti/
+<span class="nb">export</span><span class="w"> </span><span class="nv">bidsdir</span><span class="o">=</span><span class="nv">$USER_DATA</span>/D01/nifti/
 
-singularity run ~/Scripts/mriqc/mriqc-0.16.1.sif <span class="se">\</span>
-    --participant-label S01 S02 <span class="se">\</span>
-    --n_procs <span class="m">1</span> <span class="se">\</span>
-    --mem_gb <span class="m">40</span> <span class="se">\</span>
-    --no-sub <span class="se">\</span>
-    <span class="si">${</span><span class="nv">bidsdir</span><span class="si">}</span> <span class="se">\</span>
-    <span class="si">${</span><span class="nv">bidsdir</span><span class="si">}</span>/derivatives/mriqc <span class="se">\</span>
-    participant
+singularity<span class="w"> </span>run<span class="w"> </span>~/Scripts/mriqc/mriqc-0.16.1.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--participant-label<span class="w"> </span>S01<span class="w"> </span>S02<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--n_procs<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--mem_gb<span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--no-sub<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">bidsdir</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">bidsdir</span><span class="si">}</span>/derivatives/mriqc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>participant
 </code></pre></div>
 <h3 id="group-stats">Group Stats<a class="headerlink" href="#group-stats" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -1407,16 +1407,16 @@ singularity run ~/Scripts/mriqc/mriqc-0.16.1.sif <span class="se">\</span>
 <span class="c1">#SBATCH --time=2:00:00</span>
 <span class="c1">#SBATCH --mem-per-cpu=8G</span>
 
-module load Singularity/3.5.2-GCC-5.4.0-2.26
+module<span class="w"> </span>load<span class="w"> </span>Singularity/3.5.2-GCC-5.4.0-2.26
 
 <span class="c1"># set the BIDS directory</span>
-<span class="nb">export</span> <span class="nv">bidsdir</span><span class="o">=</span><span class="nv">$USER_DATA</span>/D01/nifti/
+<span class="nb">export</span><span class="w"> </span><span class="nv">bidsdir</span><span class="o">=</span><span class="nv">$USER_DATA</span>/D01/nifti/
 
-singularity run ~/Scripts/mriqc/mriqc-0.16.1.sif <span class="se">\</span>
-    --no-sub <span class="se">\</span>
-    <span class="si">${</span><span class="nv">bidsdir</span><span class="si">}</span> <span class="se">\</span>
-    <span class="si">${</span><span class="nv">bidsdir</span><span class="si">}</span>/derivatives/mriqc <span class="se">\</span>
-    group
+singularity<span class="w"> </span>run<span class="w"> </span>~/Scripts/mriqc/mriqc-0.16.1.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--no-sub<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">bidsdir</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">bidsdir</span><span class="si">}</span>/derivatives/mriqc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>group
 </code></pre></div>
 
               

@@ -1274,8 +1274,8 @@
 <p>Full documentation on using QSIprep can be found on <a href="https://qsiprep.readthedocs.io/en/stable/usage.html">their docs</a>. Instructions here will cover a selection of their documentation tailored for use on Cheaha.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>The suggested way to use QSIprep on Cheaha is through a Singularity container. These containers have all software necessary to run qsiprep packaged together, so no environments or external software management is necessary. To install the Singularity container for QSIprep, open an interactive session on Cheaha and run the following commands:</p>
-<div class="highlight"><pre><span></span><code>module load Singularity/3.5.2-GCC-5.4.0-2.26
-singularity pull qsiprep-0.14.3.sif docker://pennbbl/qsiprep:0.14.3
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>Singularity/3.5.2-GCC-5.4.0-2.26
+singularity<span class="w"> </span>pull<span class="w"> </span>qsiprep-0.14.3.sif<span class="w"> </span>docker://pennbbl/qsiprep:0.14.3
 </code></pre></div>
 <p>The container download and building process will take some time but once complete will not need to be performed again unless you want a different version.</p>
 <!-- markdownlint-disable MD046 -->
@@ -1287,7 +1287,7 @@ singularity pull qsiprep-0.14.3.sif docker://pennbbl/qsiprep:0.14.3
 
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>The basic command structure for qsiprep is fairly simple:</p>
-<div class="highlight"><pre><span></span><code>singularity run &lt;path/to/sif&gt; <span class="o">[</span>optional_args<span class="o">]</span> &lt;bids_dir&gt; &lt;output_dir&gt; &lt;analysis_level&gt;
+<div class="highlight"><pre><span></span><code>singularity<span class="w"> </span>run<span class="w"> </span>&lt;path/to/sif&gt;<span class="w"> </span><span class="o">[</span>optional_args<span class="o">]</span><span class="w"> </span>&lt;bids_dir&gt;<span class="w"> </span>&lt;output_dir&gt;<span class="w"> </span>&lt;analysis_level&gt;
 </code></pre></div>
 <h3 id="required-positional-arguments">Required Positional Arguments<a class="headerlink" href="#required-positional-arguments" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1329,21 +1329,21 @@ singularity pull qsiprep-0.14.3.sif docker://pennbbl/qsiprep:0.14.3
 <span class="nv">participant</span><span class="o">=</span>S01
 
 <span class="c1"># load the module</span>
-module load Singularity/3.5.2-GCC-5.4.0-2.26
+module<span class="w"> </span>load<span class="w"> </span>Singularity/3.5.2-GCC-5.4.0-2.26
 
 <span class="c1"># change directory to where qsiprep image file is stored</span>
-<span class="nb">cd</span> ~/Scripts/qsiprep
+<span class="nb">cd</span><span class="w"> </span>~/Scripts/qsiprep
 
 <span class="c1"># run qsiprep</span>
-singularity run qsiprep-0.14.3.sif --participant_label <span class="nv">$participant</span> <span class="se">\</span>
-    --fs_license_file <span class="nv">$HOME</span>/license.txt <span class="se">\</span>
-    -v <span class="se">\</span>
-    --separate_all_dwis <span class="se">\</span>
-    --output_resolution <span class="m">1</span>.2 <span class="se">\</span>
-    --skip_bids_validation <span class="se">\</span>
-    <span class="nv">$bids_dir</span> <span class="se">\</span>
-    <span class="nv">$bids_dir</span>/derivatives <span class="se">\</span>
-    participant
+singularity<span class="w"> </span>run<span class="w"> </span>qsiprep-0.14.3.sif<span class="w"> </span>--participant_label<span class="w"> </span><span class="nv">$participant</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--fs_license_file<span class="w"> </span><span class="nv">$HOME</span>/license.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--separate_all_dwis<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_resolution<span class="w"> </span><span class="m">1</span>.2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--skip_bids_validation<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">$bids_dir</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">$bids_dir</span>/derivatives<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>participant
 </code></pre></div>
 <h3 id="array-job">Array Job<a class="headerlink" href="#array-job" title="Permanent link">&para;</a></h3>
 <p>The array job uses the <code>participants.tsv</code> file generated in the main BIDS directory similar to our <a href="../../fmriprep/fmriprep-scripts/#example-array-job-script">fmriprep examples</a>. Array indexes for sbatch are 0's based, i.e. 0 will correspond to the first participant in the tsv file. The array script has been written to account for this.</p>
@@ -1361,24 +1361,24 @@ singularity run qsiprep-0.14.3.sif --participant_label <span class="nv">$partici
 <span class="nv">bids_dir</span><span class="o">=</span><span class="nv">$USER_DATA</span>/D01/nifti/
 
 <span class="c1"># set the participant id from the participants.tsv file in the bidsdir</span>
-<span class="nv">participant</span><span class="o">=</span><span class="k">$(</span>awk <span class="s2">&quot;NR==</span><span class="k">$((</span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="o">+</span><span class="m">2</span><span class="k">))</span><span class="s2">{print;exit}&quot;</span> <span class="nv">$bids_dir</span>/participants.tsv <span class="p">|</span> cut -f <span class="m">1</span><span class="k">)</span>
+<span class="nv">participant</span><span class="o">=</span><span class="k">$(</span>awk<span class="w"> </span><span class="s2">&quot;NR==</span><span class="k">$((</span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="o">+</span><span class="m">2</span><span class="k">))</span><span class="s2">{print;exit}&quot;</span><span class="w"> </span><span class="nv">$bids_dir</span>/participants.tsv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f<span class="w"> </span><span class="m">1</span><span class="k">)</span>
 
 <span class="c1"># load the module</span>
-module load Singularity/3.5.2-GCC-5.4.0-2.26
+module<span class="w"> </span>load<span class="w"> </span>Singularity/3.5.2-GCC-5.4.0-2.26
 
 <span class="c1"># change directory to where qsiprep image file is stored</span>
-<span class="nb">cd</span> ~/Scripts/qsiprep
+<span class="nb">cd</span><span class="w"> </span>~/Scripts/qsiprep
 
 <span class="c1"># run qsiprep</span>
-singularity run qsiprep-0.14.3.sif --participant_label <span class="nv">$participant</span> <span class="se">\</span>
-    --fs_license_file <span class="nv">$HOME</span>/license.txt <span class="se">\</span>
-    -v <span class="se">\</span>
-    --separate_all_dwis <span class="se">\</span>
-    --output_resolution <span class="m">1</span>.2 <span class="se">\</span>
-    --skip_bids_validation <span class="se">\</span>
-    <span class="nv">$bids_dir</span> <span class="se">\</span>
-    <span class="nv">$bids_dir</span>/derivatives <span class="se">\</span>
-    participant
+singularity<span class="w"> </span>run<span class="w"> </span>qsiprep-0.14.3.sif<span class="w"> </span>--participant_label<span class="w"> </span><span class="nv">$participant</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--fs_license_file<span class="w"> </span><span class="nv">$HOME</span>/license.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--separate_all_dwis<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_resolution<span class="w"> </span><span class="m">1</span>.2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--skip_bids_validation<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">$bids_dir</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">$bids_dir</span>/derivatives<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>participant
 </code></pre></div>
 
               

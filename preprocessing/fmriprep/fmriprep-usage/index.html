@@ -1256,13 +1256,13 @@
 
 <h2 id="loading-the-module">Loading the Module<a class="headerlink" href="#loading-the-module" title="Permanent link">&para;</a></h2>
 <p>Cheaha users can access a variety of installed software through modules. Loading the module to use in either an interactive session or in a batch job can be done using the following command:</p>
-<div class="highlight"><pre><span></span><code>module load rc/fmriprep/20.2.3
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>rc/fmriprep/20.2.3
 </code></pre></div>
 <p>From here, you have access to all commands available in the fmriprep
 toolbox, mainly the <code>fmriprep</code> command.</p>
 <h2 id="required-positional-arguments">Required Positional Arguments<a class="headerlink" href="#required-positional-arguments" title="Permanent link">&para;</a></h2>
 <p>The basic form of the <code>fmriprep</code> command is:</p>
-<div class="highlight"><pre><span></span><code>fmriprep <span class="o">[</span>options<span class="o">]</span> bids_dir output_dir analysis_level
+<div class="highlight"><pre><span></span><code>fmriprep<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>bids_dir<span class="w"> </span>output_dir<span class="w"> </span>analysis_level
 </code></pre></div>
 <ul>
 <li>bids_dir: root folder of a valid BIDS dataset (sub-XXXXX folders are found the output path for the outcomes of preprocessing and visual reports)</li>
@@ -1307,7 +1307,7 @@ toolbox, mainly the <code>fmriprep</code> command.</p>
 
 <h2 id="freesurfer-license-file">FreeSurfer License File<a class="headerlink" href="#freesurfer-license-file" title="Permanent link">&para;</a></h2>
 <p>Because FreeSurfer is a proprietary software package, it needs a license file to run. A license file for FreeSurfer is provided on Cheaha. Run the following command, replacing <code>&lt;destination&gt;</code> with the location you would like to copy the license file to in your chosen workspace.</p>
-<div class="highlight"><pre><span></span><code>cp /share/apps/rc/software/FreeSurfer/7.1.1-centos7_x86_64/license.txt &lt;destination&gt;
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>/share/apps/rc/software/FreeSurfer/7.1.1-centos7_x86_64/license.txt<span class="w"> </span>&lt;destination&gt;
 </code></pre></div>
 <p>Use the --fs-license-file option followed by the path to your copied license.txt. file to use FreeSurfer during data preprocessing.</p>
 <h2 id="suggested-computational-resources">Suggested Computational Resources<a class="headerlink" href="#suggested-computational-resources" title="Permanent link">&para;</a></h2>

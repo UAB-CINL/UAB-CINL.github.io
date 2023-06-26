@@ -1171,19 +1171,19 @@
 <span class="nv">participant</span><span class="o">=</span>P01
 
 <span class="c1"># load the module</span>
-module load rc/fmriprep/20.2.3
+module<span class="w"> </span>load<span class="w"> </span>rc/fmriprep/20.2.3
 
 <span class="c1"># run fmriprep</span>
-fmriprep --work-dir <span class="nv">$dataset_dir</span>/workdir/ <span class="se">\</span>
-         --participant-label <span class="nv">$participant</span> <span class="se">\</span>
-         --output-spaces T1w <span class="se">\</span>
-         --fs-license-file <span class="nv">$HOME</span>/license.txt <span class="se">\</span>
-         --n-cpus <span class="m">4</span> <span class="se">\</span>
-         --omp-nthreads <span class="m">4</span> <span class="se">\</span>
-         --cifti-output 91k <span class="se">\</span>
-         <span class="nv">$dataset_dir</span>/nifti/ <span class="se">\</span>
-         <span class="nv">$dataset_dir</span>/nifti/derivatives <span class="se">\</span>
-         participant
+fmriprep<span class="w"> </span>--work-dir<span class="w"> </span><span class="nv">$dataset_dir</span>/workdir/<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--participant-label<span class="w"> </span><span class="nv">$participant</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--output-spaces<span class="w"> </span>T1w<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--fs-license-file<span class="w"> </span><span class="nv">$HOME</span>/license.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--n-cpus<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--omp-nthreads<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--cifti-output<span class="w"> </span>91k<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span><span class="nv">$dataset_dir</span>/nifti/<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span><span class="nv">$dataset_dir</span>/nifti/derivatives<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>participant
 </code></pre></div>
 <ul>
 <li>The job requests 4 CPUs and 4 GBs of memory per CPU for 50 hours total on the medium partition.</li>
@@ -1217,22 +1217,22 @@ fmriprep --work-dir <span class="nv">$dataset_dir</span>/workdir/ <span class="s
 <span class="nv">bidsdir</span><span class="o">=</span><span class="nv">$dataset_dir</span>/nifti/
 
 <span class="c1"># set the participant id from the participants.tsv file in the bidsdir</span>
-<span class="nv">pid</span><span class="o">=</span><span class="k">$(</span>awk <span class="s2">&quot;NR==</span><span class="k">$((</span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="o">+</span><span class="m">2</span><span class="k">))</span><span class="s2">{print;exit}&quot;</span> <span class="nv">$bidsdir</span>/participants.tsv <span class="p">|</span> cut -f <span class="m">1</span><span class="k">)</span>
+<span class="nv">pid</span><span class="o">=</span><span class="k">$(</span>awk<span class="w"> </span><span class="s2">&quot;NR==</span><span class="k">$((</span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="o">+</span><span class="m">2</span><span class="k">))</span><span class="s2">{print;exit}&quot;</span><span class="w"> </span><span class="nv">$bidsdir</span>/participants.tsv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f<span class="w"> </span><span class="m">1</span><span class="k">)</span>
 
 <span class="c1"># load the module</span>
-module load rc/fmriprep/20.2.3
+module<span class="w"> </span>load<span class="w"> </span>rc/fmriprep/20.2.3
 
 <span class="c1"># run fmriprep</span>
-fmriprep --work-dir <span class="nv">$dataset_dir</span>/workdir/ <span class="se">\</span>
-         --participant-label <span class="nv">$pid</span> <span class="se">\</span>
-         --output-spaces T1w <span class="se">\</span>
-         --fs-license-file <span class="nv">$HOME</span>/license.txt <span class="se">\</span>
-         --n-cpus <span class="m">4</span> <span class="se">\</span>
-         --omp-nthreads <span class="m">4</span> <span class="se">\</span>
-         --cifti-output 91k <span class="se">\</span>
-         <span class="nv">$bidsdir</span> <span class="se">\</span>
-         <span class="nv">$bidsdir</span>/derivatives <span class="se">\</span>
-         participant
+fmriprep<span class="w"> </span>--work-dir<span class="w"> </span><span class="nv">$dataset_dir</span>/workdir/<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--participant-label<span class="w"> </span><span class="nv">$pid</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--output-spaces<span class="w"> </span>T1w<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--fs-license-file<span class="w"> </span><span class="nv">$HOME</span>/license.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--n-cpus<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--omp-nthreads<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>--cifti-output<span class="w"> </span>91k<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span><span class="nv">$bidsdir</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span><span class="nv">$bidsdir</span>/derivatives<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>participant
 </code></pre></div>
 <p>This script will replicate the fmriprep command for participants in the <code>participants.tsv</code> file. When submitting this job, include the <code>--array=&lt;min&gt;-&lt;max&gt;</code> option in the <code>sbatch</code> command representing the index of the participants you want to run. The index is 0-based. For example, if you want to run the first 10 participants in the file, use <code>--array=0-9</code>, whereas if you want to run the 7th and 10th participant only, use <code>--array=6,9</code>.</p>
 <p>This script can be placed in and run from a <code>code</code> folder placed under the main dataset directory to maintain BIDS compliance.</p>

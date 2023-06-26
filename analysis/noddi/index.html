@@ -1315,7 +1315,7 @@
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>NODDI was written as a MATLAB toolbox and can be downloaded from <a href="https://www.nitrc.org/projects/noddi_toolbox">the NITRC website</a>. General instructions on how to use the toolbox as well as a link to the support Google group can be found <a href="http://mig.cs.ucl.ac.uk/index.php?n=Tutorial.NODDImatlab">on their site</a></p>
 <p>To access the toolbox in MATLAB, download it and use the following command in the MATLAB terminal</p>
-<div class="highlight"><pre><span></span><code><span class="nb">addpath</span><span class="p">(</span><span class="nb">genpath</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">noddi</span><span class="o">/</span><span class="n">toolbox</span><span class="o">&gt;</span><span class="p">))</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nb">addpath</span><span class="p">(</span><span class="nb">genpath</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">noddi</span><span class="o">/</span><span class="n">toolbox</span><span class="o">&gt;</span><span class="p">))</span>
 </code></pre></div>
 <p>The NODDI toolbox depends on the <a href="https://github.com/NIFTI-Imaging/nifti_matlab">nifti_matlab</a> toolbox as well. Download the toolbox from the linked Github repo and add the toolbox to your Matlab path in the same manner as above.</p>
 <h3 id="toolbox-edits-for-batch-processing">Toolbox Edits for Batch Processing<a class="headerlink" href="#toolbox-edits-for-batch-processing" title="Permanent link">&para;</a></h3>
@@ -1323,16 +1323,16 @@
 <ul>
 <li>Comment out lines 91 and 92. The lines are:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c">%ppm = ParforProgMon([&#39;Fitting &#39; roifile, &#39; : &#39;], numOfVoxels-current_split_start+1,...</span><span class="w"></span>
-<span class="c">%                    progressStepSize, 400, 80);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c">%ppm = ParforProgMon([&#39;Fitting &#39; roifile, &#39; : &#39;], numOfVoxels-current_split_start+1,...</span>
+<span class="c">%                    progressStepSize, 400, 80);</span>
 </code></pre></div>
 <ul>
 <li>Comment out lines 119:122. The block should look like:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c">% report to the progress monitor</span><span class="w"></span>
-<span class="c">%if mod(i, progressStepSize)==0</span><span class="w"></span>
-<span class="c">%    ppm.increment();</span><span class="w"></span>
-<span class="c">%end</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c">% report to the progress monitor</span>
+<span class="c">%if mod(i, progressStepSize)==0</span>
+<span class="c">%    ppm.increment();</span>
+<span class="c">%end</span>
 </code></pre></div>
 <ul>
 <li>Comment out line 137 <code>%ppm.delete();</code></li>
@@ -1377,10 +1377,10 @@
 <p>The exact number of CPUs can be altered to either minimize time spent per job or maximize throughput of many jobs.</p>
 <h2 id="running-noddi">Running NODDI<a class="headerlink" href="#running-noddi" title="Permanent link">&para;</a></h2>
 <p>The toolbox is run with some commands that set up the data in a format NODDI requires and then the fitting itself. A basic NODDI setup will look like the following:</p>
-<div class="highlight"><pre><span></span><code><span class="n">CreateROI</span><span class="p">(</span><span class="o">&lt;</span><span class="n">dwi_scan</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">brain_mask</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">output_roi</span><span class="p">.</span><span class="n">mat</span><span class="o">&gt;</span><span class="p">);</span><span class="w"></span>
-<span class="n">protocol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">FSL2Protocol</span><span class="p">(</span><span class="o">&lt;</span><span class="n">bval</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">bvecs</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">b0_cutoff</span><span class="o">&gt;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">CreateROI</span><span class="p">(</span><span class="o">&lt;</span><span class="n">dwi_scan</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">brain_mask</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">output_roi</span><span class="p">.</span><span class="n">mat</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="n">protocol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">FSL2Protocol</span><span class="p">(</span><span class="o">&lt;</span><span class="n">bval</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">bvecs</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">b0_cutoff</span><span class="o">&gt;</span><span class="p">);</span>
 <span class="n">noddi</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">MakeModel</span><span class="p">(</span><span class="s">&#39;WatsonSHStickTortIsoV_B0&#39;</span><span class="p">);</span><span class="w"> </span>
-<span class="n">batch_fitting</span><span class="p">(</span><span class="o">&lt;</span><span class="n">roi</span><span class="p">.</span><span class="n">mat</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">protocol</span><span class="p">,</span><span class="w"> </span><span class="n">noddi</span><span class="p">,</span><span class="o">&lt;</span><span class="n">noddi_out</span><span class="p">.</span><span class="n">mat</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">ncpus</span><span class="p">);</span><span class="w"></span>
+<span class="n">batch_fitting</span><span class="p">(</span><span class="o">&lt;</span><span class="n">roi</span><span class="p">.</span><span class="n">mat</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">protocol</span><span class="p">,</span><span class="w"> </span><span class="n">noddi</span><span class="p">,</span><span class="o">&lt;</span><span class="n">noddi_out</span><span class="p">.</span><span class="n">mat</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">ncpus</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="createroi">CreateROI<a class="headerlink" href="#createroi" title="Permanent link">&para;</a></h3>
 <p>The <code>CreateROI</code> command converts the DWI and brain mask to forms usable by the <code>batch_fitting</code> command and has the following form:</p>
@@ -1448,9 +1448,9 @@
 <span class="c1">#SBATCH --mem=32G</span>
 <span class="c1">#SBATCH --output=/home/mdefende/NODDI_v1.05.txt</span>
 
-module load rc/matlab/R2022a
+module<span class="w"> </span>load<span class="w"> </span>rc/matlab/R2022a
 
-matlab -nodisplay -r <span class="s2">&quot;addpath(genpath(&#39;/home/mdefende/noddi/nifti_matlab&#39;)); </span>
+matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;addpath(genpath(&#39;/home/mdefende/noddi/nifti_matlab&#39;)); </span>
 <span class="s2">addpath(genpath(&#39;/home/mdefende/noddi/NODDI_toolbox_v1.05&#39;));</span>
 <span class="s2">CreateROI(&#39;/home/mdefende/noddi/data/sub-S01/sub-S01-AP_PA_eddy.nii&#39;,&#39;/home/mdefende/noddi/sub-S01/unwarp_b0_brain_mask.nii&#39;,&#39;/home/mdefende/noddi/sub-S01/sub-S01-AP_PA_eddy_NODDI_roi.mat&#39;);</span>
 <span class="s2">protocol = FSL2Protocol(&#39;/home/mdefende/noddi/sub-S01/sub-S01-AP_PA.bval&#39;,&#39;/home/mdefende/noddi/sub-S01/sub-S01-AP_PA_eddy.eddy_rotated_bvecs&#39;,5);</span>

@@ -1183,14 +1183,14 @@
 <span class="c1">#SBATCH --mem-per-cpu=8G</span>
 <span class="c1">#SBATCH --mail-type=FAIL</span>
 
-module load Anaconda3/2020.11
+module<span class="w"> </span>load<span class="w"> </span>Anaconda3/2020.11
 
-conda create -n bids
-conda activate bids
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>bids
+conda<span class="w"> </span>activate<span class="w"> </span>bids
 
-pip install <span class="nv">heudiconv</span><span class="o">==</span><span class="m">0</span>.9.0
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">heudiconv</span><span class="o">==</span><span class="m">0</span>.9.0
 
-conda install -c conda-forge dcm2niix
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>dcm2niix
 </code></pre></div>
 <h2 id="single-subject-job">Single Subject Job<a class="headerlink" href="#single-subject-job" title="Permanent link">&para;</a></h2>
 <p>This job assumes each subject only has a single session of data to convert and does not use the session variable.</p>
@@ -1214,20 +1214,20 @@ conda install -c conda-forge dcm2niix
 
 <span class="c1"># set necessary variables</span>
 <span class="nv">base_dir</span><span class="o">=</span>&lt;path/to/dataset&gt;
-<span class="nv">subject</span><span class="o">=</span>&lt;base subject name&gt;
+<span class="nv">subject</span><span class="o">=</span>&lt;base<span class="w"> </span>subject<span class="w"> </span>name&gt;
 
 <span class="c1"># load the necessary Anaconda module and activate the virtual environment. The heudiconv executable is in ~/.local/bin, so add that to the PATH</span>
-module load Anaconda3/2020.11
-conda activate bids
+module<span class="w"> </span>load<span class="w"> </span>Anaconda3/2020.11
+conda<span class="w"> </span>activate<span class="w"> </span>bids
 
 <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/.local/bin
 
 <span class="c1"># Run heudiconv</span>
-heudiconv -s <span class="nv">$subject</span> -d &lt;path/to/find/all/subject/dicom/files&gt; -o <span class="nv">$base_dir</span>/nifti -f &lt;path/to/heuristic&gt; -c dcm2niix -b --overwrite
+heudiconv<span class="w"> </span>-s<span class="w"> </span><span class="nv">$subject</span><span class="w"> </span>-d<span class="w"> </span>&lt;path/to/find/all/subject/dicom/files&gt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">$base_dir</span>/nifti<span class="w"> </span>-f<span class="w"> </span>&lt;path/to/heuristic&gt;<span class="w"> </span>-c<span class="w"> </span>dcm2niix<span class="w"> </span>-b<span class="w"> </span>--overwrite
 
 <span class="c1"># change the permissions of all of the files in the BIDS directory to have user and group write permissions</span>
-find <span class="nv">$base_dir</span>/nifti/&lt;BIDS subject name&gt; -exec chmod ug+w <span class="o">{}</span> <span class="se">\;</span>
-find <span class="nv">$base_dir</span>/nifti/.heudiconv/&lt;BIDS subject name&gt; -exec chmod ug+w <span class="o">{}</span> <span class="se">\;</span>
+find<span class="w"> </span><span class="nv">$base_dir</span>/nifti/&lt;BIDS<span class="w"> </span>subject<span class="w"> </span>name&gt;<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span>ug+w<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+find<span class="w"> </span><span class="nv">$base_dir</span>/nifti/.heudiconv/&lt;BIDS<span class="w"> </span>subject<span class="w"> </span>name&gt;<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span>ug+w<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 </code></pre></div>
 <h2 id="array-job">Array Job<a class="headerlink" href="#array-job" title="Permanent link">&para;</a></h2>
 <p>The array job will replicate the job across multiple subjects' data without having to create individual job scripts to submit. For more information about array jobs and how to submit them, read the UAB Research Computing documentation.</p>
@@ -1256,26 +1256,26 @@ find <span class="nv">$base_dir</span>/nifti/.heudiconv/&lt;BIDS subject name&gt
 
 <span class="nv">base_dir</span><span class="o">=</span>&lt;path/to/dataset&gt;
 
-<span class="nb">cd</span> <span class="nv">$base_dir</span>/dicom
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$base_dir</span>/dicom
 
 <span class="c1"># load the necessary Anaconda module and activate the virtual environment. The heudiconv executable is in ~/.local/bin, so add that to the PATH</span>
-module load Anaconda3/2020.11
-conda activate bids
+module<span class="w"> </span>load<span class="w"> </span>Anaconda3/2020.11
+conda<span class="w"> </span>activate<span class="w"> </span>bids
 
 <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/.local/bin
 
 <span class="c1"># Get the subject name based on the array index</span>
 <span class="c1"># For example, if I wanted to get all the folders the began with UAB, it would be subs=(UAB*)</span>
 <span class="c1"># These subjects should be in $base_dir, so plan accordingly.</span>
-<span class="nv">subs</span><span class="o">=(</span>&lt;glob to get the names of all the subjects&gt;<span class="o">)</span> 
+<span class="nv">subs</span><span class="o">=(</span>&lt;glob<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>the<span class="w"> </span>names<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>the<span class="w"> </span>subjects&gt;<span class="o">)</span><span class="w"> </span>
 <span class="nv">pid</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">subs</span><span class="p">[</span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="c1"># Run heudiconv</span>
-heudiconv -s <span class="nv">$pid</span> -d &lt;path/to/find/all/subject/dicom/files&gt; -o <span class="nv">$base_dir</span>/nifti -f &lt;path/to/heuristic&gt; -c dcm2niix -b --overwrite
+heudiconv<span class="w"> </span>-s<span class="w"> </span><span class="nv">$pid</span><span class="w"> </span>-d<span class="w"> </span>&lt;path/to/find/all/subject/dicom/files&gt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">$base_dir</span>/nifti<span class="w"> </span>-f<span class="w"> </span>&lt;path/to/heuristic&gt;<span class="w"> </span>-c<span class="w"> </span>dcm2niix<span class="w"> </span>-b<span class="w"> </span>--overwrite
 
 <span class="c1"># change the permissions of all of the files in the BIDS directory to have user and group write permissions</span>
-find <span class="nv">$base_dir</span>/nifti/sub-<span class="si">${</span><span class="nv">pid</span><span class="p">//_</span><span class="si">}</span> -exec chmod ug+w <span class="o">{}</span> <span class="se">\;</span>
-find <span class="nv">$base_dir</span>/nifti/.heudiconv/<span class="si">${</span><span class="nv">pid</span><span class="p">//_</span><span class="si">}</span> -exec chmod ug+w <span class="o">{}</span> <span class="se">\;</span>
+find<span class="w"> </span><span class="nv">$base_dir</span>/nifti/sub-<span class="si">${</span><span class="nv">pid</span><span class="p">//_</span><span class="si">}</span><span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span>ug+w<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+find<span class="w"> </span><span class="nv">$base_dir</span>/nifti/.heudiconv/<span class="si">${</span><span class="nv">pid</span><span class="p">//_</span><span class="si">}</span><span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span>ug+w<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 </code></pre></div>
 
               
