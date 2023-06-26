@@ -53,10 +53,10 @@ export <env_var>=<value>
 
 #### HCPPIPEDIR
 
-`HCPPIPEDIR` sets the main directory for where you have stored the pipelines. give the full path to the main directory, not just the PreFS directory. An example would look like:
+`HCPPIPEDIR` sets the main directory for where you have stored the pipelines. Give the full path to the main directory, not just the PreFS directory. An example would look like:
 
 ```bash
-export HCPPIPEDIR=/home/mdefende/Scripts/HCPpipelines
+export HCPPIPEDIR=${HOME}/Scripts/HCPpipelines
 ```
 
 #### HCPPIPEDIR_Global
@@ -72,7 +72,7 @@ export HCPPIPEDIR_Global=${HCPPIPEDIR}/global/scripts
 This sets the path to the average templates used for converting data to specific spaces. This is also contained in the `global` directory. Just set it to:
 
 ```bash
-export HCPPIPEDIR_Global=${HCPPIPEDIR}/global/templates
+export HCPPIPEDIR_Templates=${HCPPIPEDIR}/global/templates
 ```
 
 #### CARET7DIR
@@ -87,7 +87,7 @@ export CARET7DIR=/share/apps/rc/software/ConnectomeWorkbench/1.5.0-rh_linux64/bi
 export CARET7DIR=/home/mdefende/Scripts/workbench/bin_rh_linux64
 ```
 
-Only one of the above lines is necessary. In the long run, it may be better to download your own copy of the Workbench and keep it as software may be removed from the cluster modules over a long period of time.
+Only one of the above lines is necessary. In the long run, it may be better to download your own copy of the Workbench and keep it as software may be removed from the cluster modules over time.
 
 #### SPIN_ECHO_METHOD_OPT
 
@@ -133,12 +133,12 @@ The PreFS pipeline has a large number of inputs that go along with it. For testi
 <!-- markdownlint-disable MD046 -->
 !!! note
 
-    The sample spacing values for the T1 and T2 as well as the echo spacing value for the field maps can be found on a detailed scan export. Ask Elizabeth or Eleanor about how to export this from the scanner if your lab does not have one already.
+    The sample spacing values for the T1 and T2 as well as the echo spacing value for the field maps can be found on a detailed scan export. Ask Elizabeth about how to export this from the scanner if your lab does not have one already.
 <!-- markdownlint-enable MD046 -->
 
 **Template Options:**
 
-These options define the standard atlases used for conversion from native to normalized space. The templates can be found the $HCPPIPEDIR_Templates directory you set previously. Multiple MNI templates at various resolutions are provided.
+These options define the standard atlases used for conversion from native to normalized space. The templates can be found the ${HCPPIPEDIR_Templates} directory you set previously. Multiple MNI templates at various resolutions are provided.
 
 - `--t1template`: the T1 template. Can be any resolution.
 - `--t1templatebrain`: the skull-stripped brain of the template named above. This is included in the template directory
