@@ -12,7 +12,7 @@ Please read the [onboarding](onboarding.md) documentation for more information.
 
 ## Training
 
-If you and your study personnel have not already done so, you must undergo at least CINL MRI Safety Training. Please schedule this with Eleanor Yourich (elewis1@uabmc.edu). Please read over the [training protocols](training.md) for more information.
+If you and your study personnel have not already done so, you must undergo at least CINL MRI Safety Training. Please schedule this with Elizabeth Ingram (ekingram@uabmc.edu). Please read over the [training protocols](training.md) for more information.
 
 ### Implants
 
@@ -24,7 +24,7 @@ To obtain key card access to the Prisma MRI scanner area, message Ingia Gentry a
 
 ## Calendars
 
-To gain access to the Google calendars used for scheduling, please send a request to Eleanor Yourich at elewis1@uabmc.edu. You will need to provide Eleanor your email address and it is easiest to use a gmail address (which will also integrate it into their already existing google calendar).
+To gain access to the Google calendars used for scheduling, please send a request to Elizabeth Ingram (ekingram@uabmc.edu). You will need to provide Elizabeth your email address. It is easiest to use a gmail address (which will also integrate it into their already existing google calendar).
 
 <!-- markdownlint-disable MD046 -->
 !!! warning

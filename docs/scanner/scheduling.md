@@ -2,14 +2,14 @@
 
 ## Calendars
 
-Users that would like to view the MRI and interview room schedules or book time slots for their studies must have access to the CINL calendars. Two Google calendars are dedicated to our two Inverview Rooms and two calendars for the scheduling the Prisma, one for requesting scan time and the other for CINL personnel to confirm requests. To gain access to the following 4 google calendars, please send a request to Eleanor Yourich at elewis1@uabmc.edu.
+Users that would like to view the MRI and interview room schedules or book time slots for their studies must have access to the CINL calendars. Two Google calendars are dedicated to our two Inverview Rooms and two calendars for the scheduling the Prisma, one for requesting scan time and the other for CINL personnel to confirm requests. To gain access to the following 4 google calendars, please send a request to us at CINL@uab.edu.
 
 - CINL Prisma Request
 - CINL Prisma Confirmed
 - CINL Highlands Interview Room 1
 - CINL Highlands Interview Room 2
 
-You will need to provide Eleanor your email address. It is easiest to use a Gmail address (which will also integrate it into their already existing Google calendar).
+You will need to provide us your email address. It is easiest to use a Gmail address (which integrates into the Google calendar).
 
 <!-- markdownlint-disable MD046 -->
 !!! warning
@@ -21,11 +21,11 @@ When requesting a scan on the CINL Prisma Request calendar, include the Study ID
 
 ### CINL Setup Time
 
-Note the 15 minute buffer time after clinical each weekday. This buffer is to provide a safeguard in case clinical needs additional time to wrap up. Keep in mind that this is a possible outcome when scheduling your scans over that buffer. Please reach out to Eleanor Yourich with any issues.
+Note the 15-minute buffer time after clinical use each weekday. This buffer is to provide a safeguard in case patients need additional time to wrap up their exams. Keep in mind that the scanner may not be available immediately when scheduling your scans over that buffer. Please reach out to us with any issues (CINL@uab.edu).
 
 ### User Setup Time
 
-There is up to a 30 minute window that we allow for setup and teardown (enough time to get the participant set up and then out of the scanner afterwards), and this 30-minute time can be scheduled separately from the actual scan time. If scan setup exceeds 30 minutes, then this extra time is billed for the study. Scan time is billed a minimum of 1 hour, and then in 15 minute intervals for time over 1 hour.
+For studies requesting one hour or more of scan time, a 30-minute time slot can can be scheduled separately from the actual scan time. This window allows enough time to get participants and equipment set up and then out of the scanner suite afterwards. If scan setup exceeds 30 minutes, then this extra time is billed for the study. Scan time is billed a minimum of 1 hour, and then in 15 minute intervals for time over 1 hour.
 
 <!-- markdownlint-disable MD046 -->
 !!! note
