@@ -4,8 +4,6 @@
 
 All CINL users must complete MRI Safety Training.
 
-
-
 In order to operate the scanner, two people who have been trained on MRI safety and at least one person who has been operationally trained must be present. Operationally trained individuals can include researchers who have undergone the relevant training or MRI technologists who can be requested to run the scanner during your session.
 
 To be present during an MRI scan, you must read over the following documents regarding MRI safety and then schedule a time to undergo training with Elizabeth Ingram (ekingram@uabmc.edu) through email.

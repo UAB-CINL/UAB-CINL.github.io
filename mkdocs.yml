@@ -1,5 +1,5 @@
 site_name: Civitan International Neuroimaging Laboratory
-repo_url: https://github.com/ryanwillo/UAB-CINL.github.io
+repo_url: https://github.com/UAB-CINL/UAB-CINL.github.io
 
 theme:
   name: 'material'
