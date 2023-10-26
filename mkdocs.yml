@@ -44,7 +44,7 @@ nav:
   - Data Management:
     - data/index.md
     - XNAT:
-      data/xnat/index.md
+      - data/xnat/index.md
   - How-To:
     - how-to/index.md
   - Image Preprocessing: 
