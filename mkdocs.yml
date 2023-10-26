@@ -46,10 +46,12 @@ nav:
         - policies/xnat/account.md
         - policies/xnat/file_management.md
         - policies/xnat/projects.md
-  - Equipment:
+  - Equipment and Facilities:
     - equipment/index.md
   - Data Management:
     - data/index.md
+  - How-To:
+    - how-to/index.md
   - Image Preprocessing: 
     - preprocessing/index.md
     - BIDS: 

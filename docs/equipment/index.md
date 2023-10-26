@@ -4,7 +4,7 @@ The Civitan International Neuroimaging Laboratory (CINL) is a 5,000 square foot 
 
 !!! note
 
-    The Prisma is a shared resource and workhorse for both UAB Medicine and UAB-affiliated investigators. Refer to our [Scheduling and Billing](/docs/scanner/scheduling.md) page for information on Prisma availability.
+    The Prisma is a shared resource and workhorse for both UAB Medicine and UAB-affiliated investigators. Refer to [Scheduling](/policies/#scheduling) for information on Prisma availability.
 
 ## FIRMM
 
