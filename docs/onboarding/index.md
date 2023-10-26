@@ -6,7 +6,7 @@ This documentation will provide a brief overview of the steps required to get yo
 2. Apply for [funding]().
 3. Apply for a P-Number.
 4. Complete training.
-4. 
+4. Schedule your MRI exams.
 
 ## Apply for P-Number
 
