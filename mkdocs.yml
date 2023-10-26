@@ -35,20 +35,23 @@ plugins:
 
 nav:
   - Home: index.md
+  - Getting Started:
+    - onboarding/index.md
   - Policies and Procedures: 
-    - scanner/index.md
-    - Onboarding: scanner/onboarding.md
-    - Training: scanner/training.md
-    - Scheduling and Billing: scanner/scheduling.md
-    - Screening and Implants: scanner/implants.md
-    - FIRMM: scanner/firmm.md
+    - policies/index.md
     - Data Transfer:
-      - Local Transfer and OSIRIX: scanner/data_management.md
+      - Local Transfer and OSIRIX: policies/data_management.md
       - XNAT:
-        - scanner/xnat/index.md
-        - scanner/xnat/account.md
-        - scanner/xnat/file_management.md
-        - scanner/xnat/projects.md
+        - policies/xnat/index.md
+        - policies/xnat/account.md
+        - policies/xnat/file_management.md
+        - policies/xnat/projects.md
+  - Equipment and Facilities:
+    - equipment/index.md
+  - Data Management:
+    - data/index.md
+  - How-To:
+    - how-to/index.md
   - Image Preprocessing: 
     - preprocessing/index.md
     - BIDS: 
@@ -73,4 +76,6 @@ nav:
         - Walkthrough: analysis/cifti/R/cifti-r.html
         - Example Analysis: analysis/cifti/R/cifti-example.html
     - NODDI: analysis/noddi.md
-  - Resources: analysis/resources.md
+    - Resources: analysis/resources.md
+  - Funding:
+    - funding/index.md
