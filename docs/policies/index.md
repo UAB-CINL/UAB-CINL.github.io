@@ -1,6 +1,48 @@
-# Scheduling and Billing
+# Policies and Procedures
 
-## Calendars
+Our Policies and Procedures are designed to
+
+1. ensure that valuable UAB clinical and scientific resources are optimally utilized,
+2. maintain scientific integrity and rigor in all studies performed at UAB facilities, and
+3. support our [Mission](/#cinl-mission).
+
+## Training
+
+All CINL users must complete MRI Safety Training.
+
+In order to operate the scanner, two people who have been trained on MRI safety and at least one person who has been operationally trained must be present. Operationally trained individuals can include researchers who have undergone the relevant training or MRI technologists who can be requested to run the scanner during your session.
+
+To be present during an MRI scan, you must read over the following documents regarding MRI safety and then schedule a time to undergo training with Elizabeth Ingram (ekingram@uabmc.edu) through email.
+
+**Safety Training Documents**:
+
+- [MRI Safety Presentation](https://uab365.sharepoint.com/:b:/r/sites/som/circ/cinl/Shared%20Documents/Training/L2%20MRI%20Safety%20Presentation.pdf?csf=1&web=1&e=1mkBXW)
+- [Safety Training Policies and Procedures](https://uab365.sharepoint.com/:b:/r/sites/som/circ/cinl/Shared%20Documents/Training/L2%20Safety%20Training.pdf?csf=1&web=1&e=GcfDmX)
+- [Safety Test](https://uab365.sharepoint.com/:b:/r/sites/som/circ/cinl/Shared%20Documents/Training/L2%20Safety%20Test.pdf?csf=1&web=1&e=6vTyPl)
+
+MRI Safety trained users may seek Operational Certification (O.C.) by first contacting CINL staff, then either working with CINL staff or an O.C. user to train prior to certification. Anyone seeking Operational Certification (O.C.) must email [CINL@uab.edu](mailto:cinl@uab.edu) prior to training. Failure to report scanner operations training to CINL Leadership is a safety concern and may lead to disciplinary actions including, but not limited to, voiding O.C. status for the research group involved. After OC training, please contact Elizabeth at [ekingram@uabmc.edu](mailto:ekingram@uabmc.edu) to schedule on-site certification.
+
+## Participant Screening
+
+Before beginning a scan, a participant must be taken through the [MRI Patient Screening Form](https://uab365.sharepoint.com/:b:/r/sites/som/circ/cinl/Shared%20Documents/Training/MRI%20Screening%20Form.pdf?csf=1&web=1&e=tfbB4T). This screening form is mandatory each time a participant comes in for a scan regardless of whether they have filled out the form previously. Any risk factors discovered during the screening process will need to be reported and approved before scanning. For any questions about risk factors during screening, please contact Elizabeth Ingram at [ekingram@uabmc.edu](mailto:ekingram@uabmc.edu).
+
+### Prescreening
+
+When performing MRI studies, participant exclusion criteria related to MRI safety are usually included in the Human Subjects Protocol submitted to the UAB Institutional Review Board (IRB). We encourage researchers to 
+
+### Implant Policies
+
+If a participant has an implant, please reach out to Elizabeth Ingram (ekingram@uabmc.edu) and upload documentation for the implant to Sharefile for her to review. Please read the [Implant Guide](https://uab365.sharepoint.com/:b:/r/sites/som/circ/cinl/Shared%20Documents/Implant%20Review/Sharefile%20Instructions.pdf?csf=1&web=1&e=zo0AzU) and reach out to Elizabeth with any questions.
+
+Keep in mind that certain implants may need more time or require additional research than others. You can always ask general questions through email (no PHI!), however, you may be prompted to use ShareFile for in-depth exchange of implant specifics and documentation.
+
+## MRI Key Card Access
+
+Facility access is granted to users who have completed MRI Safety Training. To obtain key card access to the Prisma MRI scanner area, message Ingia Gentry at [CINL@uab.edu](mailto:cinl@uab.edu). Please provide the string of numbers at the bottom of the back side of the UAB ID badge (the string usually starts with a "4*" and ends with a "-E”).
+
+## Scheduling
+
+### Calendars
 
 Users that would like to view the MRI and interview room schedules or book time slots for their studies must have access to the CINL calendars. Two Google calendars are dedicated to our two Inverview Rooms and two calendars for the scheduling the Prisma, one for requesting scan time and the other for CINL personnel to confirm requests. To gain access to the following 4 google calendars, please send a request to us at CINL@uab.edu.
 
