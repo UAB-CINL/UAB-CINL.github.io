@@ -43,6 +43,8 @@ nav:
     - equipment/index.md
   - Data Management:
     - data/index.md
+    - XNAT:
+      data/xnat/index.md
   - How-To:
     - how-to/index.md
   - Image Preprocessing: 
